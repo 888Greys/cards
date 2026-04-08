@@ -157,7 +157,7 @@ export function signOutUserInState(state) {
   };
 }
 
-export function getSafeNextPath(nextValue, fallback = "account.html") {
+export function getSafeNextPath(nextValue, fallback = "home.html") {
   const candidate = String(nextValue || "").trim();
   if (!candidate) return fallback;
   if (candidate.startsWith("http://") || candidate.startsWith("https://")) return fallback;

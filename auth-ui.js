@@ -522,7 +522,7 @@ function initOtpVerification(state) {
     state.otp = null;
     saveAuthState(state);
     const sent = await sendWelcomeEmail(marked.user.name, marked.user.email);
-    setMessage(notice, "success", "Email verified. Redirecting to your account...");
+    setMessage(notice, "success", "Email verified. Redirecting to home...");
     showToast({ tone: "success", title: "Email verified", text: "Your account is now active." });
     if (!sent) {
       showToast({
@@ -532,7 +532,7 @@ function initOtpVerification(state) {
       });
     }
     queueAndRedirect(
-      "account.html",
+      "home.html",
       { tone: "success", title: "Welcome", text: "Verification complete. You are signed in." },
       520,
     );

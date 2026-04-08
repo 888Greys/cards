@@ -193,20 +193,45 @@
         <form class="space-y-5" id="balance-form">
           <input id="selected_brand" name="selected_brand" type="hidden" value="Amazon" />
 
-          <div class="space-y-2">
-            <label class="text-sm font-semibold text-on-surface-variant ml-1" for="brand_select">Gift Card Brand</label>
-            <div class="relative">
-              <select
-                class="w-full h-14 pl-4 pr-12 bg-surface-container-lowest border-outline-variant/20 border-2 rounded-2xl text-on-surface font-medium focus:ring-2 focus:ring-primary-container/20 focus:border-primary-container outline-none appearance-none"
-                id="brand_select"
-              >
-                <option value="Amazon">Amazon</option>
-                <option value="iTunes">iTunes</option>
-                <option value="Google Play">Google Play</option>
-                <option value="Netflix">Netflix</option>
-                <option value="Others">Others</option>
-              </select>
-              <span class="material-symbols-outlined absolute right-4 top-4 text-on-surface-variant pointer-events-none">keyboard_arrow_down</span>
+          <div class="space-y-2 relative" data-brand-combobox>
+            <label class="text-sm font-semibold text-on-surface-variant ml-1" for="brand_picker">
+              Gift Card Brand <span class="text-primary">*</span>
+            </label>
+            <button
+              aria-controls="brand_picker_menu"
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              class="w-full h-14 px-4 bg-surface-container-lowest border-outline-variant/20 border-2 rounded-2xl text-on-surface font-medium focus:ring-2 focus:ring-primary-container/20 focus:border-primary-container outline-none transition-all flex items-center justify-between gap-3"
+              data-brand-trigger
+              id="brand_picker"
+              type="button"
+            >
+              <span class="flex items-center gap-2 min-w-0">
+                <img alt="Selected gift card brand logo" class="w-4 h-4 object-contain rounded-[3px] bg-white p-[1px] shrink-0" data-brand-current-logo src="https://giftcardsverification.com/assets/amazon-BfIbjzwm.svg" />
+                <span class="truncate text-left" data-brand-current>Amazon</span>
+              </span>
+              <span class="material-symbols-outlined text-on-surface-variant shrink-0">expand_more</span>
+            </button>
+
+            <div
+              class="hidden absolute top-[calc(100%+0.5rem)] left-0 right-0 z-30 bg-surface-container-lowest border border-outline-variant/30 rounded-2xl shadow-[0px_14px_30px_rgba(0,0,0,0.14)] overflow-hidden"
+              data-brand-menu
+              id="brand_picker_menu"
+            >
+              <div class="p-3 border-b border-outline-variant/20">
+                <label class="relative block">
+                  <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+                  <input
+                    autocomplete="off"
+                    class="w-full h-10 pl-10 pr-3 rounded-xl border border-outline-variant/25 bg-surface text-on-surface text-sm placeholder:text-on-surface-variant/60 focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 outline-none"
+                    data-brand-search
+                    placeholder="Search brands..."
+                    type="text"
+                  />
+                </label>
+              </div>
+              <div class="max-h-64 overflow-y-auto p-1.5 space-y-0.5" data-brand-options role="listbox"></div>
+              <p class="hidden px-3 py-2 text-xs text-on-surface-variant" data-brand-empty>No matching brands found.</p>
             </div>
           </div>
 

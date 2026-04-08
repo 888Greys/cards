@@ -102,9 +102,9 @@ test("signOutUserInState clears session", () => {
 test("getSafeNextPath blocks unsafe redirects", () => {
   assert.equal(getSafeNextPath("account.html"), "account.html");
   assert.equal(getSafeNextPath("/checkbalance.html"), "checkbalance.html");
-  assert.equal(getSafeNextPath("https://evil.com"), "account.html");
-  assert.equal(getSafeNextPath("../account.html"), "account.html");
-  assert.equal(getSafeNextPath("home"), "account.html");
+  assert.equal(getSafeNextPath("https://evil.com"), "home.html");
+  assert.equal(getSafeNextPath("../account.html"), "home.html");
+  assert.equal(getSafeNextPath("home"), "home.html");
 });
 
 test("verifyOtpChallenge accepts valid code", () => {
