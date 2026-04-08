@@ -133,11 +133,21 @@
       <section class="space-y-4">
         <h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant px-2">Card Type</h3>
         <div class="grid grid-cols-2 gap-4">
-          <button class="flex items-center justify-center gap-3 py-4 bg-surface-container-lowest border-2 border-primary rounded-2xl shadow-sm font-semibold text-primary" type="button">
+          <button
+            aria-pressed="true"
+            class="flex items-center justify-center gap-3 py-4 bg-surface-container-lowest border-2 border-primary rounded-2xl shadow-sm font-semibold text-primary"
+            data-card-type-button="physical"
+            type="button"
+          >
             <span class="material-symbols-outlined text-primary">credit_card</span>
             Physical Card
           </button>
-          <button class="flex items-center justify-center gap-3 py-4 bg-surface-container-low border-2 border-transparent hover:border-outline-variant/30 rounded-2xl transition-all font-semibold text-on-surface-variant" type="button">
+          <button
+            aria-pressed="false"
+            class="flex items-center justify-center gap-3 py-4 bg-surface-container-low border-2 border-transparent hover:border-outline-variant/30 rounded-2xl transition-all font-semibold text-on-surface-variant"
+            data-card-type-button="digital"
+            type="button"
+          >
             <span class="material-symbols-outlined text-outline">qr_code_2</span>
             Digital Card
           </button>
@@ -145,7 +155,7 @@
       </section>
 
       <!-- Card Images -->
-      <section class="space-y-4">
+      <section class="space-y-4" data-card-image-section>
         <h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant px-2">Card Images</h3>
         <div class="grid grid-cols-1 gap-6">
           <div class="bg-surface-container-low p-6 rounded-2xl border-2 border-dashed border-outline-variant/50 flex flex-col items-center text-center space-y-4">

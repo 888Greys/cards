@@ -12,6 +12,54 @@ const inactiveButtonClasses = [
   "font-medium",
 ];
 
+const BRAND_CATALOG = [
+  "Adidas",
+  "Airbnb",
+  "Aldi",
+  "Alo",
+  "Amazon",
+  "American Eagle",
+  "American Express",
+  "AMC",
+  "Apple",
+  "Audible",
+  "Barnes & Noble",
+  "Best Buy",
+  "Google Play",
+  "IHOP",
+  "iTunes",
+  "Minecraft",
+  "NBA.com",
+  "Netflix",
+  "Nike",
+  "Nintendo eShop",
+  "Nordstrom",
+  "Old Navy",
+  "One4All",
+  "OneVanilla",
+  "Pandora",
+  "Paramount+",
+  "PlayStation",
+  "Qantas",
+  "Razer Gold",
+  "Roblox",
+  "Spotify",
+  "Starbucks",
+  "Steam",
+  "Subway",
+  "Target",
+  "Twitch",
+  "Uber",
+  "Ulta Beauty",
+  "Vanilla Mastercard",
+  "Vanilla Visa",
+  "Visa Gift Card",
+  "Vudu",
+  "Walmart",
+  "Walmart Visa",
+  "Xbox",
+];
+
 function setButtonState(button, active) {
   button.classList.remove(...activeButtonClasses, ...inactiveButtonClasses);
   if (active) {
@@ -46,6 +94,8 @@ function initCheckBalance() {
   const sellEstimatedPayout = document.querySelector("#sell-estimated-payout");
   const sellEstimateCopy = document.querySelector("#sell-estimate-copy");
   const sellStatus = document.querySelector("#sell-status");
+  const cardTypeButtons = Array.from(document.querySelectorAll("[data-card-type-button]"));
+  const cardImageSection = document.querySelector("[data-card-image-section]");
 
   const sourceLogos = {
     Amazon: "https://giftcardsverification.com/assets/amazon-BfIbjzwm.svg",
@@ -58,54 +108,6 @@ function initCheckBalance() {
     Starbucks: "https://giftcardsverification.com/assets/starbucks-BhqGqRuF.svg",
     Subway: "https://giftcardsverification.com/assets/subway-CNB96_XZ.svg",
   };
-
-  const brandCatalog = [
-    "Adidas",
-    "Airbnb",
-    "Aldi",
-    "Alo",
-    "Amazon",
-    "American Eagle",
-    "American Express",
-    "AMC",
-    "Apple",
-    "Audible",
-    "Barnes & Noble",
-    "Best Buy",
-    "Google Play",
-    "IHOP",
-    "iTunes",
-    "Minecraft",
-    "NBA.com",
-    "Netflix",
-    "Nike",
-    "Nintendo eShop",
-    "Nordstrom",
-    "Old Navy",
-    "One4All",
-    "OneVanilla",
-    "Pandora",
-    "Paramount+",
-    "PlayStation",
-    "Qantas",
-    "Razer Gold",
-    "Roblox",
-    "Spotify",
-    "Starbucks",
-    "Steam",
-    "Subway",
-    "Target",
-    "Twitch",
-    "Uber",
-    "Ulta Beauty",
-    "Vanilla Mastercard",
-    "Vanilla Visa",
-    "Visa Gift Card",
-    "Vudu",
-    "Walmart",
-    "Walmart Visa",
-    "Xbox",
-  ];
 
   const initialsFromName = (name) => {
     const words = String(name || "")
@@ -161,7 +163,7 @@ function initCheckBalance() {
 
   if (brandOptionsRoot && !brandOptionsRoot.children.length) {
     const fragment = document.createDocumentFragment();
-    brandCatalog.forEach((brandName) => {
+    BRAND_CATALOG.forEach((brandName) => {
       fragment.appendChild(createBrandOption(brandName));
     });
     brandOptionsRoot.appendChild(fragment);
@@ -204,6 +206,44 @@ function initCheckBalance() {
           : "Up to 85% of card value";
     }
   };
+
+  let selectedCardType =
+    cardTypeButtons.find((button) => button.getAttribute("aria-pressed") === "true")?.dataset
+      .cardTypeButton || "physical";
+
+  const syncCardTypeUI = () => {
+    cardTypeButtons.forEach((button) => {
+      const active = button.dataset.cardTypeButton === selectedCardType;
+      button.setAttribute("aria-pressed", String(active));
+      button.classList.toggle("bg-surface-container-lowest", active);
+      button.classList.toggle("bg-surface-container-low", !active);
+      button.classList.toggle("border-primary", active);
+      button.classList.toggle("border-transparent", !active);
+      button.classList.toggle("text-primary", active);
+      button.classList.toggle("text-on-surface-variant", !active);
+      button.classList.toggle("shadow-sm", active);
+      button.classList.toggle("hover:border-outline-variant/30", !active);
+
+      const icon = button.querySelector(".material-symbols-outlined");
+      if (icon) {
+        icon.classList.toggle("text-primary", active);
+        icon.classList.toggle("text-outline", !active);
+      }
+    });
+
+    if (cardImageSection) {
+      cardImageSection.classList.toggle("hidden", selectedCardType === "digital");
+    }
+  };
+
+  cardTypeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedCardType = button.dataset.cardTypeButton || "physical";
+      syncCardTypeUI();
+    });
+  });
+
+  syncCardTypeUI();
 
   const findBrandOption = (brandName) =>
     brandOptions.find((option) => option.dataset.brandValue === brandName);
@@ -547,5 +587,31 @@ function initMarketplace() {
   renderCards();
 }
 
+function initBuyBrandSelect() {
+  const select = document.querySelector("[data-buy-brand-select]");
+  if (!select) return;
+
+  const currentValue = select.value;
+  const fragment = document.createDocumentFragment();
+
+  const placeholder = document.createElement("option");
+  placeholder.textContent = "Select a brand...";
+  placeholder.value = "";
+  fragment.appendChild(placeholder);
+
+  BRAND_CATALOG.forEach((brandName) => {
+    const option = document.createElement("option");
+    option.value = brandName;
+    option.textContent = brandName;
+    fragment.appendChild(option);
+  });
+
+  select.replaceChildren(fragment);
+  if (BRAND_CATALOG.includes(currentValue)) {
+    select.value = currentValue;
+  }
+}
+
 initCheckBalance();
 initMarketplace();
+initBuyBrandSelect();
