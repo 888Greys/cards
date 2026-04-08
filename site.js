@@ -26,16 +26,18 @@ function initCheckBalance() {
   if (!form) return;
 
   const brandButtons = Array.from(document.querySelectorAll("[data-brand]"));
+  const brandSelect = document.querySelector("#brand_select");
   const brandInput = document.querySelector("#selected_brand");
   const result = document.querySelector("#balance-result");
   const resultTitle = document.querySelector("#balance-result-title");
   const resultCopy = document.querySelector("#balance-result-copy");
   const resultAmount = document.querySelector("#balance-result-amount");
-  let selectedBrand = brandInput?.value || "iTunes";
+  let selectedBrand = brandInput?.value || brandSelect?.value || "iTunes";
 
   const selectBrand = (button) => {
     selectedBrand = button.dataset.brand || selectedBrand;
     if (brandInput) brandInput.value = selectedBrand;
+    if (brandSelect) brandSelect.value = selectedBrand;
     brandButtons.forEach((item) => {
       const active = item === button;
       item.setAttribute("aria-pressed", String(active));
@@ -56,14 +58,32 @@ function initCheckBalance() {
     });
   };
 
-  brandButtons.forEach((button) => {
-    button.addEventListener("click", () => selectBrand(button));
-  });
+  if (brandButtons.length) {
+    brandButtons.forEach((button) => {
+      button.addEventListener("click", () => selectBrand(button));
+    });
 
-  const initiallySelected =
-    brandButtons.find((button) => button.dataset.brand === selectedBrand) ||
-    brandButtons[0];
-  if (initiallySelected) selectBrand(initiallySelected);
+    const initiallySelected =
+      brandButtons.find((button) => button.dataset.brand === selectedBrand) ||
+      brandButtons[0];
+    if (initiallySelected) selectBrand(initiallySelected);
+  }
+
+  if (brandSelect) {
+    brandSelect.value = selectedBrand;
+    brandSelect.addEventListener("change", () => {
+      selectedBrand = brandSelect.value || selectedBrand;
+      if (brandInput) brandInput.value = selectedBrand;
+      if (brandButtons.length) {
+        const match = brandButtons.find((button) => button.dataset.brand === selectedBrand);
+        if (match) selectBrand(match);
+      }
+    });
+  }
+
+  if (brandInput && !brandInput.value) {
+    brandInput.value = selectedBrand;
+  }
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
