@@ -1,149 +1,213 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="light" lang="en">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Sign Up - GiftCardsHub</title>
+    <title>Sign Up | GiftCardsHub</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link href="./auth-pages.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              surface: "#fbf8ff",
+              "surface-container-low": "#f5f2ff",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-high": "#e7e6ff",
+              "surface-variant": "#e0e0ff",
+              "on-surface": "#060963",
+              "on-surface-variant": "#494454",
+              outline: "#7b7486",
+              "outline-variant": "#cbc3d7",
+              primary: "#6b38d4",
+              "primary-container": "#8455ef",
+              "primary-fixed": "#e9ddff",
+              secondary: "#a04100",
+              tertiary: "#4e54a5",
+            },
+            fontFamily: {
+              headline: ["Plus Jakarta Sans"],
+              body: ["Inter"],
+            },
+          },
+        },
+      };
+    </script>
     <script type="module" src="./auth-ui.js"></script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+        vertical-align: middle;
+      }
+      .bg-auth-wash {
+        background:
+          radial-gradient(circle at 0% 0%, rgba(132, 85, 239, 0.24), transparent 44%),
+          radial-gradient(circle at 100% 100%, rgba(160, 65, 0, 0.08), transparent 40%),
+          #fbf8ff;
+      }
+      [data-auth-notice] {
+        border: 1px solid transparent;
+      }
+      [data-auth-notice][data-tone="success"] {
+        background: #edf8f1;
+        border-color: #b7e8c7;
+        color: #1d6235;
+      }
+      [data-auth-notice][data-tone="warning"] {
+        background: #fff3eb;
+        border-color: #ffd7bf;
+        color: #8f3900;
+      }
+      [data-auth-notice][data-tone="info"] {
+        background: #eff0ff;
+        border-color: #d6d8ff;
+        color: #2f3580;
+      }
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
   </head>
-  <body data-page="signup">
-    <main class="auth-main">
-      <div class="auth-shell">
-        <section class="auth-hero">
-          <a class="auth-brand" href="home.html">
-            <span class="auth-brand-mark" aria-hidden="true"></span>
-            GiftCardsHub
+  <body class="bg-auth-wash min-h-screen flex flex-col font-body text-on-surface antialiased overflow-x-hidden" data-page="signup">
+    <main class="flex-grow flex items-center justify-center p-6 md:p-12 mb-20">
+      <div class="w-full max-w-md bg-surface-container-lowest rounded-[1.5rem] shadow-[0px_12px_32px_rgba(6,9,99,0.08)] p-8 md:p-10 relative">
+        <div class="flex flex-col items-center mb-8">
+          <div class="w-14 h-14 bg-tertiary flex items-center justify-center rounded-xl mb-6 shadow-sm">
+            <span class="text-white font-headline font-extrabold text-2xl tracking-tighter">GH</span>
+          </div>
+          <h1 class="font-headline font-bold text-2xl text-center text-on-surface mb-2">Create your account</h1>
+          <p class="text-on-surface-variant text-center text-sm px-4">Sign up to receive OTP verification and start trading</p>
+        </div>
+
+        <div class="bg-surface-container-low p-1.5 rounded-xl flex mb-8">
+          <a class="flex-1 py-2.5 text-sm font-semibold text-on-surface-variant text-center transition-all" href="signin.html">
+            Sign In
           </a>
-          <h1 class="auth-headline">
-            Create your account and
-            <span class="auth-headline-emphasis">start trading securely</span>
-          </h1>
-          <p class="auth-subcopy">
-            Set up your profile in less than a minute. We send a one-time verification code to your email before first access.
-          </p>
-          <div class="auth-pill-row" aria-label="Platform trust highlights">
-            <span class="auth-pill">Global card marketplace</span>
-            <span class="auth-pill">Fraud-screened verification</span>
-            <span class="auth-pill">Fast onboarding flow</span>
-          </div>
-          <ul class="auth-checklist">
-            <li><span class="auth-dot" aria-hidden="true"></span>Reliable OTP-based email verification</li>
-            <li><span class="auth-dot" aria-hidden="true"></span>Encrypted credentials in local auth state</li>
-            <li><span class="auth-dot" aria-hidden="true"></span>Smooth handoff into your account dashboard</li>
-          </ul>
-        </section>
+          <a class="flex-1 py-2.5 text-sm font-bold text-white bg-primary rounded-lg shadow-sm text-center transition-all" href="signup.html">
+            Sign Up
+          </a>
+        </div>
 
-        <section class="auth-panel">
-          <div class="auth-card">
-            <p class="auth-eyebrow">Create account</p>
-            <h2 class="auth-title">Sign up</h2>
-            <p class="auth-helper">Use an active email so you can receive OTP verification instantly.</p>
-            <div class="auth-proof-grid" aria-label="Signup trust metrics">
-              <article class="auth-proof-item">
-                <p class="auth-proof-value">2,500+</p>
-                <p class="auth-proof-label">User reviews</p>
-              </article>
-              <article class="auth-proof-item">
-                <p class="auth-proof-value">10 min</p>
-                <p class="auth-proof-label">OTP validity</p>
-              </article>
-              <article class="auth-proof-item">
-                <p class="auth-proof-value">89%</p>
-                <p class="auth-proof-label">5-star feedback</p>
-              </article>
+        <form class="space-y-5" data-auth-form="signup" novalidate>
+          <div class="space-y-1.5">
+            <label class="text-xs font-semibold text-on-surface-variant ml-1" for="signup-name">Full name</label>
+            <div class="relative group">
+              <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors">person</span>
+              <input
+                class="w-full pl-12 pr-4 py-3.5 bg-surface-container-lowest border border-outline-variant/20 rounded-xl focus:ring-2 focus:ring-primary/10 focus:border-primary outline-none transition-all text-on-surface placeholder:text-on-surface-variant/30"
+                id="signup-name"
+                name="name"
+                placeholder="John Doe"
+                type="text"
+                autocomplete="name"
+                required
+              />
             </div>
-
-            <form class="auth-form" data-auth-form="signup" novalidate>
-              <label class="auth-field" for="signup-name">
-                <span class="auth-label">Full name</span>
-                <input
-                  class="auth-input"
-                  id="signup-name"
-                  name="name"
-                  type="text"
-                  autocomplete="name"
-                  placeholder="Your full name"
-                  required
-                />
-              </label>
-
-              <label class="auth-field" for="signup-email">
-                <span class="auth-label">Email address</span>
-                <input
-                  class="auth-input"
-                  id="signup-email"
-                  name="email"
-                  type="email"
-                  autocomplete="email"
-                  placeholder="you@example.com"
-                  required
-                />
-              </label>
-
-              <label class="auth-field" for="signup-password">
-                <span class="auth-label">Password</span>
-                <span class="auth-input-wrap">
-                  <input
-                    class="auth-input"
-                    id="signup-password"
-                    name="password"
-                    type="password"
-                    autocomplete="new-password"
-                    minlength="8"
-                    placeholder="Minimum 8 characters"
-                    required
-                  />
-                  <button
-                    class="auth-password-toggle"
-                    data-auth-password-toggle
-                    data-target="signup-password"
-                    type="button"
-                  >
-                    Show
-                  </button>
-                </span>
-              </label>
-
-              <label class="auth-field" for="signup-confirm-password">
-                <span class="auth-label">Confirm password</span>
-                <span class="auth-input-wrap">
-                  <input
-                    class="auth-input"
-                    id="signup-confirm-password"
-                    name="confirmPassword"
-                    type="password"
-                    autocomplete="new-password"
-                    minlength="8"
-                    placeholder="Repeat your password"
-                    required
-                  />
-                  <button
-                    class="auth-password-toggle"
-                    data-auth-password-toggle
-                    data-target="signup-confirm-password"
-                    type="button"
-                  >
-                    Show
-                  </button>
-                </span>
-              </label>
-
-              <button class="auth-submit" type="submit">Create Account</button>
-              <p class="auth-form-disclaimer">After account creation, we send a one-time verification code to complete activation.</p>
-              <p class="auth-links">
-                Already have an account?
-                <a href="signin.html">Sign in</a>
-              </p>
-              <p class="auth-inline-message" data-auth-notice hidden></p>
-            </form>
           </div>
-        </section>
+
+          <div class="space-y-1.5">
+            <label class="text-xs font-semibold text-on-surface-variant ml-1" for="signup-email">Email address</label>
+            <div class="relative group">
+              <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors">mail</span>
+              <input
+                class="w-full pl-12 pr-4 py-3.5 bg-surface-container-lowest border border-outline-variant/20 rounded-xl focus:ring-2 focus:ring-primary/10 focus:border-primary outline-none transition-all text-on-surface placeholder:text-on-surface-variant/30"
+                id="signup-email"
+                name="email"
+                placeholder="example@mail.com"
+                type="email"
+                autocomplete="email"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="space-y-1.5">
+            <label class="text-xs font-semibold text-on-surface-variant ml-1" for="signup-password">Password</label>
+            <div class="relative group">
+              <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors">lock</span>
+              <input
+                class="w-full pl-12 pr-16 py-3.5 bg-surface-container-lowest border border-outline-variant/20 rounded-xl focus:ring-2 focus:ring-primary/10 focus:border-primary outline-none transition-all text-on-surface placeholder:text-on-surface-variant/30"
+                id="signup-password"
+                name="password"
+                placeholder="Minimum 8 characters"
+                type="password"
+                autocomplete="new-password"
+                minlength="8"
+                required
+              />
+              <button
+                class="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold uppercase tracking-wider text-on-surface-variant/70 hover:text-on-surface transition-colors"
+                data-auth-password-toggle
+                data-target="signup-password"
+                type="button"
+              >
+                Show
+              </button>
+            </div>
+          </div>
+
+          <div class="space-y-1.5">
+            <label class="text-xs font-semibold text-on-surface-variant ml-1" for="signup-confirm-password">Confirm password</label>
+            <div class="relative group">
+              <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors">shield</span>
+              <input
+                class="w-full pl-12 pr-16 py-3.5 bg-surface-container-lowest border border-outline-variant/20 rounded-xl focus:ring-2 focus:ring-primary/10 focus:border-primary outline-none transition-all text-on-surface placeholder:text-on-surface-variant/30"
+                id="signup-confirm-password"
+                name="confirmPassword"
+                placeholder="Repeat your password"
+                type="password"
+                autocomplete="new-password"
+                minlength="8"
+                required
+              />
+              <button
+                class="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold uppercase tracking-wider text-on-surface-variant/70 hover:text-on-surface transition-colors"
+                data-auth-password-toggle
+                data-target="signup-confirm-password"
+                type="button"
+              >
+                Show
+              </button>
+            </div>
+          </div>
+
+          <button class="w-full bg-primary hover:opacity-90 active:scale-[0.98] transition-all text-white font-headline font-bold py-4 rounded-xl shadow-lg shadow-primary/20 mt-2" type="submit">
+            Create Account
+          </button>
+
+          <p class="rounded-xl px-4 py-3 text-sm" data-auth-notice hidden></p>
+        </form>
+
+        <div class="relative my-8">
+          <div class="absolute inset-0 flex items-center">
+            <div class="w-full border-t border-outline-variant/20"></div>
+          </div>
+          <div class="relative flex justify-center text-xs uppercase tracking-widest">
+            <span class="bg-surface-container-lowest px-4 text-on-surface-variant/50">Already registered?</span>
+          </div>
+        </div>
+
+        <a class="w-full inline-flex justify-center items-center border border-outline-variant/30 text-on-surface font-semibold py-3.5 rounded-xl hover:bg-surface-container-low transition-colors" href="signin.html">
+          Sign in instead
+        </a>
       </div>
     </main>
+
+    <footer class="fixed bottom-0 w-full px-8 pb-8 flex justify-between items-center text-[10px] font-semibold text-on-surface-variant/50 uppercase tracking-[0.2em]">
+      <span>© 2026 GiftCardsHub</span>
+      <div class="flex gap-4">
+        <a class="hover:text-primary transition-colors" href="home.html#reviews">Support</a>
+        <a class="hover:text-primary transition-colors" href="home.html#faq">FAQ</a>
+      </div>
+    </footer>
   </body>
 </html>
