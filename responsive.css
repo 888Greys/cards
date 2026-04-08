@@ -1,0 +1,136 @@
+/* Cross-page responsive tuning for small and medium screens */
+
+@media (max-width: 1024px) {
+  body {
+    min-height: 100dvh !important;
+  }
+}
+
+@media (max-width: 768px) {
+  header > div {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  main {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  footer {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    padding-top: 3rem !important;
+    padding-bottom: 6.5rem !important;
+  }
+
+  [class*="fixed bottom-0"] {
+    padding-bottom: 0.9rem !important;
+  }
+
+  [class*="fixed bottom-24"][class*="right-6"] {
+    bottom: 5.5rem !important;
+    right: 1rem !important;
+  }
+
+  body[data-page="home"] main {
+    padding-top: 5.5rem !important;
+    padding-bottom: 9rem !important;
+  }
+
+  body[data-page="home"] section[class*="py-20"],
+  body[data-page="home"] section[class*="py-32"] {
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+
+  body[data-page="home"] h1 {
+    font-size: clamp(2rem, 9vw, 3rem) !important;
+    line-height: 1.05 !important;
+  }
+
+  body[data-page="home"] h2 {
+    font-size: clamp(1.65rem, 7.2vw, 2.2rem) !important;
+    line-height: 1.15 !important;
+  }
+
+  body[data-page="home"] .grid[class*="md:grid-cols-12"] > * {
+    padding: 1.5rem !important;
+  }
+
+  body[data-page="account"] main {
+    padding-top: 5.5rem !important;
+    padding-bottom: 8rem !important;
+  }
+
+  body[data-page="account"] h2 {
+    font-size: clamp(2rem, 9vw, 2.6rem) !important;
+  }
+
+  body[data-page="account"] [class*="min-w-[280px]"] {
+    min-width: 100% !important;
+  }
+
+  body[data-page="account"] [class*="w-[300px]"] {
+    width: min(300px, 82vw) !important;
+  }
+
+  body[data-page="check-balance"] main,
+  body[data-page="marketplace"] main {
+    padding-top: 5.5rem !important;
+    padding-bottom: 8rem !important;
+  }
+
+  body[data-page="check-balance"] h2,
+  body[data-page="marketplace"] h2 {
+    font-size: clamp(1.8rem, 8vw, 2.4rem) !important;
+    line-height: 1.1 !important;
+  }
+
+  body[data-page="check-balance"] [class*="p-8"],
+  body[data-page="marketplace"] [class*="p-8"],
+  body[data-page="marketplace"] [class*="p-10"] {
+    padding: 1.25rem !important;
+  }
+
+  body[data-page="marketplace"] [class*="max-w-md"] {
+    max-width: 100% !important;
+  }
+
+  body[data-page="marketplace"] [id="featured-rate-label"] {
+    font-size: clamp(1.6rem, 7vw, 2.1rem) !important;
+  }
+
+  body[data-page="marketplace"] [id="featured-cta"] {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    white-space: nowrap;
+  }
+
+  body[data-page="marketplace"] [class*="overflow-x-auto"] button {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  body[data-page="signin"] main,
+  body[data-page="signup"] main,
+  body[data-page="verify-otp"] main {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  body[data-page="signin"] h1,
+  body[data-page="signup"] h1,
+  body[data-page="verify-otp"] h1 {
+    font-size: clamp(1.9rem, 8vw, 2.6rem) !important;
+    line-height: 1.12 !important;
+  }
+
+  body[data-page="signin"] section[class*="p-8"],
+  body[data-page="signup"] section[class*="p-8"],
+  body[data-page="verify-otp"] section[class*="p-8"] {
+    padding: 1.25rem !important;
+  }
+}

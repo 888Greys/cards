@@ -1,5 +1,6 @@
 export const AUTH_USERS_KEY = "giftcardshub-auth-users-v1";
 export const AUTH_SESSION_KEY = "giftcardshub-auth-session-v1";
+export const AUTH_OTP_KEY = "giftcardshub-auth-otp-v1";
 
 export function normalizeEmail(value) {
   return String(value || "").trim().toLowerCase();
@@ -65,12 +66,7 @@ export function registerUserInState(state, payload, now = new Date().toISOString
     email,
     passwordHash: hashPassword(password),
     createdAt: now,
-  };
-  const session = {
-    userId: user.id,
-    email: user.email,
-    name: user.name,
-    signedInAt: now,
+    isVerified: false,
   };
 
   return {
@@ -78,7 +74,7 @@ export function registerUserInState(state, payload, now = new Date().toISOString
     user,
     state: {
       users: [...base.users, user],
-      session,
+      session: null,
     },
   };
 }
@@ -96,6 +92,9 @@ export function signInUserInState(state, payload, now = new Date().toISOString()
   if (!user || user.passwordHash !== hashPassword(password)) {
     return { ok: false, error: "Incorrect email or password.", state: base };
   }
+  if (!user.isVerified) {
+    return { ok: false, code: "unverified", error: "Email not verified. Enter your OTP first.", user, state: base };
+  }
 
   const session = {
     userId: user.id,
@@ -109,6 +108,39 @@ export function signInUserInState(state, payload, now = new Date().toISOString()
     user,
     state: {
       users: [...base.users],
+      session,
+    },
+  };
+}
+
+export function markUserVerifiedInState(state, email, now = new Date().toISOString()) {
+  const base = state || createEmptyAuthState();
+  const normalizedEmail = normalizeEmail(email);
+  const index = base.users.findIndex((entry) => normalizeEmail(entry.email) === normalizedEmail);
+  if (index < 0) {
+    return { ok: false, error: "Account was not found for verification.", state: base };
+  }
+
+  const currentUser = base.users[index];
+  const updatedUser = {
+    ...currentUser,
+    isVerified: true,
+    verifiedAt: now,
+  };
+  const users = [...base.users];
+  users[index] = updatedUser;
+  const session = {
+    userId: updatedUser.id,
+    email: updatedUser.email,
+    name: updatedUser.name,
+    signedInAt: now,
+  };
+
+  return {
+    ok: true,
+    user: updatedUser,
+    state: {
+      users,
       session,
     },
   };
@@ -134,4 +166,65 @@ export function getSafeNextPath(nextValue, fallback = "account.html") {
   const normalized = candidate.startsWith("/") ? candidate.slice(1) : candidate;
   if (!normalized.endsWith(".html")) return fallback;
   return normalized;
+}
+
+export function createOtpCode(randomFn = Math.random) {
+  return String(Math.floor(randomFn() * 1000000)).padStart(6, "0");
+}
+
+export function createOtpChallenge(
+  email,
+  code,
+  now = new Date().toISOString(),
+  ttlMinutes = 10,
+  maxAttempts = 5,
+) {
+  const issuedAt = now;
+  const expiresAt = new Date(new Date(now).getTime() + ttlMinutes * 60 * 1000).toISOString();
+  return {
+    email: normalizeEmail(email),
+    otpHash: hashPassword(String(code || "")),
+    issuedAt,
+    expiresAt,
+    maxAttempts,
+    attemptsRemaining: maxAttempts,
+  };
+}
+
+export function verifyOtpChallenge(challenge, inputCode, now = new Date().toISOString()) {
+  if (!challenge || !challenge.email || !challenge.otpHash) {
+    return { ok: false, code: "missing", error: "No OTP challenge found.", challenge: null };
+  }
+
+  const safeChallenge = { ...challenge };
+  if (safeChallenge.attemptsRemaining <= 0) {
+    return {
+      ok: false,
+      code: "attempts_exceeded",
+      error: "Too many attempts. Request a new code.",
+      challenge: safeChallenge,
+    };
+  }
+
+  if (new Date(now).getTime() > new Date(safeChallenge.expiresAt).getTime()) {
+    return { ok: false, code: "expired", error: "OTP has expired. Request a new code.", challenge: safeChallenge };
+  }
+
+  const code = String(inputCode || "").trim();
+  if (!/^\d{6}$/.test(code)) {
+    return { ok: false, code: "invalid_format", error: "Enter the 6-digit OTP code.", challenge: safeChallenge };
+  }
+
+  const valid = hashPassword(code) === safeChallenge.otpHash;
+  if (!valid) {
+    safeChallenge.attemptsRemaining = Math.max(0, (safeChallenge.attemptsRemaining || 0) - 1);
+    return {
+      ok: false,
+      code: "invalid_code",
+      error: "Incorrect OTP code.",
+      challenge: safeChallenge,
+    };
+  }
+
+  return { ok: true, challenge: null };
 }

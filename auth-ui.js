@@ -1,11 +1,16 @@
 import {
+  AUTH_OTP_KEY,
   AUTH_USERS_KEY,
   AUTH_SESSION_KEY,
+  createOtpChallenge,
+  createOtpCode,
   createEmptyAuthState,
   getSafeNextPath,
+  markUserVerifiedInState,
   registerUserInState,
   signInUserInState,
   signOutUserInState,
+  verifyOtpChallenge,
 } from "./auth-data.mjs";
 
 function readJson(key, fallback) {
@@ -30,15 +35,18 @@ function writeJson(key, value) {
 function loadAuthState() {
   const users = readJson(AUTH_USERS_KEY, []);
   const session = readJson(AUTH_SESSION_KEY, null);
+  const otp = readJson(AUTH_OTP_KEY, null);
   return {
     users: Array.isArray(users) ? users : [],
     session: session && typeof session === "object" ? session : null,
+    otp: otp && typeof otp === "object" ? otp : null,
   };
 }
 
 function saveAuthState(state) {
   writeJson(AUTH_USERS_KEY, state.users || []);
   writeJson(AUTH_SESSION_KEY, state.session || null);
+  writeJson(AUTH_OTP_KEY, state.otp || null);
 }
 
 function setMessage(element, tone, text) {
@@ -48,21 +56,34 @@ function setMessage(element, tone, text) {
   element.textContent = text;
 }
 
-async function sendWelcomeEmail(name, email) {
+async function sendAuthEmail({ toName, toEmail, subject, htmlContent }) {
   try {
     await fetch("/.netlify/functions/send-auth-email", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        toEmail: email,
-        toName: name,
-        subject: "Welcome to GiftCardsHub",
-        htmlContent: `<p>Hi ${name},</p><p>Your GiftCardsHub account is ready. You can now sign in and start trading securely.</p>`,
-      }),
+      body: JSON.stringify({ toEmail, toName, subject, htmlContent }),
     });
   } catch {
     // Email is non-blocking for auth flow.
   }
+}
+
+async function sendOtpEmail(name, email, otpCode) {
+  await sendAuthEmail({
+    toName: name,
+    toEmail: email,
+    subject: "Your GiftCardsHub verification code",
+    htmlContent: `<p>Hi ${name || "there"},</p><p>Your verification code is:</p><p style="font-size:28px;font-weight:700;letter-spacing:4px;">${otpCode}</p><p>This code expires in 10 minutes.</p>`,
+  });
+}
+
+async function sendWelcomeEmail(name, email) {
+  await sendAuthEmail({
+    toName: name,
+    toEmail: email,
+    subject: "Welcome to GiftCardsHub",
+    htmlContent: `<p>Hi ${name},</p><p>Your GiftCardsHub account is ready. You can now sign in and start trading securely.</p>`,
+  });
 }
 
 function requireAuth(state) {
@@ -113,11 +134,21 @@ function initSignin(state) {
     const result = signInUserInState(state, { email, password });
 
     if (!result.ok) {
+      if (result.code === "unverified" && result.user) {
+        const otpCode = createOtpCode();
+        const otp = createOtpChallenge(result.user.email, otpCode);
+        const nextState = { ...state, otp };
+        saveAuthState(nextState);
+        sendOtpEmail(result.user.name, result.user.email, otpCode);
+        const redirect = `verify-otp.html?email=${encodeURIComponent(result.user.email)}`;
+        window.location.replace(redirect);
+        return;
+      }
       setMessage(notice, "warning", result.error);
       return;
     }
 
-    saveAuthState(result.state);
+    saveAuthState({ ...result.state, otp: state.otp });
     const nextValue = new URLSearchParams(window.location.search).get("next");
     window.location.replace(getSafeNextPath(nextValue));
   });
@@ -143,12 +174,74 @@ function initSignup(state) {
       return;
     }
 
-    saveAuthState(result.state);
-    setMessage(notice, "success", "Account created. Redirecting to your dashboard...");
-    await sendWelcomeEmail(result.user.name, result.user.email);
+    const otpCode = createOtpCode();
+    const otp = createOtpChallenge(result.user.email, otpCode);
+    saveAuthState({ ...result.state, otp });
+    setMessage(notice, "success", "Account created. Sending OTP to your email...");
+    await sendOtpEmail(result.user.name, result.user.email, otpCode);
     window.setTimeout(() => {
-      window.location.replace("account.html");
+      window.location.replace(`verify-otp.html?email=${encodeURIComponent(result.user.email)}`);
     }, 400);
+  });
+}
+
+function initOtpVerification(state) {
+  const form = document.querySelector("[data-auth-form='verify-otp']");
+  if (!form) return;
+
+  const notice = document.querySelector("[data-auth-notice]");
+  const resendButton = document.querySelector("[data-auth-resend]");
+  const emailLabel = document.querySelector("[data-auth-email]");
+  const urlEmail = new URLSearchParams(window.location.search).get("email");
+  const expectedEmail = String(urlEmail || state.otp?.email || "").trim().toLowerCase();
+  const user = state.users.find((entry) => entry.email.toLowerCase() === expectedEmail);
+
+  if (emailLabel && expectedEmail) {
+    emailLabel.textContent = expectedEmail;
+  }
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!state.otp || state.otp.email !== expectedEmail) {
+      setMessage(notice, "warning", "No valid OTP challenge found. Request a new code.");
+      return;
+    }
+
+    const otpCode = form.querySelector("[name='otp']")?.value || "";
+    const verification = verifyOtpChallenge(state.otp, otpCode);
+    if (!verification.ok) {
+      state.otp = verification.challenge;
+      saveAuthState(state);
+      setMessage(notice, "warning", verification.error);
+      return;
+    }
+
+    const marked = markUserVerifiedInState(state, expectedEmail);
+    if (!marked.ok) {
+      setMessage(notice, "warning", marked.error);
+      return;
+    }
+
+    state.users = marked.state.users;
+    state.session = marked.state.session;
+    state.otp = null;
+    saveAuthState(state);
+    await sendWelcomeEmail(marked.user.name, marked.user.email);
+    setMessage(notice, "success", "Email verified. Redirecting to your account...");
+    window.setTimeout(() => window.location.replace("account.html"), 400);
+  });
+
+  resendButton?.addEventListener("click", async () => {
+    if (!user) {
+      setMessage(notice, "warning", "We couldn't find that account. Create a new account.");
+      return;
+    }
+
+    const otpCode = createOtpCode();
+    state.otp = createOtpChallenge(user.email, otpCode);
+    saveAuthState(state);
+    await sendOtpEmail(user.name, user.email, otpCode);
+    setMessage(notice, "info", "A new OTP has been sent.");
   });
 }
 
@@ -160,4 +253,5 @@ document.addEventListener("DOMContentLoaded", () => {
   setupSignOut(guarded);
   initSignin(guarded);
   initSignup(guarded);
+  initOtpVerification(guarded);
 });

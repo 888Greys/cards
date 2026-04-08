@@ -9,6 +9,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+    <link href="./responsive.css" rel="stylesheet" />
     <script type="module" src="./auth-ui.js"></script>
     <style>
       body {
@@ -21,7 +22,7 @@
       }
     </style>
   </head>
-  <body class="text-[#060963]">
+  <body class="text-[#060963]" data-page="signup">
     <main class="min-h-screen px-6 py-16">
       <div class="mx-auto max-w-5xl grid gap-10 lg:grid-cols-2 items-center">
         <section class="space-y-6">
@@ -30,7 +31,7 @@
             Create your account and start <span class="text-[#6b38d4]">trading securely</span>.
           </h1>
           <p class="text-[#494454] text-lg leading-relaxed">
-            We will send your welcome email through Brevo when your account is created.
+            We will send a 6-digit OTP to verify your email before account access.
           </p>
           <p class="text-sm text-[#494454]">
             Already have an account?
@@ -90,7 +91,7 @@
               class="w-full rounded-full bg-[#a04100] px-6 py-3 text-white font-bold hover:opacity-90 transition"
               type="submit"
             >
-              Create Account
+              Create Account &amp; Send OTP
             </button>
             <p class="rounded-xl px-4 py-3 text-sm hidden" data-auth-notice></p>
           </form>
