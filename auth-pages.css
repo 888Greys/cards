@@ -4,11 +4,11 @@
   --auth-border: #d8d1e6;
   --auth-text: #16122b;
   --auth-muted: #57516d;
-  --auth-primary: #6236d9;
-  --auth-primary-strong: #4f28bc;
-  --auth-accent: #9f4100;
-  --auth-display-font: "Sora", "Inter", "Segoe UI", sans-serif;
-  --auth-body-font: "Manrope", "Inter", "Segoe UI", sans-serif;
+  --auth-primary: #6b38d4;
+  --auth-primary-strong: #5516be;
+  --auth-accent: #6b38d4;
+  --auth-display-font: "Inter", "Segoe UI", sans-serif;
+  --auth-body-font: "Inter", "Segoe UI", sans-serif;
 }
 
 * {
@@ -280,7 +280,7 @@ body[data-page="verify-otp"] {
   margin-top: 0.25rem;
   border: 0;
   border-radius: 999px;
-  background: linear-gradient(135deg, var(--auth-accent), #bd5205);
+  background: linear-gradient(135deg, var(--auth-primary), var(--auth-primary-strong));
   color: #fff;
   font-weight: 800;
   font-size: 0.95rem;

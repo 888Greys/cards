@@ -104,10 +104,11 @@
 </div>
 <div class="flex items-center gap-4">
 <div class="hidden md:flex gap-6 items-center">
-<a class="text-[#060963] dark:text-slate-400 opacity-70 font-semibold" href="home.html">Home</a>
-<a class="text-[#060963] dark:text-slate-400 opacity-70 font-semibold" href="checkbalance.html">Verify</a>
-<a class="text-[#060963] dark:text-slate-400 opacity-70 font-semibold" href="trademarketplace.html">Trade</a>
-<a class="text-[#6b38d4] dark:text-violet-300 font-bold" href="account.html">Profile</a>
+<a class="text-[#060963] dark:text-slate-400 opacity-70 font-semibold hover:bg-violet-100/50 transition-colors px-3 py-1 rounded-lg" href="home.html">Home</a>
+<a class="text-[#060963] dark:text-slate-400 opacity-70 font-semibold hover:bg-violet-100/50 transition-colors px-3 py-1 rounded-lg" href="checkbalance.html">Verify</a>
+<a class="text-[#060963] dark:text-slate-400 opacity-70 font-semibold hover:bg-violet-100/50 transition-colors px-3 py-1 rounded-lg" href="buy.html">Buy</a>
+<a class="text-[#060963] dark:text-slate-400 opacity-70 font-semibold hover:bg-violet-100/50 transition-colors px-3 py-1 rounded-lg" href="sell.html">Sell</a>
+<a class="text-[#060963] dark:text-slate-400 opacity-70 font-semibold hover:bg-violet-100/50 transition-colors px-3 py-1 rounded-lg" href="home.html#reviews">Reviews</a>
 </div>
 <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-fixed">
 <img alt="user profile" class="w-full h-full object-cover" data-alt="Portrait of a young professional smiling with soft studio lighting and a clean neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWwjgt0XzXIpHKsjyh8D5-7-t1gqcIOi4G32LEhAWFa3zD1szQp0csIxDTLLVyOJexF2ZQPs9F72jb_9CziZijKAyRubmMVN9Vk9OEeIBg68pFtNYs1ZvfCUHZRRKWSQPh_ctEL4VnbeW4vYEQlBeqZ0MEP7bZ9fCc8CiB7cjH3xTmL8i3nvBR3iKZgLeCLHV3tV5wr8GvYWndtoZIEBsLV6kaFzVil08Gwwax2x_jgwrM_KjGnZZzBkAuawmPaiEfu_ni0OWQdAbF"/>
@@ -313,21 +314,25 @@
 </main>
 <!-- BottomNavBar Shell -->
 <nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 dark:bg-slate-900/80 backdrop-blur-2xl rounded-t-[1.5rem] z-50 shadow-[0px_-4px_20px_rgba(6,9,99,0.04)] md:hidden">
-<a class="flex flex-col items-center justify-center text-[#060963]/60 dark:text-slate-400 px-5 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="home.html">
+<a class="flex flex-col items-center justify-center text-[#060963]/60 dark:text-slate-400 px-3 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="home.html">
 <span class="material-symbols-outlined" data-icon="home">home</span>
 <span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Home</span>
 </a>
-<a class="flex flex-col items-center justify-center text-[#060963]/60 dark:text-slate-400 px-5 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="checkbalance.html">
+<a class="flex flex-col items-center justify-center text-[#060963]/60 dark:text-slate-400 px-3 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="checkbalance.html">
 <span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
 <span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Verify</span>
 </a>
-<a class="flex flex-col items-center justify-center text-[#060963]/60 dark:text-slate-400 px-5 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="trademarketplace.html">
-<span class="material-symbols-outlined" data-icon="swap_horiz">swap_horiz</span>
-<span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Trade</span>
+<a class="flex flex-col items-center justify-center text-[#060963]/60 dark:text-slate-400 px-3 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="buy.html">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Buy</span>
 </a>
-<a class="flex flex-col items-center justify-center bg-[#e9ddff] dark:bg-violet-900/40 text-[#6b38d4] dark:text-violet-200 rounded-[1rem] px-5 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="account.html">
-<span class="material-symbols-outlined" data-icon="person">person</span>
-<span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Profile</span>
+<a class="flex flex-col items-center justify-center text-[#060963]/60 dark:text-slate-400 px-3 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="sell.html">
+<span class="material-symbols-outlined" data-icon="sell">sell</span>
+<span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Sell</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#060963]/60 dark:text-slate-400 px-3 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="home.html#reviews">
+<span class="material-symbols-outlined" data-icon="star">star</span>
+<span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Reviews</span>
 </a>
 </nav>
 </body></html>

@@ -7,67 +7,58 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script defer src="./site.js"></script>
     <link href="./responsive.css" rel="stylesheet" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
     <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
         theme: {
           extend: {
             colors: {
-              "surface-container-highest": "#f8ddd2",
-              "on-error-container": "#93000a",
-              "error-container": "#ffdad6",
-              "on-tertiary-fixed": "#320047",
-              "on-tertiary-fixed-variant": "#721199",
-              "tertiary-fixed": "#f8d8ff",
-              "primary-fixed-dim": "#ffb693",
-              outline: "#8e7164",
-              "outline-variant": "#e2bfb0",
-              "surface-dim": "#efd5ca",
-              "surface-bright": "#fff8f6",
-              "secondary-fixed-dim": "#ffb693",
-              primary: "#a04100",
-              "on-primary-fixed-variant": "#7a3000",
-              "on-tertiary": "#ffffff",
               "surface-container-lowest": "#ffffff",
-              "on-primary-fixed": "#351000",
-              error: "#ba1a1a",
-              "surface-container-low": "#fff1eb",
-              "surface-container-high": "#fee3d8",
-              "tertiary-container": "#ce73f4",
-              "on-secondary-fixed-variant": "#783207",
-              "primary-container": "#ff6b00",
-              "on-secondary-fixed": "#351000",
               "on-primary": "#ffffff",
-              "primary-fixed": "#ffdbcc",
-              "surface-tint": "#a04100",
-              "secondary-container": "#fe9a69",
-              "inverse-on-surface": "#ffede6",
-              "on-secondary-container": "#763006",
-              background: "#fff8f6",
-              "on-surface": "#261812",
-              "tertiary-fixed-dim": "#ebb2ff",
-              "inverse-primary": "#ffb693",
-              "on-primary-container": "#572000",
-              surface: "#fff8f6",
-              "on-background": "#261812",
-              "surface-container": "#ffeae1",
-              secondary: "#96481e",
-              "on-secondary": "#ffffff",
+              "surface-container": "#eeecff",
+              "on-tertiary": "#ffffff",
+              surface: "#fbf8ff",
+              "tertiary-fixed": "#e0e0ff",
+              background: "#fbf8ff",
+              "inverse-on-surface": "#f1efff",
+              "inverse-surface": "#202677",
+              "tertiary-fixed-dim": "#bec2ff",
+              "on-surface": "#060963",
+              "on-surface-variant": "#494454",
+              "surface-tint": "#6d3bd7",
               "secondary-fixed": "#ffdbcc",
-              tertiary: "#8c33b3",
-              "on-tertiary-container": "#530073",
-              "on-surface-variant": "#5a4136",
-              "surface-variant": "#f8ddd2",
+              "on-secondary-fixed-variant": "#7a3000",
+              outline: "#7b7486",
+              error: "#ba1a1a",
+              "outline-variant": "#cbc3d7",
+              "on-tertiary-container": "#fffbff",
+              "surface-container-high": "#e7e6ff",
+              "tertiary-container": "#676dc0",
+              "surface-bright": "#fbf8ff",
+              "primary-fixed-dim": "#d0bcff",
+              "on-primary-container": "#fffbff",
+              "on-error-container": "#93000a",
+              "on-primary-fixed": "#23005c",
+              "on-secondary-fixed": "#351000",
+              "on-tertiary-fixed": "#060963",
+              primary: "#6b38d4",
+              "on-background": "#060963",
+              "surface-dim": "#d6d7ff",
               "on-error": "#ffffff",
-              "inverse-surface": "#3d2d26",
+              "on-secondary-container": "#572000",
+              "error-container": "#ffdad6",
+              "surface-variant": "#e0e0ff",
+              "secondary-container": "#fe6b00",
+              "primary-container": "#8455ef",
+              "on-primary-fixed-variant": "#5516be",
+              "on-secondary": "#ffffff",
+              secondary: "#a04100",
+              "surface-container-low": "#f5f2ff",
+              tertiary: "#4e54a5",
+              "inverse-primary": "#d0bcff",
+              "primary-fixed": "#e9ddff",
             },
             borderRadius: {
               DEFAULT: "0.25rem",
@@ -77,7 +68,7 @@
               full: "9999px",
             },
             fontFamily: {
-              headline: ["Plus Jakarta Sans"],
+              headline: ["Inter"],
               body: ["Inter"],
               label: ["Inter"],
             },
@@ -91,48 +82,52 @@
       }
       body {
         font-family: "Inter", sans-serif;
-      }
-      h1,
-      h2,
-      h3,
-      h4 {
-        font-family: "Plus Jakarta Sans", sans-serif;
-      }
-      .tertiary-wash {
-        background:
-          radial-gradient(circle at top right, #f8d8ff 0%, transparent 40%),
-          radial-gradient(circle at bottom left, #fff1eb 0%, transparent 40%);
-      }
-      body {
         min-height: max(884px, 100dvh);
       }
     </style>
   </head>
-  <body class="bg-surface tertiary-wash min-h-screen text-on-surface" data-page="check-balance" data-auth-required="true">
+  <body class="bg-surface text-on-surface" data-page="check-balance" data-auth-required="true">
     <script type="module" src="./auth-ui.js"></script>
 
-    <header class="bg-orange-50/70 backdrop-blur-md fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16">
-      <div class="flex items-center gap-3">
-        <button class="hover:bg-orange-100/50 transition-colors p-2 rounded-full active:scale-95 duration-150 ease-in-out text-orange-600">
-          <span class="material-symbols-outlined">menu</span>
-        </button>
-        <h1 class="font-bold text-lg tracking-tight text-orange-600">The Editorial Verifier</h1>
+    <!-- TopAppBar -->
+    <header class="bg-[#fbf8ff]/70 backdrop-blur-xl fixed top-0 w-full z-50">
+      <div class="flex justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto">
+        <div class="flex items-center gap-4">
+          <span class="material-symbols-outlined text-[#8B5CF6]">menu</span>
+          <span class="text-xl font-black text-[#060963] font-['Inter'] tracking-tight">GiftCardsHub</span>
+        </div>
+        <nav class="hidden md:flex items-center gap-8">
+          <a class="text-[#060963] opacity-70 font-['Inter'] hover:bg-violet-100/50 transition-colors px-3 py-1 rounded-lg" href="home.html">Home</a>
+          <a class="text-[#6b38d4] font-bold hover:bg-violet-100/50 transition-colors px-3 py-1 rounded-lg" href="checkbalance.html">Verify</a>
+          <a class="text-[#060963] opacity-70 font-['Inter'] hover:bg-violet-100/50 transition-colors px-3 py-1 rounded-lg" href="buy.html">Buy</a>
+          <a class="text-[#060963] opacity-70 font-['Inter'] hover:bg-violet-100/50 transition-colors px-3 py-1 rounded-lg" href="sell.html">Sell</a>
+          <a class="text-[#060963] opacity-70 font-['Inter'] hover:bg-violet-100/50 transition-colors px-3 py-1 rounded-lg" href="home.html#reviews">Reviews</a>
+        </nav>
+        <div class="flex items-center">
+          <div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center">
+            <span class="material-symbols-outlined text-primary">person</span>
+          </div>
+        </div>
       </div>
-      <div class="text-xl font-black text-orange-700 uppercase tracking-widest">EV</div>
     </header>
 
-    <main class="pt-24 pb-32 px-4 max-w-2xl mx-auto space-y-8">
+    <main class="pt-28 pb-32 px-4 max-w-2xl mx-auto space-y-8">
+      <!-- Page Title -->
       <section class="flex justify-between items-center px-2">
-        <h2 class="text-2xl font-extrabold tracking-tight text-on-surface">Verify Your Gift Card</h2>
-        <button class="p-3 bg-surface-container-low text-primary rounded-full hover:bg-surface-container-high transition-colors">
-          <span class="material-symbols-outlined" style="font-variation-settings: 'wght' 700">search</span>
-        </button>
+        <div>
+          <h2 class="text-3xl font-black tracking-tight text-on-surface">Verify Your Gift Card</h2>
+          <p class="text-on-surface-variant text-sm mt-1">Check the balance and validity of any card instantly</p>
+        </div>
+        <div class="w-14 h-14 rounded-2xl bg-primary-fixed flex items-center justify-center">
+          <span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'wght' 700">verified_user</span>
+        </div>
       </section>
 
+      <!-- Card Type -->
       <section class="space-y-4">
         <h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant px-2">Card Type</h3>
         <div class="grid grid-cols-2 gap-4">
-          <button class="flex items-center justify-center gap-3 py-4 bg-surface-container-lowest border-2 border-primary rounded-2xl shadow-sm font-semibold" type="button">
+          <button class="flex items-center justify-center gap-3 py-4 bg-surface-container-lowest border-2 border-primary rounded-2xl shadow-sm font-semibold text-primary" type="button">
             <span class="material-symbols-outlined text-primary">credit_card</span>
             Physical Card
           </button>
@@ -143,11 +138,12 @@
         </div>
       </section>
 
+      <!-- Card Images -->
       <section class="space-y-4">
         <h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant px-2">Card Images</h3>
         <div class="grid grid-cols-1 gap-6">
           <div class="bg-surface-container-low p-6 rounded-2xl border-2 border-dashed border-outline-variant/50 flex flex-col items-center text-center space-y-4">
-            <div class="w-16 h-16 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary">
+            <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary">
               <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1">add_a_photo</span>
             </div>
             <div>
@@ -159,7 +155,7 @@
                 <span class="material-symbols-outlined text-sm">photo_camera</span>
                 Camera
               </button>
-              <button class="flex-1 py-2.5 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-xl text-sm font-bold active:scale-95 transition-transform flex items-center justify-center gap-2" type="button">
+              <button class="flex-1 py-2.5 bg-primary-fixed text-primary rounded-xl text-sm font-bold active:scale-95 transition-transform flex items-center justify-center gap-2" type="button">
                 <span class="material-symbols-outlined text-sm">image</span>
                 Gallery
               </button>
@@ -167,7 +163,7 @@
           </div>
 
           <div class="bg-surface-container-low p-6 rounded-2xl border-2 border-dashed border-outline-variant/50 flex flex-col items-center text-center space-y-4">
-            <div class="w-16 h-16 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary">
+            <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary">
               <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1">flip</span>
             </div>
             <div>
@@ -179,7 +175,7 @@
                 <span class="material-symbols-outlined text-sm">photo_camera</span>
                 Camera
               </button>
-              <button class="flex-1 py-2.5 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-xl text-sm font-bold active:scale-95 transition-transform flex items-center justify-center gap-2" type="button">
+              <button class="flex-1 py-2.5 bg-primary-fixed text-primary rounded-xl text-sm font-bold active:scale-95 transition-transform flex items-center justify-center gap-2" type="button">
                 <span class="material-symbols-outlined text-sm">image</span>
                 Gallery
               </button>
@@ -188,8 +184,9 @@
         </div>
       </section>
 
-      <section class="bg-surface-container-lowest p-6 sm:p-8 rounded-2xl shadow-[0px_12px_32px_rgba(61,45,38,0.06)] space-y-6">
-        <h3 class="text-lg font-extrabold text-on-surface">Card Details</h3>
+      <!-- Card Details Form -->
+      <section class="bg-surface-container-lowest p-6 sm:p-8 rounded-2xl shadow-[0px_12px_32px_rgba(6,9,99,0.06)] space-y-6 border border-outline-variant/15">
+        <h3 class="text-lg font-black text-on-surface">Card Details</h3>
         <form class="space-y-5" id="balance-form">
           <input id="selected_brand" name="selected_brand" type="hidden" value="Amazon" />
 
@@ -201,7 +198,7 @@
               aria-controls="brand_picker_menu"
               aria-expanded="false"
               aria-haspopup="listbox"
-              class="w-full h-14 px-4 bg-surface-container-lowest border-outline-variant/20 border-2 rounded-2xl text-on-surface font-medium focus:ring-2 focus:ring-primary-container/20 focus:border-primary-container outline-none transition-all flex items-center justify-between gap-3"
+              class="w-full h-14 px-4 bg-surface-container-lowest border-outline-variant/20 border-2 rounded-2xl text-on-surface font-medium focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all flex items-center justify-between gap-3"
               data-brand-trigger
               id="brand_picker"
               type="button"
@@ -223,7 +220,7 @@
                   <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
                   <input
                     autocomplete="off"
-                    class="w-full h-10 pl-10 pr-3 rounded-xl border border-outline-variant/25 bg-surface text-on-surface text-sm placeholder:text-on-surface-variant/60 focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 outline-none"
+                    class="w-full h-10 pl-10 pr-3 rounded-xl border border-outline-variant/25 bg-surface text-on-surface text-sm placeholder:text-on-surface-variant/60 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none"
                     data-brand-search
                     placeholder="Search brands..."
                     type="text"
@@ -238,7 +235,7 @@
           <div class="space-y-2">
             <label class="text-sm font-semibold text-on-surface-variant ml-1" for="card_number">Card Number</label>
             <input
-              class="w-full h-14 px-4 bg-surface-container-lowest border-outline-variant/20 border-2 rounded-2xl text-on-surface font-medium focus:ring-2 focus:ring-primary-container/20 focus:border-primary-container outline-none placeholder:text-outline/40"
+              class="w-full h-14 px-4 bg-surface-container-lowest border-outline-variant/20 border-2 rounded-2xl text-on-surface font-medium focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none placeholder:text-outline/40"
               id="card_number"
               placeholder="0000 0000 0000 0000"
               type="text"
@@ -248,7 +245,7 @@
           <div class="space-y-2">
             <label class="text-sm font-semibold text-on-surface-variant ml-1" for="pin">Security Code / PIN</label>
             <input
-              class="w-full h-14 px-4 bg-surface-container-lowest border-outline-variant/20 border-2 rounded-2xl text-on-surface font-medium focus:ring-2 focus:ring-primary-container/20 focus:border-primary-container outline-none placeholder:text-outline/40"
+              class="w-full h-14 px-4 bg-surface-container-lowest border-outline-variant/20 border-2 rounded-2xl text-on-surface font-medium focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none placeholder:text-outline/40"
               id="pin"
               placeholder="****"
               type="password"
@@ -273,22 +270,27 @@
       </div>
     </main>
 
-    <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-4 bg-white/70 backdrop-blur-md rounded-t-[1.5rem] border-t-[0.5px] border-orange-200/20 shadow-[0px_-12px_32px_rgba(61,45,38,0.06)] md:hidden">
-      <a class="flex flex-col items-center justify-center text-stone-400 hover:text-orange-500 transition-all" href="home.html">
+    <!-- Bottom Nav -->
+    <nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 backdrop-blur-2xl rounded-t-[1.5rem] z-50 shadow-[0px_-4px_20px_rgba(6,9,99,0.04)]">
+      <a class="flex flex-col items-center justify-center text-[#060963]/60 px-3 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="home.html">
         <span class="material-symbols-outlined">home</span>
-        <span class="font-medium text-[11px]">Home</span>
+        <span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Home</span>
       </a>
-      <a class="flex flex-col items-center justify-center text-orange-600 font-bold hover:text-orange-500 transition-all active:scale-90" href="checkbalance.html">
+      <a class="flex flex-col items-center justify-center bg-[#e9ddff] text-[#6b38d4] rounded-[1rem] px-3 py-2 active:scale-90 duration-150" href="checkbalance.html">
         <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">verified_user</span>
-        <span class="font-medium text-[11px]">Verify</span>
+        <span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Verify</span>
       </a>
-      <a class="flex flex-col items-center justify-center text-stone-400 hover:text-orange-500 transition-all" href="buy.html">
+      <a class="flex flex-col items-center justify-center text-[#060963]/60 px-3 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="buy.html">
         <span class="material-symbols-outlined">shopping_bag</span>
-        <span class="font-medium text-[11px]">Buy</span>
+        <span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Buy</span>
       </a>
-      <a class="flex flex-col items-center justify-center text-stone-400 hover:text-orange-500 transition-all" href="sell.html">
+      <a class="flex flex-col items-center justify-center text-[#060963]/60 px-3 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="sell.html">
         <span class="material-symbols-outlined">sell</span>
-        <span class="font-medium text-[11px]">Sell</span>
+        <span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Sell</span>
+      </a>
+      <a class="flex flex-col items-center justify-center text-[#060963]/60 px-3 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="home.html#reviews">
+        <span class="material-symbols-outlined">star</span>
+        <span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Reviews</span>
       </a>
     </nav>
   </body>

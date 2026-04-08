@@ -1,315 +1,308 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Editorial Verifier | Buy Gift Cards</title>
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<!-- Icons -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Buy Gift Cards - GiftCardsHub</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script defer src="./site.js"></script>
+    <link href="./responsive.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
         theme: {
           extend: {
-            "colors": {
-                    "on-tertiary-fixed": "#320047",
-                    "surface-container-highest": "#f8ddd2",
-                    "surface-container-lowest": "#ffffff",
-                    "surface-variant": "#f8ddd2",
-                    "primary-fixed": "#ffdbcc",
-                    "on-secondary-fixed-variant": "#783207",
-                    "surface-container-low": "#fff1eb",
-                    "secondary": "#96481e",
-                    "primary-fixed-dim": "#ffb693",
-                    "on-tertiary-container": "#530073",
-                    "on-secondary-fixed": "#351000",
-                    "on-surface": "#261812",
-                    "inverse-surface": "#3d2d26",
-                    "tertiary-fixed": "#f8d8ff",
-                    "on-secondary": "#ffffff",
-                    "on-primary": "#ffffff",
-                    "on-secondary-container": "#763006",
-                    "tertiary": "#8c33b3",
-                    "surface-tint": "#a04100",
-                    "secondary-container": "#fe9a69",
-                    "secondary-fixed-dim": "#ffb693",
-                    "on-primary-container": "#572000",
-                    "on-primary-fixed-variant": "#7a3000",
-                    "primary": "#a04100",
-                    "outline-variant": "#e2bfb0",
-                    "background": "#fff8f6",
-                    "error-container": "#ffdad6",
-                    "surface-dim": "#efd5ca",
-                    "on-background": "#261812",
-                    "on-surface-variant": "#5a4136",
-                    "outline": "#8e7164",
-                    "error": "#ba1a1a",
-                    "on-tertiary": "#ffffff",
-                    "tertiary-fixed-dim": "#ebb2ff",
-                    "tertiary-container": "#ce73f4",
-                    "on-primary-fixed": "#351000",
-                    "secondary-fixed": "#ffdbcc",
-                    "on-error": "#ffffff",
-                    "surface-container": "#ffeae1",
-                    "primary-container": "#ff6b00",
-                    "surface": "#fff8f6",
-                    "inverse-on-surface": "#ffede6",
-                    "on-tertiary-fixed-variant": "#721199",
-                    "surface-container-high": "#fee3d8",
-                    "surface-bright": "#fff8f6",
-                    "on-error-container": "#93000a",
-                    "inverse-primary": "#ffb693"
+            colors: {
+              "surface-container-lowest": "#ffffff",
+              "on-primary": "#ffffff",
+              "surface-container": "#eeecff",
+              "on-tertiary": "#ffffff",
+              surface: "#fbf8ff",
+              "tertiary-fixed": "#e0e0ff",
+              background: "#fbf8ff",
+              "inverse-on-surface": "#f1efff",
+              "inverse-surface": "#202677",
+              "tertiary-fixed-dim": "#bec2ff",
+              "on-surface": "#060963",
+              "on-surface-variant": "#494454",
+              "surface-tint": "#6d3bd7",
+              "secondary-fixed": "#ffdbcc",
+              "on-secondary-fixed-variant": "#7a3000",
+              outline: "#7b7486",
+              error: "#ba1a1a",
+              "outline-variant": "#cbc3d7",
+              "on-tertiary-container": "#fffbff",
+              "surface-container-high": "#e7e6ff",
+              "tertiary-container": "#676dc0",
+              "surface-bright": "#fbf8ff",
+              "primary-fixed-dim": "#d0bcff",
+              "on-primary-container": "#fffbff",
+              "on-error-container": "#93000a",
+              "on-primary-fixed": "#23005c",
+              "on-secondary-fixed": "#351000",
+              "on-tertiary-fixed": "#060963",
+              primary: "#6b38d4",
+              "on-background": "#060963",
+              "surface-dim": "#d6d7ff",
+              "on-error": "#ffffff",
+              "on-secondary-container": "#572000",
+              "error-container": "#ffdad6",
+              "surface-variant": "#e0e0ff",
+              "secondary-container": "#fe6b00",
+              "primary-container": "#8455ef",
+              "on-primary-fixed-variant": "#5516be",
+              "on-secondary": "#ffffff",
+              secondary: "#a04100",
+              "surface-container-low": "#f5f2ff",
+              tertiary: "#4e54a5",
+              "inverse-primary": "#d0bcff",
+              "primary-fixed": "#e9ddff",
             },
-            "borderRadius": {
-                    "DEFAULT": "0.25rem",
-                    "lg": "0.5rem",
-                    "xl": "0.75rem",
-                    "2xl": "1.5rem",
-                    "full": "9999px"
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              "2xl": "1.5rem",
+              full: "9999px",
             },
-            "fontFamily": {
-                    "headline": ["Plus Jakarta Sans"],
-                    "body": ["Inter"],
-                    "label": ["Inter"]
-            }
+            fontFamily: {
+              headline: ["Inter"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
           },
         },
-      }
+      };
     </script>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .bg-primary-gradient {
-            background: linear-gradient(135deg, #a04100 0%, #ff6b00 100%);
-        }
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        min-height: max(884px, 100dvh);
+      }
+      .bg-primary-gradient {
+        background: linear-gradient(135deg, #6b38d4 0%, #8455ef 100%);
+      }
     </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
   </head>
-<body class="bg-surface font-body text-on-surface antialiased pb-32" data-page="buy" data-auth-required="true">
-<script type="module" src="./auth-ui.js"></script>
-<!-- TopAppBar -->
-<header class="fixed top-0 w-full z-50 backdrop-blur-md bg-[#fff8f6] dark:bg-stone-900 flex items-center justify-between px-6 h-16 w-full">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-[#ff6b00]">menu</span>
-<h1 class="font-headline font-black italic text-2xl tracking-tight text-[#a04100] dark:text-[#ff6b00]">Editorial Verifier</h1>
-</div>
-<div class="relative">
-<span class="material-symbols-outlined text-[#261812] text-2xl">shopping_cart</span>
-<span class="absolute -top-1 -right-1 bg-primary text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">0</span>
-</div>
-</header>
-<main class="mt-20 px-6 space-y-10">
-<!-- Hero Selection Section -->
-<section class="space-y-6">
-<h2 class="font-headline font-extrabold text-3xl tracking-tight text-center">Buy Gift Cards</h2>
-<div class="bg-surface-container-low rounded-2xl p-6 space-y-6 shadow-sm">
-<!-- Dropdown -->
-<div class="space-y-2">
-<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant opacity-70 px-1">Choose Brand</label>
-<div class="relative">
-<select class="w-full h-14 pl-4 pr-10 bg-surface-container-lowest border-none rounded-xl text-body appearance-none focus:ring-2 focus:ring-primary-container outline-none">
-<option>Select a brand...</option>
-<option>Amazon</option>
-<option>Apple</option>
-<option>Netflix</option>
-<option>PlayStation</option>
-</select>
-<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
-</div>
-</div>
-<!-- Value Grid -->
-<div class="space-y-3">
-<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant opacity-70 px-1">Card Value</label>
-<div class="grid grid-cols-4 gap-2">
-<button class="h-12 flex items-center justify-center bg-surface-container-lowest text-primary font-bold rounded-xl border-2 border-primary-container"> $25 </button>
-<button class="h-12 flex items-center justify-center bg-surface-container-lowest text-on-surface font-semibold rounded-xl"> $50 </button>
-<button class="h-12 flex items-center justify-center bg-surface-container-lowest text-on-surface font-semibold rounded-xl"> $100 </button>
-<button class="h-12 flex items-center justify-center bg-surface-container-lowest text-on-surface font-semibold rounded-xl"> $150 </button>
-<button class="h-12 flex items-center justify-center bg-surface-container-lowest text-on-surface font-semibold rounded-xl"> $200 </button>
-<button class="h-12 flex items-center justify-center bg-surface-container-lowest text-on-surface font-semibold rounded-xl"> $250 </button>
-<button class="h-12 flex items-center justify-center bg-surface-container-lowest text-on-surface font-semibold rounded-xl"> $500 </button>
-<button class="h-12 flex items-center justify-center bg-surface-container-lowest text-on-surface font-semibold rounded-xl"> Custom </button>
-</div>
-</div>
-<button class="w-full bg-primary-gradient h-14 text-white font-headline font-bold rounded-2xl shadow-lg active:scale-95 transition-transform flex items-center justify-center gap-2">
-<span class="material-symbols-outlined">add_shopping_cart</span>
-                    + Add to Cart
-                </button>
-</div>
-</section>
-<!-- Popular Brands Section -->
-<section class="space-y-4">
-<div class="flex items-center justify-between">
-<h3 class="font-headline font-bold text-xl">Popular Brands</h3>
-<span class="text-primary text-sm font-semibold">View All</span>
-</div>
-<div class="grid grid-cols-2 gap-4">
-<!-- Adidas -->
-<div class="bg-surface-container-lowest p-4 rounded-2xl relative shadow-sm hover:shadow-md transition-shadow group">
-<div class="absolute top-2 right-2 bg-tertiary-container text-on-tertiary-container text-[10px] font-bold px-2 py-0.5 rounded-full">Save 5%</div>
-<div class="h-20 w-full flex items-center justify-center mb-4">
-<img class="h-12 object-contain grayscale group-hover:grayscale-0 transition-all" data-alt="minimalist clean adidas logo in black on white background vector style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfgCRuqunntI-jAzhvQdzKqK2RdJCfzEewS9C3PC9dRnsCyQqPnvAc353kCXh9NhLbcxtT_0oGVVxmJfo1cXYYYrfDYtGfS9pUNAXYLQ__L8E50U9Uf2rm6r_1OFhq0Get2pjCQYtuSXZmNDgvjHBHgaNL1pj65EJ8Pj1PV2uhFj-QkGmLskETwJ3xsTJ9mYusviucrJuJ4V2dZSyTrXGTyvODKCcews6XcrY_GMFbtZGjSN8NblMefJW5i_9hcYEKPpUmbQRxIhVx"/>
-</div>
-<p class="font-bold text-center">Adidas</p>
-</div>
-<!-- Aldi -->
-<div class="bg-surface-container-lowest p-4 rounded-2xl relative shadow-sm hover:shadow-md transition-shadow group">
-<div class="absolute top-2 right-2 bg-tertiary-container text-on-tertiary-container text-[10px] font-bold px-2 py-0.5 rounded-full">Save 3%</div>
-<div class="h-20 w-full flex items-center justify-center mb-4">
-<img class="h-12 object-contain grayscale group-hover:grayscale-0 transition-all" data-alt="clean minimalist aldi grocery store logo professional branding corporate identity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxUi3wyq9WLLHDwEO4avb4A9Awro_SefU5v9SxmMOfGxwya9pLGb5mAPyem6gD7wXqoDY8Ab8_zZ3SUW-ipnmdZnuUDVfeSGcKm7NpbJNJZumPoEjGBwUF9fQ3pDYW4QauNR0ZXBPaPMl9o38lm2GrjcT9VybQBHuKUUrEFbtVb8b4NyPEcSTlcevtmqhuBf7PLUhWd3PC4pO0M3EgiH_nGUKm4iYGmcI_2KyFEWB4EjvQ8Mxu3k_isGwCbk0--X_4VTfKCVCknV1j"/>
-</div>
-<p class="font-bold text-center">Aldi</p>
-</div>
-<!-- Alo -->
-<div class="bg-surface-container-lowest p-4 rounded-2xl relative shadow-sm hover:shadow-md transition-shadow group">
-<div class="absolute top-2 right-2 bg-tertiary-container text-on-tertiary-container text-[10px] font-bold px-2 py-0.5 rounded-full">Save 8%</div>
-<div class="h-20 w-full flex items-center justify-center mb-4">
-<img class="h-10 object-contain grayscale group-hover:grayscale-0 transition-all" data-alt="minimalist modern alo yoga brand logo typography in clean black on white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPnL57GlVzBb3eUGhTjDRSl6BWxgsW3gO0WUPgApC116Jcfx0wJhcSHc7yhOv38P9w52DLvkG5VBdYN4JnkiYrp7iKQKldC9HiiiHbhlfVtFKGN-QjIjFLCDOq3NxwFM2yEVgiGTuFb8-yIqTBaXBsmEkEGpxyzoGOJ0jFlah5Gle7h_7W-ADwila3Y5LOuzXO2LrWfcOfFPxF8he6bDltdTML5LM3oIp183VFpZotH2k8TfvjZg_JAOg9efh98xmVIyj2qYTcrb6r"/>
-</div>
-<p class="font-bold text-center">Alo</p>
-</div>
-<!-- Amazon -->
-<div class="bg-surface-container-lowest p-4 rounded-2xl relative shadow-sm hover:shadow-md transition-shadow group">
-<div class="absolute top-2 right-2 bg-tertiary-container text-on-tertiary-container text-[10px] font-bold px-2 py-0.5 rounded-full">Save 2%</div>
-<div class="h-20 w-full flex items-center justify-center mb-4">
-<img class="h-8 object-contain grayscale group-hover:grayscale-0 transition-all" data-alt="official amazon logo smile icon clean corporate branding on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5qq7ap4Fgaadq6FTyuVPdF4tDXXUnlj4xc7By68nCbk7UczIoUkpz0_hXWvtp6bbvzc3bSHDMi1DTCzt3haGrP2EkeDoBB7f5Qk7wkV8mL2IYBtZn-LOQkVg4l90Xld8mxze3y7nzczWXrjja_Vc8xj9E16d2MhtCDci7mwWnB6F-r5ZNqFp2-maVGCDqr5btL-VGAyDiDTG8XWof9Zm6EhrvtqeKraTShdECi2CGXRDt4Xw7SpCMIiBa1cLIH5l4MpstI8jTELAu"/>
-</div>
-<p class="font-bold text-center">Amazon</p>
-</div>
-</div>
-</section>
-<!-- Shopping Cart Section -->
-<section class="space-y-4">
-<div class="bg-surface-container-low rounded-2xl p-6 border border-outline-variant/15">
-<div class="flex items-center gap-2 mb-4">
-<h3 class="font-headline font-bold text-xl">Your Cart</h3>
-<span class="bg-outline-variant text-on-surface-variant text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full">0</span>
-</div>
-<div class="flex flex-col items-center justify-center py-8 text-center space-y-4">
-<div class="w-16 h-16 bg-tertiary/10 rounded-full flex items-center justify-center text-tertiary">
-<span class="material-symbols-outlined text-3xl">shopping_basket</span>
-</div>
-<div>
-<p class="font-bold text-on-surface">Your cart is empty</p>
-<p class="text-sm text-on-surface-variant opacity-70">Add some gift cards to get started!</p>
-</div>
-</div>
-</div>
-</section>
-<!-- Why Buy From Us Section -->
-<section class="grid grid-cols-1 gap-6 py-4">
-<div class="flex items-start gap-4">
-<div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-primary">sell</span>
-</div>
-<div>
-<h4 class="font-bold">Best Prices</h4>
-<p class="text-sm text-on-surface-variant">Unbeatable rates and daily discounts on major brands.</p>
-</div>
-</div>
-<div class="flex items-start gap-4">
-<div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-primary">bolt</span>
-</div>
-<div>
-<h4 class="font-bold">Instant Delivery</h4>
-<p class="text-sm text-on-surface-variant">Digital codes delivered to your email in seconds.</p>
-</div>
-</div>
-<div class="flex items-start gap-4">
-<div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-primary">verified_user</span>
-</div>
-<div>
-<h4 class="font-bold">100% Secure</h4>
-<p class="text-sm text-on-surface-variant">Encrypted transactions and guaranteed valid codes.</p>
-</div>
-</div>
-</section>
-</main>
-<!-- Footer -->
-<footer class="bg-inverse-surface text-inverse-on-surface pt-12 pb-24 px-6 mt-12 rounded-t-3xl">
-<div class="space-y-10">
-<div class="space-y-4">
-<h4 class="font-headline font-black italic text-2xl text-primary-fixed">GiftCardsHub</h4>
-<p class="text-sm opacity-70 leading-relaxed">Your premium concierge for digital value. Trusted by millions for secure and instant gift card delivery worldwide.</p>
-<div class="flex gap-4">
-<div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
-<span class="material-symbols-outlined text-sm">public</span>
-</div>
-<div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
-<span class="material-symbols-outlined text-sm">alternate_email</span>
-</div>
-<div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
-<span class="material-symbols-outlined text-sm">share</span>
-</div>
-</div>
-</div>
-<div class="grid grid-cols-2 gap-8">
-<div class="space-y-4">
-<h5 class="text-xs font-bold uppercase tracking-widest text-primary-fixed">Quick Links</h5>
-<ul class="space-y-2 text-sm opacity-70">
-<li>Buy Gift Cards</li>
-<li>Sell Gift Cards</li>
-<li>Balance Check</li>
-<li>Corporate</li>
-</ul>
-</div>
-<div class="space-y-4">
-<h5 class="text-xs font-bold uppercase tracking-widest text-primary-fixed">Support</h5>
-<ul class="space-y-2 text-sm opacity-70">
-<li>Help Center</li>
-<li>Contact Us</li>
-<li>Privacy Policy</li>
-<li>Terms of Service</li>
-</ul>
-</div>
-</div>
-<div class="pt-8 border-t border-white/5 text-center">
-<p class="text-[10px] opacity-40">© 2024 GiftCardsHub. All rights reserved. A subsidiary of Editorial Verifier.</p>
-</div>
-</div>
-</footer>
-<!-- BottomNavBar -->
-<nav class="fixed bottom-0 w-full z-50 backdrop-blur-md rounded-t-[1.5rem] bg-[#fff8f6]/70 dark:bg-stone-950/70 shadow-[0px_-12px_32px_rgba(61,45,38,0.06)] flex justify-around items-center h-20 pb-safe px-4">
-<a class="flex flex-col items-center justify-center text-[#261812] dark:text-stone-500 opacity-60 hover:opacity-90 transition-opacity" href="home.html">
-<span class="material-symbols-outlined">home</span>
-<span class="font-['Inter'] text-[11px] font-semibold uppercase tracking-widest mt-1">Home</span>
-</a>
-<a class="flex flex-col items-center justify-center text-[#261812] dark:text-stone-500 opacity-60 hover:opacity-90 transition-opacity" href="checkbalance.html">
-<span class="material-symbols-outlined">verified_user</span>
-<span class="font-['Inter'] text-[11px] font-semibold uppercase tracking-widest mt-1">Verify</span>
-</a>
-<a class="flex flex-col items-center justify-center text-[#ff6b00] font-bold scale-110 transition-transform" href="buy.html">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
-<span class="font-['Inter'] text-[11px] font-semibold uppercase tracking-widest mt-1">Buy</span>
-</a>
-<a class="flex flex-col items-center justify-center text-[#261812] dark:text-stone-500 opacity-60 hover:opacity-90 transition-opacity" href="sell.html">
-<span class="material-symbols-outlined">sell</span>
-<span class="font-['Inter'] text-[11px] font-semibold uppercase tracking-widest mt-1">Sell</span>
-</a>
-</nav>
-<!-- Chat Widget -->
-<div class="fixed bottom-24 right-6 z-[60] flex flex-col items-end gap-2">
-<div class="bg-white px-4 py-2 rounded-2xl shadow-lg border border-primary/10 relative">
-<p class="text-[10px] font-bold uppercase text-primary leading-none mb-1">Support</p>
-<p class="text-sm font-semibold text-on-surface">We Are Here!</p>
-<div class="absolute -bottom-1 right-4 w-2 h-2 bg-white border-r border-b border-primary/10 rotate-45"></div>
-</div>
-<button class="w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-xl hover:scale-110 active:scale-90 transition-transform">
-<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">chat</span>
-</button>
-</div>
-</body></html>
+  <body class="bg-surface text-on-surface antialiased pb-32" data-page="buy" data-auth-required="true">
+    <script type="module" src="./auth-ui.js"></script>
+
+    <!-- TopAppBar -->
+    <header class="bg-[#fbf8ff]/70 backdrop-blur-xl fixed top-0 w-full z-50">
+      <div class="flex justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto">
+        <div class="flex items-center gap-4">
+          <span class="material-symbols-outlined text-[#8B5CF6]">menu</span>
+          <span class="text-xl font-black text-[#060963] font-['Inter'] tracking-tight">GiftCardsHub</span>
+        </div>
+        <nav class="hidden md:flex items-center gap-8">
+          <a class="text-[#060963] opacity-70 font-['Inter'] hover:bg-violet-100/50 transition-colors px-3 py-1 rounded-lg" href="home.html">Home</a>
+          <a class="text-[#060963] opacity-70 font-['Inter'] hover:bg-violet-100/50 transition-colors px-3 py-1 rounded-lg" href="checkbalance.html">Verify</a>
+          <a class="text-[#6b38d4] font-bold hover:bg-violet-100/50 transition-colors px-3 py-1 rounded-lg" href="buy.html">Buy</a>
+          <a class="text-[#060963] opacity-70 font-['Inter'] hover:bg-violet-100/50 transition-colors px-3 py-1 rounded-lg" href="sell.html">Sell</a>
+          <a class="text-[#060963] opacity-70 font-['Inter'] hover:bg-violet-100/50 transition-colors px-3 py-1 rounded-lg" href="home.html#reviews">Reviews</a>
+        </nav>
+        <div class="flex items-center">
+          <div class="relative">
+            <span class="material-symbols-outlined text-on-surface text-2xl">shopping_cart</span>
+            <span class="absolute -top-1 -right-1 bg-secondary text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">0</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="mt-24 px-6 space-y-10 max-w-4xl mx-auto">
+      <!-- Hero Selection Section -->
+      <section class="space-y-6">
+        <div class="text-center space-y-2">
+          <h2 class="font-black text-3xl tracking-tight">Buy Gift Cards</h2>
+          <p class="text-on-surface-variant">Choose a brand and pick a value to get started</p>
+        </div>
+        <div class="bg-surface-container-low rounded-2xl p-6 space-y-6 shadow-sm border border-outline-variant/15">
+          <!-- Dropdown -->
+          <div class="space-y-2">
+            <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant opacity-70 px-1">Choose Brand</label>
+            <div class="relative">
+              <select class="w-full h-14 pl-4 pr-10 bg-surface-container-lowest border-none rounded-xl text-body appearance-none focus:ring-2 focus:ring-primary outline-none">
+                <option>Select a brand...</option>
+                <option>Amazon</option>
+                <option>Apple</option>
+                <option>Netflix</option>
+                <option>PlayStation</option>
+              </select>
+              <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+            </div>
+          </div>
+          <!-- Value Grid -->
+          <div class="space-y-3">
+            <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant opacity-70 px-1">Card Value</label>
+            <div class="grid grid-cols-4 gap-2">
+              <button class="h-12 flex items-center justify-center bg-surface-container-lowest text-primary font-bold rounded-xl border-2 border-primary-container"> $25 </button>
+              <button class="h-12 flex items-center justify-center bg-surface-container-lowest text-on-surface font-semibold rounded-xl"> $50 </button>
+              <button class="h-12 flex items-center justify-center bg-surface-container-lowest text-on-surface font-semibold rounded-xl"> $100 </button>
+              <button class="h-12 flex items-center justify-center bg-surface-container-lowest text-on-surface font-semibold rounded-xl"> $150 </button>
+              <button class="h-12 flex items-center justify-center bg-surface-container-lowest text-on-surface font-semibold rounded-xl"> $200 </button>
+              <button class="h-12 flex items-center justify-center bg-surface-container-lowest text-on-surface font-semibold rounded-xl"> $250 </button>
+              <button class="h-12 flex items-center justify-center bg-surface-container-lowest text-on-surface font-semibold rounded-xl"> $500 </button>
+              <button class="h-12 flex items-center justify-center bg-surface-container-lowest text-on-surface font-semibold rounded-xl"> Custom </button>
+            </div>
+          </div>
+          <button class="w-full bg-primary-gradient h-14 text-white font-bold rounded-2xl shadow-lg active:scale-95 transition-transform flex items-center justify-center gap-2">
+            <span class="material-symbols-outlined">add_shopping_cart</span>
+            + Add to Cart
+          </button>
+        </div>
+      </section>
+
+      <!-- Popular Brands Section -->
+      <section class="space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="font-bold text-xl">Popular Brands</h3>
+          <span class="text-primary text-sm font-semibold">View All</span>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <!-- Adidas -->
+          <div class="bg-surface-container-lowest p-4 rounded-2xl relative shadow-sm hover:shadow-md transition-shadow group border border-outline-variant/15">
+            <div class="absolute top-2 right-2 bg-tertiary-container text-on-tertiary text-[10px] font-bold px-2 py-0.5 rounded-full">Save 5%</div>
+            <div class="h-20 w-full flex items-center justify-center mb-4">
+              <img class="h-12 object-contain grayscale group-hover:grayscale-0 transition-all" data-alt="minimalist clean adidas logo in black on white background vector style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfgCRuqunntI-jAzhvQdzKqK2RdJCfzEewS9C3PC9dRnsCyQqPnvAc353kCXh9NhLbcxtT_0oGVVxmJfo1cXYYYrfDYtGfS9pUNAXYLQ__L8E50U9Uf2rm6r_1OFhq0Get2pjCQYtuSXZmNDgvjHBHgaNL1pj65EJ8Pj1PV2uhFj-QkGmLskETwJ3xsTJ9mYusviucrJuJ4V2dZSyTrXGTyvODKCcews6XcrY_GMFbtZGjSN8NblMefJW5i_9hcYEKPpUmbQRxIhVx" />
+            </div>
+            <p class="font-bold text-center">Adidas</p>
+          </div>
+          <!-- Aldi -->
+          <div class="bg-surface-container-lowest p-4 rounded-2xl relative shadow-sm hover:shadow-md transition-shadow group border border-outline-variant/15">
+            <div class="absolute top-2 right-2 bg-tertiary-container text-on-tertiary text-[10px] font-bold px-2 py-0.5 rounded-full">Save 3%</div>
+            <div class="h-20 w-full flex items-center justify-center mb-4">
+              <img class="h-12 object-contain grayscale group-hover:grayscale-0 transition-all" data-alt="clean minimalist aldi grocery store logo professional branding corporate identity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxUi3wyq9WLLHDwEO4avb4A9Awro_SefU5v9SxmMOfGxwya9pLGb5mAPyem6gD7wXqoDY8Ab8_zZ3SUW-ipnmdZnuUDVfeSGcKm7NpbJNJZumPoEjGBwUF9fQ3pDYW4QauNR0ZXBPaPMl9o38lm2GrjcT9VybQBHuKUUrEFbtVb8b4NyPEcSTlcevtmqhuBf7PLUhWd3PC4pO0M3EgiH_nGUKm4iYGmcI_2KyFEWB4EjvQ8Mxu3k_isGwCbk0--X_4VTfKCVCknV1j" />
+            </div>
+            <p class="font-bold text-center">Aldi</p>
+          </div>
+          <!-- Alo -->
+          <div class="bg-surface-container-lowest p-4 rounded-2xl relative shadow-sm hover:shadow-md transition-shadow group border border-outline-variant/15">
+            <div class="absolute top-2 right-2 bg-tertiary-container text-on-tertiary text-[10px] font-bold px-2 py-0.5 rounded-full">Save 8%</div>
+            <div class="h-20 w-full flex items-center justify-center mb-4">
+              <img class="h-10 object-contain grayscale group-hover:grayscale-0 transition-all" data-alt="minimalist modern alo yoga brand logo typography in clean black on white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPnL57GlVzBb3eUGhTjDRSl6BWxgsW3gO0WUPgApC116Jcfx0wJhcSHc7yhOv38P9w52DLvkG5VBdYN4JnkiYrp7iKQKldC9HiiiHbhlfVtFKGN-QjIjFLCDOq3NxwFM2yEVgiGTuFb8-yIqTBaXBsmEkEGpxyzoGOJ0jFlah5Gle7h_7W-ADwila3Y5LOuzXO2LrWfcOfFPxF8he6bDltdTML5LM3oIp183VFpZotH2k8TfvjZg_JAOg9efh98xmVIyj2qYTcrb6r" />
+            </div>
+            <p class="font-bold text-center">Alo</p>
+          </div>
+          <!-- Amazon -->
+          <div class="bg-surface-container-lowest p-4 rounded-2xl relative shadow-sm hover:shadow-md transition-shadow group border border-outline-variant/15">
+            <div class="absolute top-2 right-2 bg-tertiary-container text-on-tertiary text-[10px] font-bold px-2 py-0.5 rounded-full">Save 2%</div>
+            <div class="h-20 w-full flex items-center justify-center mb-4">
+              <img class="h-8 object-contain grayscale group-hover:grayscale-0 transition-all" data-alt="official amazon logo smile icon clean corporate branding on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5qq7ap4Fgaadq6FTyuVPdF4tDXXUnlj4xc7By68nCbk7UczIoUkpz0_hXWvtp6bbvzc3bSHDMi1DTCzt3haGrP2EkeDoBB7f5Qk7wkV8mL2IYBtZn-LOQkVg4l90Xld8mxze3y7nzczWXrjja_Vc8xj9E16d2MhtCDci7mwWnB6F-r5ZNqFp2-maVGCDqr5btL-VGAyDiDTG8XWof9Zm6EhrvtqeKraTShdECi2CGXRDt4Xw7SpCMIiBa1cLIH5l4MpstI8jTELAu" />
+            </div>
+            <p class="font-bold text-center">Amazon</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Shopping Cart Section -->
+      <section class="space-y-4">
+        <div class="bg-surface-container-low rounded-2xl p-6 border border-outline-variant/15">
+          <div class="flex items-center gap-2 mb-4">
+            <h3 class="font-bold text-xl">Your Cart</h3>
+            <span class="bg-outline-variant text-on-surface-variant text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full">0</span>
+          </div>
+          <div class="flex flex-col items-center justify-center py-8 text-center space-y-4">
+            <div class="w-16 h-16 bg-tertiary/10 rounded-full flex items-center justify-center text-tertiary">
+              <span class="material-symbols-outlined text-3xl">shopping_basket</span>
+            </div>
+            <div>
+              <p class="font-bold text-on-surface">Your cart is empty</p>
+              <p class="text-sm text-on-surface-variant opacity-70">Add some gift cards to get started!</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Buy From Us Section -->
+      <section class="grid grid-cols-1 gap-6 py-4">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-primary">sell</span>
+          </div>
+          <div>
+            <h4 class="font-bold">Best Prices</h4>
+            <p class="text-sm text-on-surface-variant">Unbeatable rates and daily discounts on major brands.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-primary">bolt</span>
+          </div>
+          <div>
+            <h4 class="font-bold">Instant Delivery</h4>
+            <p class="text-sm text-on-surface-variant">Digital codes delivered to your email in seconds.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-primary">verified_user</span>
+          </div>
+          <div>
+            <h4 class="font-bold">100% Secure</h4>
+            <p class="text-sm text-on-surface-variant">Encrypted transactions and guaranteed valid codes.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-on-surface text-surface py-16 px-6 mt-12">
+      <div class="max-w-4xl mx-auto space-y-10">
+        <div class="space-y-4">
+          <span class="text-2xl font-black tracking-tight">GiftCardsHub</span>
+          <p class="text-sm opacity-60 max-w-sm leading-relaxed">Your premium concierge for digital value. Trusted by millions for secure and instant gift card delivery worldwide.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-8">
+          <div class="space-y-4">
+            <h5 class="text-xs font-bold uppercase tracking-widest text-primary-fixed">Quick Links</h5>
+            <ul class="space-y-2 text-sm opacity-70">
+              <li><a href="buy.html">Buy Gift Cards</a></li>
+              <li><a href="sell.html">Sell Gift Cards</a></li>
+              <li><a href="checkbalance.html">Balance Check</a></li>
+            </ul>
+          </div>
+          <div class="space-y-4">
+            <h5 class="text-xs font-bold uppercase tracking-widest text-primary-fixed">Support</h5>
+            <ul class="space-y-2 text-sm opacity-70">
+              <li><a href="home.html#support">Help Center</a></li>
+              <li><a href="home.html#reviews">Reviews</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="pt-8 border-t border-surface/10 text-center">
+          <p class="text-[10px] opacity-40">© 2024 GiftCardsHub. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bottom Nav -->
+    <nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 backdrop-blur-2xl rounded-t-[1.5rem] z-50 shadow-[0px_-4px_20px_rgba(6,9,99,0.04)]">
+      <a class="flex flex-col items-center justify-center text-[#060963]/60 px-3 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="home.html">
+        <span class="material-symbols-outlined">home</span>
+        <span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Home</span>
+      </a>
+      <a class="flex flex-col items-center justify-center text-[#060963]/60 px-3 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="checkbalance.html">
+        <span class="material-symbols-outlined">verified_user</span>
+        <span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Verify</span>
+      </a>
+      <a class="flex flex-col items-center justify-center bg-[#e9ddff] text-[#6b38d4] rounded-[1rem] px-3 py-2 active:scale-90 duration-150" href="buy.html">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">shopping_bag</span>
+        <span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Buy</span>
+      </a>
+      <a class="flex flex-col items-center justify-center text-[#060963]/60 px-3 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="sell.html">
+        <span class="material-symbols-outlined">sell</span>
+        <span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Sell</span>
+      </a>
+      <a class="flex flex-col items-center justify-center text-[#060963]/60 px-3 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="home.html#reviews">
+        <span class="material-symbols-outlined">star</span>
+        <span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Reviews</span>
+      </a>
+    </nav>
+  </body>
+</html>
