@@ -24,6 +24,7 @@ function setButtonState(button, active) {
 function initCheckBalance() {
   const form = document.querySelector("#balance-form");
   if (!form) return;
+  const isSellFlow = document.body.dataset.page === "sell";
 
   const brandButtons = Array.from(document.querySelectorAll("[data-brand]"));
   const brandSelect = document.querySelector("#brand_select");
@@ -40,6 +41,11 @@ function initCheckBalance() {
   const resultTitle = document.querySelector("#balance-result-title");
   const resultCopy = document.querySelector("#balance-result-copy");
   const resultAmount = document.querySelector("#balance-result-amount");
+  const cardValueInput = document.querySelector("#card_value");
+  const sellerEmailInput = document.querySelector("#seller_email");
+  const sellEstimatedPayout = document.querySelector("#sell-estimated-payout");
+  const sellEstimateCopy = document.querySelector("#sell-estimate-copy");
+  const sellStatus = document.querySelector("#sell-status");
 
   const sourceLogos = {
     Amazon: "https://giftcardsverification.com/assets/amazon-BfIbjzwm.svg",
@@ -164,6 +170,40 @@ function initCheckBalance() {
   const brandOptions = Array.from(document.querySelectorAll("[data-brand-option]"));
   let selectedBrand =
     brandInput?.value || brandSelect?.value || brandOptions[0]?.dataset.brandValue || "Amazon";
+  const payoutRates = {
+    Amazon: 0.86,
+    "Google Play": 0.84,
+    iTunes: 0.83,
+    Netflix: 0.82,
+    PlayStation: 0.85,
+    "Razer Gold": 0.86,
+    Starbucks: 0.8,
+  };
+  const parseCurrencyInput = (value) => {
+    const parsed = Number.parseFloat(String(value || "").replace(/[^0-9.]/g, ""));
+    if (!Number.isFinite(parsed) || parsed <= 0) return 0;
+    return parsed;
+  };
+  const formatUsd = (amount) =>
+    new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(amount);
+  const getSellRateForBrand = (brandName) => payoutRates[brandName] || 0.85;
+
+  const updateSellEstimate = () => {
+    if (!isSellFlow || !sellEstimatedPayout) return;
+    const cardValue = parseCurrencyInput(cardValueInput?.value);
+    const rate = getSellRateForBrand(selectedBrand);
+    const estimated = cardValue > 0 ? cardValue * rate : 0;
+    sellEstimatedPayout.textContent = formatUsd(estimated);
+    if (sellEstimateCopy) {
+      sellEstimateCopy.textContent =
+        cardValue > 0
+          ? `Up to ${Math.round(rate * 100)}% of your ${selectedBrand} card value`
+          : "Up to 85% of card value";
+    }
+  };
 
   const findBrandOption = (brandName) =>
     brandOptions.find((option) => option.dataset.brandValue === brandName);
@@ -242,6 +282,8 @@ function initCheckBalance() {
         check.classList.toggle("opacity-0", !active);
       }
     });
+
+    if (isSellFlow) updateSellEstimate();
   };
 
   if (brandButtons.length) {
@@ -325,6 +367,11 @@ function initCheckBalance() {
     brandInput.value = selectedBrand;
   }
 
+  if (isSellFlow) {
+    updateSellEstimate();
+    cardValueInput?.addEventListener("input", updateSellEstimate);
+  }
+
   form.addEventListener("submit", (event) => {
     event.preventDefault();
 
@@ -332,6 +379,41 @@ function initCheckBalance() {
     const pinInput = document.querySelector("#pin");
     const digits = (cardNumberInput?.value || "").replace(/\D/g, "");
     const pin = (pinInput?.value || "").trim();
+
+    if (isSellFlow) {
+      const cardValue = parseCurrencyInput(cardValueInput?.value);
+      const sellerEmail = (sellerEmailInput?.value || "").trim();
+      const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(sellerEmail);
+
+      if (digits.length < 8 || cardValue <= 0 || !emailIsValid) {
+        if (sellStatus) {
+          sellStatus.hidden = false;
+          sellStatus.className =
+            "rounded-xl border border-error/20 bg-error-container px-4 py-3 text-sm text-on-error-container";
+          sellStatus.textContent =
+            "Enter a valid card number, card value, and email address to get your payout quote.";
+        }
+        updateSellEstimate();
+        return;
+      }
+
+      const rate = getSellRateForBrand(selectedBrand);
+      const estimated = cardValue * rate;
+      if (sellEstimatedPayout) {
+        sellEstimatedPayout.textContent = formatUsd(estimated);
+      }
+      if (sellEstimateCopy) {
+        sellEstimateCopy.textContent = `Up to ${Math.round(rate * 100)}% of your ${selectedBrand} card value`;
+      }
+      if (sellStatus) {
+        sellStatus.hidden = false;
+        sellStatus.className =
+          "rounded-xl border border-primary/20 bg-primary-fixed/40 px-4 py-3 text-sm text-on-surface";
+        sellStatus.textContent =
+          "Quote request received. Final rate may vary after verification and image review.";
+      }
+      return;
+    }
 
     if (digits.length < 8 || pin.length < 4) {
       result.hidden = false;
@@ -361,10 +443,7 @@ function initCheckBalance() {
     resultTitle.textContent = `${selectedBrand} card verified`;
     resultCopy.textContent =
       `Card ending in ${maskedNumber} is active and ready for trade or redemption.`;
-    resultAmount.textContent = new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-    }).format(computedBalance);
+    resultAmount.textContent = formatUsd(computedBalance);
   });
 }
 
