@@ -1,277 +1,355 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Trade Marketplace - GiftCardsHub</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script defer="" src="./site.js"></script>
-<link href="./responsive.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<style>
-        body { font-family: 'Inter', sans-serif; }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .glass-panel {
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-        }
-        /* Custom scrollbar for clean UI */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #cbc3d7; border-radius: 10px; }
-    </style>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "surface-container-lowest": "#ffffff",
-                        "on-primary": "#ffffff",
-                        "surface-container": "#eeecff",
-                        "on-tertiary": "#ffffff",
-                        "surface": "#fbf8ff",
-                        "tertiary-fixed": "#e0e0ff",
-                        "background": "#fbf8ff",
-                        "inverse-on-surface": "#f1efff",
-                        "inverse-surface": "#202677",
-                        "tertiary-fixed-dim": "#bec2ff",
-                        "on-surface": "#060963",
-                        "on-surface-variant": "#494454",
-                        "surface-tint": "#6d3bd7",
-                        "secondary-fixed": "#ffdbcc",
-                        "surface-container-highest": "#e0e0ff",
-                        "outline": "#7b7486",
-                        "error": "#ba1a1a",
-                        "outline-variant": "#cbc3d7",
-                        "tertiary-container": "#676dc0",
-                        "surface-bright": "#fbf8ff",
-                        "primary": "#6b38d4",
-                        "on-background": "#060963",
-                        "secondary-container": "#fe6b00",
-                        "primary-container": "#8455ef",
-                        "secondary": "#a04100",
-                        "surface-container-low": "#f5f2ff",
-                        "tertiary": "#4e54a5",
-                        "primary-fixed": "#e9ddff"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "xxl": "1.5rem",
-                        "full": "9999px"
-                    }
-                }
-            }
-        }
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Buy Gift Cards - GiftCardsHub</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script defer src="./site.js"></script>
+    <link href="./responsive.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-lowest": "#ffffff",
+              "on-primary": "#ffffff",
+              "surface-container": "#eeecff",
+              "on-tertiary": "#ffffff",
+              "surface": "#fbf8ff",
+              "tertiary-fixed": "#e0e0ff",
+              background: "#fbf8ff",
+              "inverse-on-surface": "#f1efff",
+              "inverse-surface": "#202677",
+              "tertiary-fixed-dim": "#bec2ff",
+              "on-surface": "#060963",
+              "on-surface-variant": "#494454",
+              "surface-tint": "#6d3bd7",
+              "secondary-fixed": "#ffdbcc",
+              "surface-container-highest": "#e0e0ff",
+              outline: "#7b7486",
+              error: "#ba1a1a",
+              "outline-variant": "#cbc3d7",
+              "tertiary-container": "#676dc0",
+              "surface-bright": "#fbf8ff",
+              primary: "#6b38d4",
+              "on-background": "#060963",
+              "secondary-container": "#fe6b00",
+              "primary-container": "#8455ef",
+              secondary: "#a04100",
+              "surface-container-low": "#f5f2ff",
+              tertiary: "#4e54a5",
+              "primary-fixed": "#e9ddff",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              "2xl": "1.5rem",
+              full: "9999px",
+            },
+            fontFamily: {
+              headline: ["Plus Jakarta Sans"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+          },
+        },
+      };
     </script>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      .bg-primary-gradient {
+        background: linear-gradient(135deg, #6b38d4 0%, #8455ef 100%);
+      }
+      .hero-wash {
+        background:
+          radial-gradient(circle at 100% 0%, rgba(132, 85, 239, 0.2) 0%, transparent 45%),
+          radial-gradient(circle at 0% 100%, rgba(160, 65, 0, 0.08) 0%, transparent 42%);
+      }
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
   </head>
-<body class="bg-surface text-on-surface min-h-screen pb-32" data-page="marketplace" data-auth-required="true">
-<script type="module" src="./auth-ui.js"></script>
-<!-- TopAppBar -->
-<header class="fixed top-0 w-full z-50 bg-[#fbf8ff]/70 backdrop-blur-xl flex justify-between items-center px-6 py-4 w-full">
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary cursor-pointer hover:bg-violet-100/50 p-2 rounded-full transition-colors active:scale-95 duration-200" data-icon="menu">menu</span>
-<h1 class="text-xl font-black text-[#060963] font-['Inter'] tracking-tight">GiftCardsHub</h1>
-</div>
-<div class="flex items-center gap-6">
-<nav class="hidden md:flex items-center gap-8">
-<a class="text-[#060963] opacity-70 font-semibold hover:opacity-100 transition-opacity" href="home.html">Home</a>
-<a class="text-[#060963] opacity-70 font-semibold hover:opacity-100 transition-opacity" href="checkbalance.html">Verify</a>
-<a class="text-[#6b38d4] font-bold" href="trademarketplace.html">Trade</a>
-</nav>
-<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-fixed cursor-pointer active:scale-95 duration-200">
-<img alt="User Profile" data-alt="minimalist 3d avatar of a professional male with glasses and a friendly expression on a soft purple background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACGNzYBQd3EYEJ81ea8OZZ8d2lY88IJiDYNZ_0wb3Zy9CKqg5jQB4ZHb-ktJxxrn2RRxlGwZLYqUBSPJAW2V48-vFXe3q3aJbHt3KhxBMulMIbDC73E1JtZgAsjb5DTz5yNtyuhRhChsWjRKendR6_KCUajWBuCSedGDBRM6fDEXoO9DVn-WHU_Zc9b9dQNueys3TWtALjsk-pjknAPP-851XJQ6NzBJrwC9qvUYYRqNNKLeO0CS5ifWxkjgSg1nJAAJ-hvxtaC3Ru"/>
-</div>
-</div>
-</header>
-<main class="pt-24 px-6 max-w-7xl mx-auto">
-<!-- Marketplace Header & Search -->
-<section class="mb-12">
-<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
-<div class="space-y-2">
-<span class="text-xs font-bold tracking-widest uppercase text-tertiary">Marketplace</span>
-<h2 class="text-4xl md:text-5xl font-extrabold tracking-tight text-on-surface">Digital <span class="text-secondary">Asset Exchange</span></h2>
-</div>
-<div class="w-full md:w-96">
-<div class="relative group">
-<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors" data-icon="search">search</span>
-<input class="w-full pl-12 pr-4 py-4 bg-surface-container-high rounded-xxl border-none focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all placeholder:text-outline-variant text-on-surface font-medium" id="market-search" placeholder="Search brands or card types..." type="text"/>
-</div>
-</div>
-</div>
-</section>
-<!-- Toggle Tabs: Buy/Sell -->
-<div class="flex justify-center mb-10">
-<div class="bg-surface-container-low p-1.5 rounded-full flex items-center w-full max-w-md">
-<button class="flex-1 py-3 px-8 rounded-full bg-surface-container-lowest text-primary font-bold shadow-sm transition-all flex items-center justify-center gap-2" data-market-mode="buy" type="button">
-<span class="material-symbols-outlined text-[20px]" data-icon="shopping_cart">shopping_cart</span>
-                    Buy Cards
-                </button>
-<button class="flex-1 py-3 px-8 rounded-full text-on-surface-variant font-semibold hover:bg-surface-container-high transition-all flex items-center justify-center gap-2" data-market-mode="sell" type="button">
-<span class="material-symbols-outlined text-[20px]" data-icon="sell">sell</span>
-                    Sell Cards
-                </button>
-</div>
-</div>
-<!-- Filter Chips -->
-<div class="flex gap-3 overflow-x-auto pb-6 no-scrollbar">
-<button class="px-6 py-2.5 rounded-full bg-primary text-on-primary font-semibold whitespace-nowrap" data-filter="all" type="button">All Brands</button>
-<button class="px-6 py-2.5 rounded-full bg-surface-container-lowest border border-outline-variant/20 text-on-surface-variant font-medium whitespace-nowrap hover:bg-surface-container transition-colors" data-filter="gaming" type="button">Gaming</button>
-<button class="px-6 py-2.5 rounded-full bg-surface-container-lowest border border-outline-variant/20 text-on-surface-variant font-medium whitespace-nowrap hover:bg-surface-container transition-colors" data-filter="ecommerce" type="button">Ecommerce</button>
-<button class="px-6 py-2.5 rounded-full bg-surface-container-lowest border border-outline-variant/20 text-on-surface-variant font-medium whitespace-nowrap hover:bg-surface-container transition-colors" data-filter="food" type="button">Food &amp; Drink</button>
-<button class="px-6 py-2.5 rounded-full bg-surface-container-lowest border border-outline-variant/20 text-on-surface-variant font-medium whitespace-nowrap hover:bg-surface-container transition-colors" data-filter="entertainment" type="button">Entertainment</button>
-<button class="px-6 py-2.5 rounded-full bg-surface-container-lowest border border-outline-variant/20 text-on-surface-variant font-medium whitespace-nowrap hover:bg-surface-container transition-colors" data-filter="travel" type="button">Travel</button>
-</div>
-<!-- Trading Grid (Asymmetric Layout) -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-<!-- Featured Large Card -->
-<div class="lg:col-span-2 bg-gradient-to-br from-primary to-primary-container rounded-xxl p-8 text-white relative overflow-hidden group">
-<div class="relative z-10 h-full flex flex-col justify-between">
-<div>
-<div class="bg-white/20 backdrop-blur-md w-fit px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6">Trending Deal</div>
-<h3 class="text-3xl font-bold mb-2">Amazon Global Card</h3>
-<p class="text-primary-fixed opacity-90 text-lg max-w-sm mb-8">Instant verification and cash out for all Amazon US/UK denominations.</p>
-</div>
-<div class="flex items-center justify-between mt-auto">
-<div class="flex flex-col">
-<span class="text-primary-fixed text-sm font-medium">Current Rate</span>
-<span class="text-4xl font-black" id="featured-rate-label">$100 <span class="text-xl font-normal opacity-70">for</span> $88.50</span>
-</div>
-<a class="bg-secondary text-white px-10 py-4 rounded-full font-bold hover:scale-105 transition-transform active:scale-95 inline-flex items-center justify-center" href="account.html" id="featured-cta">Trade Now</a>
-</div>
-</div>
-<!-- Abstract background decoration -->
-<div class="absolute -right-20 -bottom-20 w-80 h-80 bg-white/10 rounded-full blur-3xl group-hover:bg-white/20 transition-colors"></div>
-</div>
-<!-- Standard Card 1 -->
-<div class="bg-surface-container-lowest rounded-xxl p-6 flex flex-col justify-between transition-all hover:translate-y-[-4px]" data-card="" data-category="gaming" data-name="Steam Wallet" data-denomination="50" data-buy="42.00" data-sell="45.50">
-<div class="flex items-start justify-between mb-8">
-<div class="w-16 h-16 bg-[#e9ddff] rounded-xl flex items-center justify-center">
-<span class="material-symbols-outlined text-primary text-3xl" data-icon="videogame_asset">videogame_asset</span>
-</div>
-<div class="text-right">
-<span class="block text-[10px] font-bold text-tertiary tracking-widest uppercase">Steam</span>
-<span class="text-xs text-on-surface-variant">Global Key</span>
-</div>
-</div>
-<div>
-<h4 class="text-xl font-bold text-on-surface mb-1">Steam Wallet</h4>
-<p class="text-sm text-on-surface-variant mb-6">Fast processing (avg. 2 mins)</p>
-<div class="flex items-center justify-between py-4 border-t border-outline-variant/15">
-<span class="text-lg font-bold text-secondary" data-rate-label="">$50 &rarr; $42.00</span>
-<a class="text-primary font-bold text-sm hover:underline" data-card-cta="" href="account.html">View Offers</a>
-</div>
-</div>
-</div>
-<!-- Standard Card 2 -->
-<div class="bg-surface-container-lowest rounded-xxl p-6 flex flex-col justify-between transition-all hover:translate-y-[-4px]" data-card="" data-category="entertainment" data-name="Netflix Premium" data-denomination="25" data-buy="21.50" data-sell="22.80">
-<div class="flex items-start justify-between mb-8">
-<div class="w-16 h-16 bg-[#e9ddff] rounded-xl flex items-center justify-center">
-<span class="material-symbols-outlined text-primary text-3xl" data-icon="movie">movie</span>
-</div>
-<div class="text-right">
-<span class="block text-[10px] font-bold text-tertiary tracking-widest uppercase">Netflix</span>
-<span class="text-xs text-on-surface-variant">Standard HD</span>
-</div>
-</div>
-<div>
-<h4 class="text-xl font-bold text-on-surface mb-1">Netflix Premium</h4>
-<p class="text-sm text-on-surface-variant mb-6">Region: United States</p>
-<div class="flex items-center justify-between py-4 border-t border-outline-variant/15">
-<span class="text-lg font-bold text-secondary" data-rate-label="">$25 &rarr; $21.50</span>
-<a class="text-primary font-bold text-sm hover:underline" data-card-cta="" href="account.html">View Offers</a>
-</div>
-</div>
-</div>
-<!-- Standard Card 3 -->
-<div class="bg-surface-container-lowest rounded-xxl p-6 flex flex-col justify-between transition-all hover:translate-y-[-4px]" data-card="" data-category="ecommerce" data-name="Apple Gift Card" data-denomination="100" data-buy="86.00" data-sell="90.75">
-<div class="flex items-start justify-between mb-8">
-<div class="w-16 h-16 bg-[#e9ddff] rounded-xl flex items-center justify-center">
-<span class="material-symbols-outlined text-primary text-3xl" data-icon="apple">ios</span>
-</div>
-<div class="text-right">
-<span class="block text-[10px] font-bold text-tertiary tracking-widest uppercase">Apple</span>
-<span class="text-xs text-on-surface-variant">App Store &amp; iTunes</span>
-</div>
-</div>
-<div>
-<h4 class="text-xl font-bold text-on-surface mb-1">Apple Gift Card</h4>
-<p class="text-sm text-on-surface-variant mb-6">High liquidity asset</p>
-<div class="flex items-center justify-between py-4 border-t border-outline-variant/15">
-<span class="text-lg font-bold text-secondary" data-rate-label="">$100 &rarr; $86.00</span>
-<a class="text-primary font-bold text-sm hover:underline" data-card-cta="" href="account.html">View Offers</a>
-</div>
-</div>
-</div>
-<!-- Standard Card 4 -->
-<div class="bg-surface-container-lowest rounded-xxl p-6 flex flex-col justify-between transition-all hover:translate-y-[-4px]" data-card="" data-category="gaming" data-name="PSN Gift Card" data-denomination="50" data-buy="44.50" data-sell="46.20">
-<div class="flex items-start justify-between mb-8">
-<div class="w-16 h-16 bg-[#e9ddff] rounded-xl flex items-center justify-center">
-<span class="material-symbols-outlined text-primary text-3xl" data-icon="sports_esports">sports_esports</span>
-</div>
-<div class="text-right">
-<span class="block text-[10px] font-bold text-tertiary tracking-widest uppercase">PlayStation</span>
-<span class="text-xs text-on-surface-variant">PSN Network</span>
-</div>
-</div>
-<div>
-<h4 class="text-xl font-bold text-on-surface mb-1">PSN Gift Card</h4>
-<p class="text-sm text-on-surface-variant mb-6">Instant code delivery</p>
-<div class="flex items-center justify-between py-4 border-t border-outline-variant/15">
-<span class="text-lg font-bold text-secondary" data-rate-label="">$50 &rarr; $44.50</span>
-<a class="text-primary font-bold text-sm hover:underline" data-card-cta="" href="account.html">View Offers</a>
-</div>
-</div>
-</div>
-</div>
-<div class="rounded-xxl border border-outline-variant/20 bg-surface-container-lowest p-10 text-center" hidden="" id="market-empty">
-<p class="font-bold text-xl text-on-surface">No matching cards found</p>
-<p class="text-sm text-on-surface-variant mt-2">Try a different keyword or switch category filters.</p>
-</div>
-<!-- Call to Action Banner -->
-<div class="mt-20 bg-surface-container rounded-xxl p-10 flex flex-col md:flex-row items-center gap-10">
-<div class="flex-1 space-y-4">
-<h3 class="text-3xl font-bold text-on-surface">Bulk Trading Available</h3>
-<p class="text-on-surface-variant leading-relaxed">Are you a power trader? Get exclusive rates and a dedicated account manager when you trade over $5,000 monthly.</p>
-<button class="px-8 py-3 bg-tertiary text-white rounded-full font-bold hover:opacity-90 transition-opacity">Learn More</button>
-</div>
-<div class="w-full md:w-1/3 aspect-video bg-white/50 rounded-xl overflow-hidden shadow-sm">
-<img alt="Bulk Trading" class="w-full h-full object-cover" data-alt="close-up of professional trading dashboard with charts and currency symbols on multiple monitors in a modern office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCntnXAqKcbqdQhfcBQe6Kg3_Ah-iDO6bTsWQdgGBwsAsxqXmgtn5z2voibmNTadI7z3xtcNsngE_lwrGU3-dGa8BxXZzjCBhNj1KwaMy1t-bDuM0aTw8xAYECxSAAkOJGtwDMtSq5bdwqHeId6YAk-AAbyrP0uLdx0lbtuijdAT0MUt8WCFKFPeUi3FYGAgijQFu3RZAG9JpcGL40pTBvzm0qLOVjQxrATaDnk7v-ePbY6WGupcybr6iFHbH6Ph5JNs_Q_DAnmrvg0"/>
-</div>
-</div>
-</main>
-<!-- BottomNavBar -->
-<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 backdrop-blur-2xl rounded-t-[1.5rem] z-50 shadow-[0px_-4px_20px_rgba(6,9,99,0.04)] md:hidden">
-<a class="flex flex-col items-center justify-center text-[#060963]/60 px-5 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="home.html">
-<span class="material-symbols-outlined" data-icon="home">home</span>
-<span class="text-[10px] font-semibold tracking-wider uppercase">Home</span>
-</a>
-<a class="flex flex-col items-center justify-center text-[#060963]/60 px-5 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="checkbalance.html">
-<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
-<span class="text-[10px] font-semibold tracking-wider uppercase">Verify</span>
-</a>
-<a class="flex flex-col items-center justify-center bg-[#e9ddff] text-[#6b38d4] rounded-[1rem] px-5 py-2 active:scale-90 duration-150" href="trademarketplace.html">
-<span class="material-symbols-outlined" data-icon="swap_horiz">swap_horiz</span>
-<span class="text-[10px] font-semibold tracking-wider uppercase">Trade</span>
-</a>
-<a class="flex flex-col items-center justify-center text-[#060963]/60 px-5 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="account.html">
-<span class="material-symbols-outlined" data-icon="person">person</span>
-<span class="text-[10px] font-semibold tracking-wider uppercase">Profile</span>
-</a>
-</nav>
-<!-- FAB (Contextual for Trade) -->
-<button class="fixed bottom-24 right-6 w-14 h-14 bg-secondary text-white rounded-full shadow-lg flex items-center justify-center active:scale-90 transition-transform md:bottom-10 md:right-10">
-<span class="material-symbols-outlined text-2xl" data-icon="add">add</span>
-</button>
-</body></html>
+  <body class="bg-surface font-body text-on-surface antialiased pb-32" data-page="marketplace" data-auth-required="true">
+    <script type="module" src="./auth-ui.js"></script>
+
+    <header class="fixed top-0 w-full z-50 backdrop-blur-md bg-[#fbf8ff]/80 flex items-center justify-between px-6 h-16">
+      <div class="flex items-center gap-3">
+        <button class="hover:bg-violet-100/50 transition-colors p-2 rounded-full active:scale-95 duration-150 text-primary">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+        <h1 class="font-headline font-black text-xl tracking-tight text-on-surface">GiftCardsHub</h1>
+      </div>
+      <nav class="hidden md:flex items-center gap-7">
+        <a class="text-on-surface-variant font-semibold hover:text-primary transition-colors" href="home.html">Home</a>
+        <a class="text-on-surface-variant font-semibold hover:text-primary transition-colors" href="checkbalance.html">Verify</a>
+        <a class="text-primary font-bold" href="trademarketplace.html">Trade</a>
+        <a class="text-on-surface-variant font-semibold hover:text-primary transition-colors" href="account.html">Profile</a>
+      </nav>
+    </header>
+
+    <main class="mt-20 px-4 sm:px-6 max-w-7xl mx-auto space-y-10 hero-wash">
+      <section class="space-y-6 rounded-2xl p-6 bg-surface-container-low border border-outline-variant/15 shadow-sm">
+        <div class="space-y-2">
+          <p class="text-xs font-bold uppercase tracking-[0.25em] text-tertiary">Buy Flow</p>
+          <h2 class="font-headline font-extrabold text-3xl md:text-4xl tracking-tight">Buy Gift Cards</h2>
+          <p class="text-sm md:text-base text-on-surface-variant">Choose a brand, pick value, and compare live rates before checkout.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-end">
+          <div class="lg:col-span-5 space-y-2">
+            <label class="text-xs font-bold uppercase tracking-[0.2em] text-on-surface-variant px-1">Choose Brand</label>
+            <div class="relative">
+              <select class="w-full h-14 pl-4 pr-10 bg-surface-container-lowest border-none rounded-xl text-body appearance-none focus:ring-2 focus:ring-primary-container outline-none">
+                <option>Select a brand...</option>
+                <option>Amazon</option>
+                <option>Apple</option>
+                <option>Netflix</option>
+                <option>PlayStation</option>
+              </select>
+              <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 space-y-2">
+            <label class="text-xs font-bold uppercase tracking-[0.2em] text-on-surface-variant px-1">Card Value</label>
+            <div class="grid grid-cols-4 gap-2">
+              <button class="h-12 flex items-center justify-center bg-surface-container-lowest text-primary font-bold rounded-xl border-2 border-primary-container" type="button">$25</button>
+              <button class="h-12 flex items-center justify-center bg-surface-container-lowest text-on-surface font-semibold rounded-xl" type="button">$50</button>
+              <button class="h-12 flex items-center justify-center bg-surface-container-lowest text-on-surface font-semibold rounded-xl" type="button">$100</button>
+              <button class="h-12 flex items-center justify-center bg-surface-container-lowest text-on-surface font-semibold rounded-xl" type="button">Custom</button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-2">
+            <button class="w-full bg-primary-gradient h-14 text-white font-headline font-bold rounded-xl shadow-lg active:scale-95 transition-transform flex items-center justify-center gap-2" type="button">
+              <span class="material-symbols-outlined">add_shopping_cart</span>
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="space-y-5">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="w-full md:w-96">
+            <div class="relative group">
+              <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">search</span>
+              <input class="w-full pl-12 pr-4 py-4 bg-surface-container-high rounded-2xl border-none focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all placeholder:text-outline-variant text-on-surface font-medium" id="market-search" placeholder="Search brands or card types..." type="text" />
+            </div>
+          </div>
+
+          <div class="bg-surface-container-low p-1.5 rounded-full flex items-center w-full max-w-sm">
+            <button class="flex-1 py-3 px-6 rounded-full bg-surface-container-lowest text-primary font-bold shadow-sm transition-all flex items-center justify-center gap-2" data-market-mode="buy" type="button">
+              <span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+              Buy
+            </button>
+            <button class="flex-1 py-3 px-6 rounded-full text-on-surface-variant font-semibold hover:bg-surface-container-high transition-all flex items-center justify-center gap-2" data-market-mode="sell" type="button">
+              <span class="material-symbols-outlined text-[20px]">sell</span>
+              Sell
+            </button>
+          </div>
+        </div>
+
+        <div class="flex gap-3 overflow-x-auto pb-2 no-scrollbar">
+          <button class="px-5 py-2.5 rounded-full bg-primary text-on-primary font-semibold whitespace-nowrap" data-filter="all" type="button">All Brands</button>
+          <button class="px-5 py-2.5 rounded-full bg-surface-container-lowest border border-outline-variant/20 text-on-surface-variant font-medium whitespace-nowrap hover:bg-surface-container transition-colors" data-filter="gaming" type="button">Gaming</button>
+          <button class="px-5 py-2.5 rounded-full bg-surface-container-lowest border border-outline-variant/20 text-on-surface-variant font-medium whitespace-nowrap hover:bg-surface-container transition-colors" data-filter="ecommerce" type="button">Ecommerce</button>
+          <button class="px-5 py-2.5 rounded-full bg-surface-container-lowest border border-outline-variant/20 text-on-surface-variant font-medium whitespace-nowrap hover:bg-surface-container transition-colors" data-filter="food" type="button">Food & Drink</button>
+          <button class="px-5 py-2.5 rounded-full bg-surface-container-lowest border border-outline-variant/20 text-on-surface-variant font-medium whitespace-nowrap hover:bg-surface-container transition-colors" data-filter="entertainment" type="button">Entertainment</button>
+          <button class="px-5 py-2.5 rounded-full bg-surface-container-lowest border border-outline-variant/20 text-on-surface-variant font-medium whitespace-nowrap hover:bg-surface-container transition-colors" data-filter="travel" type="button">Travel</button>
+        </div>
+      </section>
+
+      <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 bg-gradient-to-br from-primary to-primary-container rounded-2xl p-7 text-white relative overflow-hidden group">
+          <div class="relative z-10 h-full flex flex-col justify-between">
+            <div>
+              <div class="bg-white/20 backdrop-blur-md w-fit px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6">Trending Deal</div>
+              <h3 class="text-3xl font-bold mb-2">Amazon Global Card</h3>
+              <p class="text-primary-fixed opacity-90 text-lg max-w-sm mb-8">Fast verification and card liquidity for major denominations.</p>
+            </div>
+            <div class="flex items-center justify-between mt-auto gap-4">
+              <div class="flex flex-col">
+                <span class="text-primary-fixed text-sm font-medium">Current Rate</span>
+                <span class="text-4xl font-black" id="featured-rate-label">$100 <span class="text-xl font-normal opacity-70">for</span> $88.50</span>
+              </div>
+              <a class="bg-secondary text-white px-8 py-3 rounded-full font-bold hover:scale-105 transition-transform active:scale-95 inline-flex items-center justify-center whitespace-nowrap" href="account.html" id="featured-cta">Trade Now</a>
+            </div>
+          </div>
+          <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-white/10 rounded-full blur-3xl group-hover:bg-white/20 transition-colors"></div>
+        </div>
+
+        <article class="bg-surface-container-lowest rounded-2xl p-6 flex flex-col justify-between transition-all hover:translate-y-[-4px]" data-card data-category="gaming" data-name="Steam Wallet" data-denomination="50" data-buy="42.00" data-sell="45.50">
+          <div class="flex items-start justify-between mb-7">
+            <div class="w-14 h-14 bg-primary-fixed rounded-xl flex items-center justify-center">
+              <span class="material-symbols-outlined text-primary text-3xl">videogame_asset</span>
+            </div>
+            <div class="text-right">
+              <span class="block text-[10px] font-bold text-tertiary tracking-widest uppercase">Steam</span>
+              <span class="text-xs text-on-surface-variant">Global Key</span>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-xl font-bold text-on-surface mb-1">Steam Wallet</h4>
+            <p class="text-sm text-on-surface-variant mb-6">Fast processing (avg. 2 mins)</p>
+            <div class="flex items-center justify-between py-4 border-t border-outline-variant/15">
+              <span class="text-lg font-bold text-secondary" data-rate-label>$50 &rarr; $42.00</span>
+              <a class="text-primary font-bold text-sm hover:underline" data-card-cta href="account.html">View Offers</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-surface-container-lowest rounded-2xl p-6 flex flex-col justify-between transition-all hover:translate-y-[-4px]" data-card data-category="entertainment" data-name="Netflix Premium" data-denomination="25" data-buy="21.50" data-sell="22.80">
+          <div class="flex items-start justify-between mb-7">
+            <div class="w-14 h-14 bg-primary-fixed rounded-xl flex items-center justify-center">
+              <span class="material-symbols-outlined text-primary text-3xl">movie</span>
+            </div>
+            <div class="text-right">
+              <span class="block text-[10px] font-bold text-tertiary tracking-widest uppercase">Netflix</span>
+              <span class="text-xs text-on-surface-variant">Standard HD</span>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-xl font-bold text-on-surface mb-1">Netflix Premium</h4>
+            <p class="text-sm text-on-surface-variant mb-6">Region: United States</p>
+            <div class="flex items-center justify-between py-4 border-t border-outline-variant/15">
+              <span class="text-lg font-bold text-secondary" data-rate-label>$25 &rarr; $21.50</span>
+              <a class="text-primary font-bold text-sm hover:underline" data-card-cta href="account.html">View Offers</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-surface-container-lowest rounded-2xl p-6 flex flex-col justify-between transition-all hover:translate-y-[-4px]" data-card data-category="ecommerce" data-name="Apple Gift Card" data-denomination="100" data-buy="86.00" data-sell="90.75">
+          <div class="flex items-start justify-between mb-7">
+            <div class="w-14 h-14 bg-primary-fixed rounded-xl flex items-center justify-center">
+              <span class="material-symbols-outlined text-primary text-3xl">ios</span>
+            </div>
+            <div class="text-right">
+              <span class="block text-[10px] font-bold text-tertiary tracking-widest uppercase">Apple</span>
+              <span class="text-xs text-on-surface-variant">App Store & iTunes</span>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-xl font-bold text-on-surface mb-1">Apple Gift Card</h4>
+            <p class="text-sm text-on-surface-variant mb-6">High liquidity asset</p>
+            <div class="flex items-center justify-between py-4 border-t border-outline-variant/15">
+              <span class="text-lg font-bold text-secondary" data-rate-label>$100 &rarr; $86.00</span>
+              <a class="text-primary font-bold text-sm hover:underline" data-card-cta href="account.html">View Offers</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-surface-container-lowest rounded-2xl p-6 flex flex-col justify-between transition-all hover:translate-y-[-4px]" data-card data-category="gaming" data-name="PSN Gift Card" data-denomination="50" data-buy="44.50" data-sell="46.20">
+          <div class="flex items-start justify-between mb-7">
+            <div class="w-14 h-14 bg-primary-fixed rounded-xl flex items-center justify-center">
+              <span class="material-symbols-outlined text-primary text-3xl">sports_esports</span>
+            </div>
+            <div class="text-right">
+              <span class="block text-[10px] font-bold text-tertiary tracking-widest uppercase">PlayStation</span>
+              <span class="text-xs text-on-surface-variant">PSN Network</span>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-xl font-bold text-on-surface mb-1">PSN Gift Card</h4>
+            <p class="text-sm text-on-surface-variant mb-6">Instant code delivery</p>
+            <div class="flex items-center justify-between py-4 border-t border-outline-variant/15">
+              <span class="text-lg font-bold text-secondary" data-rate-label>$50 &rarr; $44.50</span>
+              <a class="text-primary font-bold text-sm hover:underline" data-card-cta href="account.html">View Offers</a>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <div class="rounded-2xl border border-outline-variant/20 bg-surface-container-lowest p-10 text-center" hidden id="market-empty">
+        <p class="font-bold text-xl text-on-surface">No matching cards found</p>
+        <p class="text-sm text-on-surface-variant mt-2">Try a different keyword or switch category filters.</p>
+      </div>
+
+      <section class="space-y-4">
+        <h3 class="font-headline font-bold text-xl">Popular Brands</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div class="bg-surface-container-lowest p-4 rounded-2xl relative shadow-sm">
+            <div class="absolute top-2 right-2 bg-tertiary-container text-on-tertiary text-[10px] font-bold px-2 py-0.5 rounded-full">Save 5%</div>
+            <div class="h-16 flex items-center justify-center">
+              <span class="material-symbols-outlined text-4xl text-primary">shopping_bag</span>
+            </div>
+            <p class="font-bold text-center mt-2">Adidas</p>
+          </div>
+          <div class="bg-surface-container-lowest p-4 rounded-2xl relative shadow-sm">
+            <div class="absolute top-2 right-2 bg-tertiary-container text-on-tertiary text-[10px] font-bold px-2 py-0.5 rounded-full">Save 3%</div>
+            <div class="h-16 flex items-center justify-center">
+              <span class="material-symbols-outlined text-4xl text-primary">storefront</span>
+            </div>
+            <p class="font-bold text-center mt-2">Aldi</p>
+          </div>
+          <div class="bg-surface-container-lowest p-4 rounded-2xl relative shadow-sm">
+            <div class="absolute top-2 right-2 bg-tertiary-container text-on-tertiary text-[10px] font-bold px-2 py-0.5 rounded-full">Save 8%</div>
+            <div class="h-16 flex items-center justify-center">
+              <span class="material-symbols-outlined text-4xl text-primary">fitness_center</span>
+            </div>
+            <p class="font-bold text-center mt-2">Alo</p>
+          </div>
+          <div class="bg-surface-container-lowest p-4 rounded-2xl relative shadow-sm">
+            <div class="absolute top-2 right-2 bg-tertiary-container text-on-tertiary text-[10px] font-bold px-2 py-0.5 rounded-full">Save 2%</div>
+            <div class="h-16 flex items-center justify-center">
+              <span class="material-symbols-outlined text-4xl text-primary">shopping_cart</span>
+            </div>
+            <p class="font-bold text-center mt-2">Amazon</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-surface-container-low rounded-2xl p-6 border border-outline-variant/15">
+        <div class="flex items-center gap-2 mb-4">
+          <h3 class="font-headline font-bold text-xl">Your Cart</h3>
+          <span class="bg-outline-variant text-on-surface-variant text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full">0</span>
+        </div>
+        <div class="flex flex-col items-center justify-center py-8 text-center space-y-4">
+          <div class="w-16 h-16 bg-tertiary/10 rounded-full flex items-center justify-center text-tertiary">
+            <span class="material-symbols-outlined text-3xl">shopping_basket</span>
+          </div>
+          <div>
+            <p class="font-bold text-on-surface">Your cart is empty</p>
+            <p class="text-sm text-on-surface-variant opacity-70">Add some gift cards to get started.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <nav class="fixed bottom-0 w-full z-50 backdrop-blur-md rounded-t-[1.5rem] bg-[#fbf8ff]/80 shadow-[0px_-12px_32px_rgba(6,9,99,0.06)] flex justify-around items-center h-20 px-4 md:hidden">
+      <a class="flex flex-col items-center justify-center text-on-surface/60" href="home.html">
+        <span class="material-symbols-outlined">home</span>
+        <span class="text-[11px] font-semibold uppercase tracking-widest mt-1">Home</span>
+      </a>
+      <a class="flex flex-col items-center justify-center text-on-surface/60" href="checkbalance.html">
+        <span class="material-symbols-outlined">verified_user</span>
+        <span class="text-[11px] font-semibold uppercase tracking-widest mt-1">Verify</span>
+      </a>
+      <a class="flex flex-col items-center justify-center text-primary font-bold scale-110 transition-transform" href="trademarketplace.html">
+        <span class="material-symbols-outlined">swap_horiz</span>
+        <span class="text-[11px] font-semibold uppercase tracking-widest mt-1">Trade</span>
+      </a>
+      <a class="flex flex-col items-center justify-center text-on-surface/60" href="account.html">
+        <span class="material-symbols-outlined">person</span>
+        <span class="text-[11px] font-semibold uppercase tracking-widest mt-1">Profile</span>
+      </a>
+    </nav>
+  </body>
+</html>
