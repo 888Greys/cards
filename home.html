@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GiftCardsHub - Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script defer="" src="./site.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "surface-container": "#eeecff",
+                    "on-tertiary": "#ffffff",
+                    "surface": "#fbf8ff",
+                    "tertiary-fixed": "#e0e0ff",
+                    "background": "#fbf8ff",
+                    "inverse-on-surface": "#f1efff",
+                    "inverse-surface": "#202677",
+                    "tertiary-fixed-dim": "#bec2ff",
+                    "on-surface": "#060963",
+                    "on-surface-variant": "#494454",
+                    "surface-tint": "#6d3bd7",
+                    "secondary-fixed": "#ffdbcc",
+                    "on-secondary-fixed-variant": "#7a3000",
+                    "outline": "#7b7486",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#cbc3d7",
+                    "on-tertiary-container": "#fffbff",
+                    "surface-container-high": "#e7e6ff",
+                    "tertiary-container": "#676dc0",
+                    "surface-bright": "#fbf8ff",
+                    "primary-fixed-dim": "#d0bcff",
+                    "on-primary-container": "#fffbff",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed": "#23005c",
+                    "on-secondary-fixed": "#351000",
+                    "on-tertiary-fixed": "#060963",
+                    "primary": "#6b38d4",
+                    "on-background": "#060963",
+                    "surface-dim": "#d6d7ff",
+                    "on-error": "#ffffff",
+                    "on-secondary-container": "#572000",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e0e0ff",
+                    "secondary-container": "#fe6b00",
+                    "primary-container": "#8455ef",
+                    "on-primary-fixed-variant": "#5516be",
+                    "on-secondary": "#ffffff",
+                    "secondary": "#a04100",
+                    "surface-container-low": "#f5f2ff",
+                    "tertiary": "#4e54a5",
+                    "inverse-primary": "#d0bcff",
+                    "primary-fixed": "#e9ddff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed" data-page="home">
+<!-- TopAppBar Shell -->
+<header class="bg-[#fbf8ff]/70 dark:bg-slate-950/70 backdrop-blur-xl fixed top-0 w-full z-50">
+<div class="flex justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#8B5CF6] dark:text-violet-400" data-icon="menu">menu</span>
+<span class="text-xl font-black text-[#060963] dark:text-slate-100 font-['Inter'] tracking-tight">GiftCardsHub</span>
+</div>
+<!-- Desktop Nav Items -->
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-[#6b38d4] dark:text-violet-300 font-bold hover:bg-violet-100/50 dark:hover:bg-slate-800 transition-colors px-3 py-1 rounded-lg" href="home.html">Home</a>
+<a class="text-[#060963] dark:text-slate-400 opacity-70 font-['Inter'] hover:bg-violet-100/50 dark:hover:bg-slate-800 transition-colors px-3 py-1 rounded-lg" href="checkbalance.html">Verify</a>
+<a class="text-[#060963] dark:text-slate-400 opacity-70 font-['Inter'] hover:bg-violet-100/50 dark:hover:bg-slate-800 transition-colors px-3 py-1 rounded-lg" href="trademarketplace.html">Trade</a>
+<a class="text-[#060963] dark:text-slate-400 opacity-70 font-['Inter'] hover:bg-violet-100/50 dark:hover:bg-slate-800 transition-colors px-3 py-1 rounded-lg" href="account.html">Profile</a>
+</nav>
+<div class="flex items-center">
+<img alt="user profile" class="w-10 h-10 rounded-full object-cover ring-2 ring-primary-fixed" data-alt="Close-up portrait of a professional man with a friendly expression, studio lighting, clean background, high resolution" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8vo23B06ZiLpYlyz5YjhLPX22rtH9bDni5_1f29cvflHnYY8HR92iB9lwRI369xb5PDcqTSGLzJif0UPiN8afesg_fhskIIvvY8_A6TpJwCqetl7rEaCbR--u3_JZ_Is02X3gf9DwXIveK0FQUFPPatKEQZGZ1I32x1k5orEgSJEFM6Za2qvv7jnLNdPA7mdzU1GcZkMwYg8xRiNTvhXu0JyzAvBYe5dKzS4BhXxspFgNPo2thKYl8-Y08ted8tS7ELzdmMdRb9Qm"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32">
+<!-- Hero Section -->
+<section class="relative px-6 py-20 lg:py-32 overflow-hidden">
+<!-- Background Glow -->
+<div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px]"></div>
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7 space-y-8">
+<div class="inline-flex items-center gap-2 px-4 py-2 bg-tertiary-fixed text-on-tertiary-fixed rounded-full text-xs font-semibold tracking-wider uppercase">
+<span class="material-symbols-outlined text-sm" data-icon="verified_user">verified_user</span>
+                        Instant Verification Guaranteed
+                    </div>
+<h1 class="text-5xl lg:text-7xl font-bold tracking-tight text-on-surface leading-[1.1]">
+                        Your Gift Card <br/>
+<span class="bg-gradient-to-r from-primary to-primary-container bg-clip-text text-transparent">Trading Hub</span>
+</h1>
+<p class="text-lg text-on-surface-variant max-w-xl leading-relaxed">
+                        The most secure platform to check, buy, and sell gift cards. Experience the Luminous Vault where your digital assets are protected by industry-leading encryption and instant liquidity.
+                    </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<a class="bg-secondary text-on-secondary px-8 py-4 rounded-full font-bold text-lg hover:shadow-[0px_0px_20px_rgba(160,65,0,0.3)] transition-all active:scale-95 inline-flex items-center justify-center" href="trademarketplace.html">
+                            Get Started
+                        </a>
+<a class="bg-surface-container-lowest text-on-surface border border-outline-variant/15 px-8 py-4 rounded-full font-bold text-lg hover:bg-surface-container-low transition-all active:scale-95 inline-flex items-center justify-center" href="checkbalance.html">
+                            Check Balance
+                        </a>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="relative z-10 aspect-square rounded-2xl overflow-hidden bg-surface-container-low p-4">
+<img alt="trading interface" class="w-full h-full object-cover rounded-xl" data-alt="Modern digital interface showing financial charts and gift card icons in a sleek professional purple and white aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaeCnWGqBXfnOkSDhHpgLdVhs4IwO8nc6umaoQYobmdIpIWp6D7B2i600AXriYELh0iwTRyAcpVoZAteBy6NE1DJN7g5Ml-D1J33LTXFVj1sCW5l48DAjhEG8fGSSrCRWhHB1y3a-sIJXt685y37EVRRNT5wRdRReZ_k6NKhyd9_ujqqA9MF7uHuU50-N-uock1N7276UtZWB01NSCAVe7Yq3exxEB3X7L5BTmS0ypxKXwdpC5JNZScLw1diyzSII2xWT1tGfypA8h"/>
+<!-- Floating Trust Badge -->
+<div class="absolute bottom-8 right-8 bg-surface-container-lowest/90 backdrop-blur-md p-4 rounded-xl shadow-lg border border-outline-variant/15 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="shield">shield</span>
+</div>
+<div>
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-tighter">Secure Assets</p>
+<p class="text-sm font-bold text-on-surface">$2.4M+ Verified</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Trusted Brands Section -->
+<section class="px-6 py-12 bg-surface-container-low">
+<div class="max-w-7xl mx-auto">
+<p class="text-center text-label-md font-semibold text-on-surface-variant/60 uppercase tracking-[0.2em] mb-12">Trusted by Global Leaders</p>
+<div class="flex flex-wrap justify-center gap-12 lg:gap-24 opacity-40 grayscale">
+<span class="text-2xl font-black text-on-surface">AMAZON</span>
+<span class="text-2xl font-black text-on-surface">APPLE</span>
+<span class="text-2xl font-black text-on-surface">RAZER</span>
+<span class="text-2xl font-black text-on-surface">STEAM</span>
+<span class="text-2xl font-black text-on-surface">WALMART</span>
+</div>
+</div>
+</section>
+<!-- Bento Grid Services Section -->
+<section class="px-6 py-32 max-w-7xl mx-auto" id="support">
+<div class="mb-20 text-center lg:text-left">
+<h2 class="text-3xl lg:text-5xl font-bold text-on-surface mb-6">Everything You Need</h2>
+<p class="text-on-surface-variant max-w-2xl">A comprehensive suite of tools designed for the modern gift card enthusiast. Safe, fast, and completely transparent.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 h-auto lg:h-[600px]">
+<!-- Check Balance Card (Large Vertical) -->
+<a class="md:col-span-5 bg-surface-container-lowest rounded-2xl p-10 flex flex-col justify-between group hover:bg-primary hover:text-white transition-all duration-500 border border-outline-variant/15" href="checkbalance.html">
+<div>
+<div class="w-16 h-16 bg-primary-fixed rounded-xl flex items-center justify-center mb-8 group-hover:bg-white/20 transition-colors">
+<span class="material-symbols-outlined text-primary text-3xl group-hover:text-white" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<h3 class="text-2xl lg:text-3xl font-bold mb-4">Check Balance</h3>
+<p class="opacity-70 text-lg leading-relaxed">Instantly verify the remaining value of your cards from over 500+ global brands with 99.9% accuracy.</p>
+</div>
+<div class="mt-12 flex items-center gap-2 font-bold group-hover:gap-4 transition-all">
+                        Verify Now <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</a>
+<!-- Buy Giftcards Card -->
+<div class="md:col-span-7 bg-surface-container rounded-2xl p-10 flex flex-col md:flex-row gap-8 items-center border border-outline-variant/15">
+<div class="flex-1 space-y-6">
+<div class="w-16 h-16 bg-primary-fixed rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="shopping_bag">shopping_bag</span>
+</div>
+<h3 class="text-2xl lg:text-3xl font-bold">Buy Giftcards</h3>
+<p class="text-on-surface-variant leading-relaxed">Access discounted gift cards for your favorite stores. Secure checkout with crypto or bank transfer.</p>
+<a class="bg-surface-container-lowest text-on-surface px-6 py-3 rounded-full font-bold shadow-sm inline-flex items-center justify-center" href="trademarketplace.html">Browse Marketplace</a>
+</div>
+<div class="flex-1 w-full h-48 md:h-full bg-white/40 rounded-xl p-4 overflow-hidden relative">
+<img alt="gift cards layout" class="w-full h-full object-cover rounded-lg rotate-3" data-alt="Collection of vibrant colorful premium gift cards layered on top of each other, bright studio lighting, minimalist composition" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbq8yzlKrxNARDwTSs4wDpx_BGuGcDjyGpZYpsM2IszlXkH_QNKc4snWIj-PGDNktHqiN_nu3SUTT2TS7CsS6n-nupKTRtTuySOWyCylizzGfwV9bAWqlZMb_G5Ywb33xBmFsG1AsdojLcLiVVTpWey9utl1psNLI6pyORGVHPvMX-Ts6Xne0EjwUhbDq8V9VfWEZclOsJ3THj7CAglbQuEWNTS5TNzv_yXmjNH4cxt9E4FQM440Cp3tVTxUz3m7OFxvWp6Vq_WsSV"/>
+</div>
+</div>
+<!-- Sell Giftcards Card -->
+<div class="md:col-span-12 lg:col-span-7 bg-surface-container-high rounded-2xl p-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center border border-outline-variant/15">
+<div class="space-y-6 order-2 md:order-1">
+<div class="w-16 h-16 bg-primary-fixed rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="currency_exchange">currency_exchange</span>
+</div>
+<h3 class="text-2xl lg:text-3xl font-bold">Sell Giftcards</h3>
+<p class="text-on-surface-variant leading-relaxed">Turn your unused gift cards into instant cash. We offer the best market rates for all major brands.</p>
+<a class="bg-secondary text-on-secondary px-6 py-3 rounded-full font-bold inline-flex items-center justify-center" href="trademarketplace.html">Start Trading</a>
+</div>
+<div class="order-1 md:order-2 bg-primary/5 rounded-2xl p-8 flex flex-col justify-center items-center gap-4">
+<div class="text-primary font-black text-4xl">98.5%</div>
+<div class="text-sm font-bold text-on-surface-variant text-center tracking-widest uppercase">Payout Rate</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials Section -->
+<section class="px-6 py-32 bg-surface-container-low" id="reviews">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+<div class="max-w-xl">
+<h2 class="text-3xl lg:text-5xl font-bold text-on-surface mb-6">What Our Users Say</h2>
+<p class="text-on-surface-variant">Join thousands of traders who trust GiftCardsHub for their daily transactions.</p>
+</div>
+<div class="flex gap-4">
+<button class="w-14 h-14 rounded-full border border-outline-variant/20 flex items-center justify-center hover:bg-surface-container-lowest transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-14 h-14 rounded-full border border-outline-variant/20 flex items-center justify-center hover:bg-surface-container-lowest transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Testimonial 1 -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl shadow-[0px_20px_40px_rgba(6,9,99,0.03)] border border-outline-variant/10">
+<div class="flex gap-1 text-secondary mb-6">
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+</div>
+<p class="text-on-surface mb-8 italic leading-relaxed">"The verification speed is unlike anything I've used before. I had my funds in my wallet within 5 minutes of checking my Razer card."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img alt="testimonial avatar" class="w-full h-full object-cover" data-alt="Portrait of a young adult male with a friendly look, soft natural lighting, blurred background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArMN22QxiF7nJEX73E0HjuyQOa1uL1Ba-rT3cp3AsMmx9-jsKzYDoEVOTyDB3RBSa9P3087Y42SnL4oi4GWMtK93el_JPuA1nHoaaaVKyD1vg9_i9kPqMiUoLz23LtpxVYyzlDdyl9DTjl0KpFHqbBE9YwJX6MNHT6FJ7A5ItzMzKOnH_hQgPVqwgpyEL_RvSjr-QniuBwsv6dF0ZkENdaCD4ZojQ54AOqLUenwbAL5eoylMccxzCtjIGHOUj-4W5e008jarwz-dH3"/>
+</div>
+<div>
+<p class="font-bold text-on-surface">Marcus Chen</p>
+<p class="text-xs text-on-surface-variant font-medium">Power Trader</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl shadow-[0px_20px_40px_rgba(6,9,99,0.03)] border border-outline-variant/10">
+<div class="flex gap-1 text-secondary mb-6">
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+</div>
+<p class="text-on-surface mb-8 italic leading-relaxed">"GiftCardsHub makes it so easy to get rid of cards I don't need. The rates are the best in the market and customer service is top-notch."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img alt="testimonial avatar" class="w-full h-full object-cover" data-alt="Portrait of a smiling young woman, professional attire, soft daylight, outdoor urban background in soft focus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaXBi0v4GdrE1q0wMjoS32VtuNTN0GJ9y5hcWhbdVxj9ebC26y_O-rE3vJaygpXW_utE7OrHkuygTA5Idrj12QKK8loBRs562UhiYvEDQzi1Dk69qkXWtrHP18rJ0XQsPhDbfkW_eUKWN1gHPOe3hxKVOBUx9ZFIJV2dfW_rZagzwVLRPH55MiRmCIlO1o6fOeENSbFRu5BOndJCHwLNs0M-D3JWucepNhGpw0jzz1_EN1UgGxWzs3QavFquR8fQiyrOZkS3W1inkL"/>
+</div>
+<div>
+<p class="font-bold text-on-surface">Sarah Williams</p>
+<p class="text-xs text-on-surface-variant font-medium">Verified Seller</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl shadow-[0px_20px_40px_rgba(6,9,99,0.03)] border border-outline-variant/10">
+<div class="flex gap-1 text-secondary mb-6">
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+</div>
+<p class="text-on-surface mb-8 italic leading-relaxed">"The interface is so clean. I love that I can manage all my trades in one place without any clutter. Highly recommended for crypto users!"</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img alt="testimonial avatar" class="w-full h-full object-cover" data-alt="Headshot of a middle-aged man with a confident look, corporate headshot style, clean studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKXxjEUcMgnB0e7aZagi2kJj8B3mluTi6QjjwerVydHBmVbXDpwNzcrwHTDmt4XZB7tWgf9vrCzhvmlz26jsHa-VGzLd_-aKt9SyMLxVd9cSQdD1Kx_Iz5Cyy9jajA4XVavfsmxO0OdTAPAgVIJp96zZw-Mvs5zGBanTkKHbIcvemIrzTx73b3odNqenwo5BjVzSqSPJCelnA7GrLWaCh5PaTC_F5OYKFuOOasQRmeXfYHzAtAKtgQ4JY_xrb-iVvLvFNndUE_oidh"/>
+</div>
+<div>
+<p class="font-bold text-on-surface">David Okafor</p>
+<p class="text-xs text-on-surface-variant font-medium">Digital Nomad</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar Shell (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 dark:bg-slate-900/80 backdrop-blur-2xl rounded-t-[1.5rem] z-50 shadow-[0px_-4px_20px_rgba(6,9,99,0.04)]">
+<a class="flex flex-col items-center justify-center bg-[#e9ddff] dark:bg-violet-900/40 text-[#6b38d4] dark:text-violet-200 rounded-[1rem] px-5 py-2 active:scale-90 duration-150" href="home.html">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#060963]/60 dark:text-slate-400 px-5 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="checkbalance.html">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+<span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Verify</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#060963]/60 dark:text-slate-400 px-5 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="trademarketplace.html">
+<span class="material-symbols-outlined" data-icon="swap_horiz">swap_horiz</span>
+<span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Trade</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#060963]/60 dark:text-slate-400 px-5 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="account.html">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Profile</span>
+</a>
+</nav>
+<!-- Floating Action Button (Contextual for Landing) -->
+<button class="fixed bottom-24 right-6 w-16 h-16 bg-secondary text-on-secondary rounded-full flex items-center justify-center shadow-xl z-40 md:bottom-10 active:scale-95 duration-200 transition-transform">
+<span class="material-symbols-outlined text-3xl" data-icon="add">add</span>
+</button>
+<footer class="bg-on-surface text-surface py-20 px-6">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="col-span-1 md:col-span-2">
+<span class="text-2xl font-black tracking-tight mb-6 block">GiftCardsHub</span>
+<p class="opacity-60 max-w-sm leading-relaxed">The global standard for gift card trading. Secure, transparent, and built for the future of digital assets.</p>
+</div>
+<div>
+<h4 class="font-bold mb-6 text-tertiary-fixed">Quick Links</h4>
+<ul class="space-y-4 opacity-70">
+<li><a class="hover:text-primary-fixed transition-colors" href="#support">How it works</a></li>
+<li><a class="hover:text-primary-fixed transition-colors" href="trademarketplace.html">Pricing</a></li>
+<li><a class="hover:text-primary-fixed transition-colors" href="#reviews">FAQ</a></li>
+<li><a class="hover:text-primary-fixed transition-colors" href="account.html">Support</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-6 text-tertiary-fixed">Legal</h4>
+<ul class="space-y-4 opacity-70">
+<li><a class="hover:text-primary-fixed transition-colors" href="home.html#support">Terms of Service</a></li>
+<li><a class="hover:text-primary-fixed transition-colors" href="account.html">Privacy Policy</a></li>
+<li><a class="hover:text-primary-fixed transition-colors" href="checkbalance.html">Compliance</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-surface/10 flex flex-col md:flex-row justify-between items-center gap-4 opacity-50 text-sm">
+<p>&copy; 2024 GiftCardsHub Global. All rights reserved.</p>
+<div class="flex gap-6">
+<span class="material-symbols-outlined cursor-pointer" data-icon="facebook">social_leaderboard</span>
+<span class="material-symbols-outlined cursor-pointer" data-icon="twitter">retweet</span>
+<span class="material-symbols-outlined cursor-pointer" data-icon="instagram">retweet</span>
+</div>
+</div>
+</footer>
+</body></html>

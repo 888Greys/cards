@@ -1,0 +1,115 @@
+body {
+  min-height: max(884px, 100dvh);
+  background-image:
+    radial-gradient(circle at top right, rgba(107, 56, 212, 0.12), transparent 32rem),
+    radial-gradient(circle at bottom left, rgba(160, 65, 0, 0.08), transparent 28rem),
+    linear-gradient(180deg, #fbf8ff 0%, #f5f2ff 100%);
+  font-family: "Inter", sans-serif;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+.app-shell {
+  background: rgba(251, 248, 255, 0.8);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(203, 195, 215, 0.55);
+}
+
+.nav-link,
+.bottom-nav-link,
+.mobile-nav-link {
+  transition: all 0.2s ease;
+}
+
+.nav-link[data-active="true"] {
+  color: #6b38d4;
+  background: rgba(233, 221, 255, 0.75);
+}
+
+.bottom-nav-link[data-active="true"] {
+  color: #6b38d4;
+  background: rgba(233, 221, 255, 0.92);
+}
+
+.mobile-nav-link[data-active="true"] {
+  color: #6b38d4;
+  background: rgba(233, 221, 255, 0.75);
+}
+
+.mobile-panel {
+  box-shadow: 0 24px 50px rgba(6, 9, 99, 0.08);
+}
+
+.surface-card {
+  box-shadow: 0 20px 40px rgba(6, 9, 99, 0.05);
+}
+
+.brand-option,
+.filter-chip,
+.mode-tab {
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.brand-option[data-active="true"] {
+  border-color: #6b38d4;
+  background: rgba(233, 221, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+.filter-chip[data-active="true"],
+.mode-tab[data-active="true"] {
+  background: #6b38d4;
+  color: #ffffff;
+  border-color: #6b38d4;
+}
+
+.market-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.market-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 36px rgba(6, 9, 99, 0.08);
+}
+
+.notice {
+  border: 1px solid rgba(203, 195, 215, 0.6);
+}
+
+.notice[data-tone="success"] {
+  background: rgba(233, 221, 255, 0.9);
+  color: #23005c;
+}
+
+.notice[data-tone="warning"] {
+  background: rgba(255, 218, 214, 0.92);
+  color: #93000a;
+}
+
+.notice[data-tone="info"] {
+  background: rgba(224, 224, 255, 0.92);
+  color: #060963;
+}
+
+.result-panel[data-status="verified"] {
+  background: linear-gradient(135deg, rgba(233, 221, 255, 0.95), rgba(255, 255, 255, 0.98));
+}
+
+.result-panel[data-status="manual_review"] {
+  background: linear-gradient(135deg, rgba(255, 218, 214, 0.92), rgba(255, 255, 255, 0.98));
+}
+
+.result-panel[data-status="invalid"] {
+  background: linear-gradient(135deg, rgba(255, 245, 242, 0.94), rgba(255, 255, 255, 0.98));
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
