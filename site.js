@@ -60,6 +60,54 @@ const BRAND_CATALOG = [
   "Xbox",
 ];
 
+const SOURCE_LOGOS = {
+  Adidas: "./assets/brand-logos/adidas.svg",
+  Airbnb: "./assets/brand-logos/airbnb.svg",
+  Aldi: "./assets/brand-logos/aldi.svg",
+  Alo: "./assets/brand-logos/alo.svg",
+  Amazon: "./assets/brand-logos/amazon.svg",
+  "American Eagle": "./assets/brand-logos/american-eagle.svg",
+  "American Express": "./assets/brand-logos/amex.svg",
+  AMC: "./assets/brand-logos/amc.svg",
+  Apple: "./assets/brand-logos/apple.svg",
+  Audible: "./assets/brand-logos/audible.svg",
+  "Barnes & Noble": "./assets/brand-logos/barnes-noble.svg",
+  "Best Buy": "./assets/brand-logos/bestbuy.svg",
+  "Google Play": "./assets/brand-logos/google-play.svg",
+  IHOP: "./assets/brand-logos/ihop.svg",
+  iTunes: "./assets/brand-logos/itunes.svg",
+  Minecraft: "./assets/brand-logos/minecraft.svg",
+  "NBA.com": "./assets/brand-logos/nba.svg",
+  Netflix: "./assets/brand-logos/netflix.svg",
+  Nike: "./assets/brand-logos/nike.svg",
+  "Nintendo eShop": "./assets/brand-logos/nintendo.svg",
+  Nordstrom: "./assets/brand-logos/nordstrom.svg",
+  "Old Navy": "./assets/brand-logos/oldnavy.svg",
+  One4All: "./assets/brand-logos/one4all.svg",
+  OneVanilla: "./assets/brand-logos/onevanilla.svg",
+  Pandora: "./assets/brand-logos/pandora.svg",
+  "Paramount+": "./assets/brand-logos/paramount.svg",
+  PlayStation: "./assets/brand-logos/playstation.svg",
+  Qantas: "./assets/brand-logos/qantas.svg",
+  "Razer Gold": "./assets/brand-logos/razer-gold.svg",
+  Roblox: "./assets/brand-logos/roblox.svg",
+  Spotify: "./assets/brand-logos/spotify.svg",
+  Starbucks: "./assets/brand-logos/starbucks.svg",
+  Steam: "./assets/brand-logos/steam.svg",
+  Subway: "./assets/brand-logos/subway.svg",
+  Target: "./assets/brand-logos/target.svg",
+  Twitch: "./assets/brand-logos/twitch.svg",
+  Uber: "./assets/brand-logos/uber.svg",
+  "Ulta Beauty": "./assets/brand-logos/ulta.svg",
+  "Vanilla Mastercard": "./assets/brand-logos/vanilla-mastercard.svg",
+  "Vanilla Visa": "./assets/brand-logos/vanilla-visa.svg",
+  "Visa Gift Card": "./assets/brand-logos/visa.svg",
+  Vudu: "./assets/brand-logos/vudu.svg",
+  Walmart: "./assets/brand-logos/walmart.svg",
+  "Walmart Visa": "./assets/brand-logos/walmart-visa.svg",
+  Xbox: "./assets/brand-logos/xbox.svg",
+};
+
 function setButtonState(button, active) {
   button.classList.remove(...activeButtonClasses, ...inactiveButtonClasses);
   if (active) {
@@ -67,6 +115,231 @@ function setButtonState(button, active) {
   } else {
     button.classList.add(...inactiveButtonClasses);
   }
+}
+
+function initialsFromName(name) {
+  const words = String(name || "")
+    .split(/\s+/)
+    .filter(Boolean);
+  if (!words.length) return "GC";
+  if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
+  return `${words[0][0]}${words[1][0]}`.toUpperCase();
+}
+
+function createBrandOption(brandName) {
+  const option = document.createElement("button");
+  option.type = "button";
+  option.className =
+    "w-full px-3 py-2.5 rounded-lg text-left hover:bg-primary-fixed/35 transition-colors flex items-center justify-between gap-3";
+  option.setAttribute("data-brand-option", "");
+  option.setAttribute("data-brand-value", brandName);
+  const logo = SOURCE_LOGOS[brandName] || "";
+  option.setAttribute("data-brand-logo", logo);
+
+  const left = document.createElement("span");
+  left.className = "flex items-center gap-3 min-w-0";
+
+  if (logo) {
+    const image = document.createElement("img");
+    image.src = logo;
+    image.alt = `${brandName} logo`;
+    image.loading = "lazy";
+    image.className = "w-4 h-4 object-contain rounded-[3px] bg-white p-[1px] shrink-0";
+    left.appendChild(image);
+  } else {
+    const fallback = document.createElement("span");
+    fallback.className =
+      "w-4 h-4 rounded-[4px] bg-primary-fixed/70 text-primary text-[9px] font-black grid place-items-center shrink-0";
+    fallback.textContent = initialsFromName(brandName);
+    left.appendChild(fallback);
+  }
+
+  const label = document.createElement("span");
+  label.className = "text-sm text-on-surface truncate";
+  label.textContent = brandName;
+  left.appendChild(label);
+
+  const check = document.createElement("span");
+  check.className =
+    "material-symbols-outlined text-[17px] text-primary transition-opacity opacity-0";
+  check.textContent = "check";
+  check.setAttribute("data-brand-option-check", "");
+
+  option.append(left, check);
+  return option;
+}
+
+function initBrandCombobox({
+  combobox,
+  hiddenInput,
+  nativeSelect,
+  trigger,
+  menu,
+  search,
+  optionsRoot,
+  emptyState,
+  currentLabel,
+  currentLogo,
+  defaultValue = "",
+  placeholderLabel = "Select a brand...",
+  allowEmpty = false,
+  onChange = () => {},
+}) {
+  if (
+    !combobox ||
+    !trigger ||
+    !menu ||
+    !optionsRoot ||
+    !emptyState ||
+    !currentLabel ||
+    !currentLogo
+  ) {
+    return null;
+  }
+
+  if (!optionsRoot.children.length) {
+    const fragment = document.createDocumentFragment();
+    BRAND_CATALOG.forEach((brandName) => {
+      fragment.appendChild(createBrandOption(brandName));
+    });
+    optionsRoot.appendChild(fragment);
+  }
+
+  const brandOptions = Array.from(optionsRoot.querySelectorAll("[data-brand-option]"));
+  const findBrandOption = (brandName) =>
+    brandOptions.find((option) => option.dataset.brandValue === brandName);
+  const getFallbackValue = () => {
+    if (defaultValue && findBrandOption(defaultValue)) return defaultValue;
+    return brandOptions[0]?.dataset.brandValue || "";
+  };
+
+  let selectedBrand = String(hiddenInput?.value || nativeSelect?.value || defaultValue || "").trim();
+  if (!selectedBrand || !findBrandOption(selectedBrand)) {
+    selectedBrand = allowEmpty ? "" : getFallbackValue();
+  }
+
+  const setBrandMenuOpen = (open) => {
+    menu.classList.toggle("hidden", !open);
+    trigger.setAttribute("aria-expanded", String(open));
+    if (open) {
+      search?.focus();
+      return;
+    }
+    search?.blur();
+  };
+
+  const filterBrandOptions = (searchTerm) => {
+    const normalized = String(searchTerm || "").trim().toLowerCase();
+    let visibleCount = 0;
+    brandOptions.forEach((option) => {
+      const name = (option.dataset.brandValue || "").toLowerCase();
+      const visible = !normalized || name.includes(normalized);
+      option.hidden = !visible;
+      if (visible) visibleCount += 1;
+    });
+    emptyState.classList.toggle("hidden", visibleCount > 0);
+  };
+
+  const setSelectedBrand = (nextBrand) => {
+    const normalized = String(nextBrand || "").trim();
+    if (normalized && !findBrandOption(normalized)) return;
+
+    if (!normalized) {
+      selectedBrand = allowEmpty ? "" : getFallbackValue();
+    } else {
+      selectedBrand = normalized;
+    }
+
+    if (hiddenInput) hiddenInput.value = selectedBrand;
+    if (nativeSelect) nativeSelect.value = selectedBrand;
+    currentLabel.textContent = selectedBrand || placeholderLabel;
+
+    const activeOption = findBrandOption(selectedBrand);
+    const activeLogo = activeOption?.dataset.brandLogo || SOURCE_LOGOS[selectedBrand] || "";
+    if (selectedBrand && activeLogo) {
+      currentLogo.src = activeLogo;
+      currentLogo.alt = `${selectedBrand} logo`;
+      currentLogo.hidden = false;
+    } else {
+      currentLogo.removeAttribute("src");
+      currentLogo.alt = "";
+      currentLogo.hidden = true;
+    }
+
+    brandOptions.forEach((option) => {
+      const active = option.dataset.brandValue === selectedBrand;
+      option.setAttribute("aria-selected", String(active));
+      option.classList.toggle("bg-primary-fixed/55", active);
+      const check = option.querySelector("[data-brand-option-check]");
+      if (check) {
+        check.classList.toggle("opacity-100", active);
+        check.classList.toggle("opacity-0", !active);
+      }
+    });
+
+    onChange(selectedBrand);
+  };
+
+  trigger.addEventListener("click", () => {
+    const isHidden = menu.classList.contains("hidden");
+    setBrandMenuOpen(isHidden);
+    if (isHidden && search) {
+      search.value = "";
+      filterBrandOptions("");
+    }
+  });
+
+  trigger.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowDown" || event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      setBrandMenuOpen(true);
+      if (search) {
+        search.value = "";
+        filterBrandOptions("");
+      }
+    }
+  });
+
+  search?.addEventListener("input", () => {
+    filterBrandOptions(search.value);
+  });
+
+  search?.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    event.preventDefault();
+    setBrandMenuOpen(false);
+    trigger.focus();
+  });
+
+  brandOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      setSelectedBrand(option.dataset.brandValue || selectedBrand);
+      setBrandMenuOpen(false);
+      trigger.focus();
+    });
+  });
+
+  document.addEventListener("pointerdown", (event) => {
+    if (menu.classList.contains("hidden")) return;
+    if (!(event.target instanceof Node)) return;
+    if (!combobox.contains(event.target)) {
+      setBrandMenuOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setBrandMenuOpen(false);
+    }
+  });
+
+  setSelectedBrand(selectedBrand);
+  filterBrandOptions("");
+
+  return {
+    getValue: () => selectedBrand,
+    setValue: setSelectedBrand,
+  };
 }
 
 function initCheckBalance() {
@@ -90,124 +363,14 @@ function initCheckBalance() {
   const resultCopy = document.querySelector("#balance-result-copy");
   const resultAmount = document.querySelector("#balance-result-amount");
   const cardValueInput = document.querySelector("#card_value");
+  const currencyInput = document.querySelector("#card_currency");
   const sellerEmailInput = document.querySelector("#seller_email");
   const sellEstimatedPayout = document.querySelector("#sell-estimated-payout");
   const sellEstimateCopy = document.querySelector("#sell-estimate-copy");
   const sellStatus = document.querySelector("#sell-status");
   const cardTypeButtons = Array.from(document.querySelectorAll("[data-card-type-button]"));
   const cardImageSection = document.querySelector("[data-card-image-section]");
-
-  const sourceLogos = {
-    Adidas: "./assets/brand-logos/adidas.svg",
-    Airbnb: "./assets/brand-logos/airbnb.svg",
-    Aldi: "./assets/brand-logos/aldi.svg",
-    Alo: "./assets/brand-logos/alo.svg",
-    Amazon: "./assets/brand-logos/amazon.svg",
-    "American Eagle": "./assets/brand-logos/american-eagle.svg",
-    "American Express": "./assets/brand-logos/amex.svg",
-    AMC: "./assets/brand-logos/amc.svg",
-    Apple: "./assets/brand-logos/apple.svg",
-    Audible: "./assets/brand-logos/audible.svg",
-    "Barnes & Noble": "./assets/brand-logos/barnes-noble.svg",
-    "Best Buy": "./assets/brand-logos/bestbuy.svg",
-    "Google Play": "./assets/brand-logos/google-play.svg",
-    IHOP: "./assets/brand-logos/ihop.svg",
-    iTunes: "./assets/brand-logos/itunes.svg",
-    Minecraft: "./assets/brand-logos/minecraft.svg",
-    "NBA.com": "./assets/brand-logos/nba.svg",
-    Netflix: "./assets/brand-logos/netflix.svg",
-    Nike: "./assets/brand-logos/nike.svg",
-    "Nintendo eShop": "./assets/brand-logos/nintendo.svg",
-    Nordstrom: "./assets/brand-logos/nordstrom.svg",
-    "Old Navy": "./assets/brand-logos/oldnavy.svg",
-    One4All: "./assets/brand-logos/one4all.svg",
-    OneVanilla: "./assets/brand-logos/onevanilla.svg",
-    Pandora: "./assets/brand-logos/pandora.svg",
-    "Paramount+": "./assets/brand-logos/paramount.svg",
-    PlayStation: "./assets/brand-logos/playstation.svg",
-    Qantas: "./assets/brand-logos/qantas.svg",
-    "Razer Gold": "./assets/brand-logos/razer-gold.svg",
-    Roblox: "./assets/brand-logos/roblox.svg",
-    Spotify: "./assets/brand-logos/spotify.svg",
-    Starbucks: "./assets/brand-logos/starbucks.svg",
-    Steam: "./assets/brand-logos/steam.svg",
-    Subway: "./assets/brand-logos/subway.svg",
-    Target: "./assets/brand-logos/target.svg",
-    Twitch: "./assets/brand-logos/twitch.svg",
-    Uber: "./assets/brand-logos/uber.svg",
-    "Ulta Beauty": "./assets/brand-logos/ulta.svg",
-    "Vanilla Mastercard": "./assets/brand-logos/vanilla-mastercard.svg",
-    "Vanilla Visa": "./assets/brand-logos/vanilla-visa.svg",
-    "Visa Gift Card": "./assets/brand-logos/visa.svg",
-    Vudu: "./assets/brand-logos/vudu.svg",
-    Walmart: "./assets/brand-logos/walmart.svg",
-    "Walmart Visa": "./assets/brand-logos/walmart-visa.svg",
-    Xbox: "./assets/brand-logos/xbox.svg",
-  };
-
-  const initialsFromName = (name) => {
-    const words = String(name || "")
-      .split(/\s+/)
-      .filter(Boolean);
-    if (!words.length) return "GC";
-    if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
-    return `${words[0][0]}${words[1][0]}`.toUpperCase();
-  };
-
-  const createBrandOption = (brandName) => {
-    const option = document.createElement("button");
-    option.type = "button";
-    option.className =
-      "w-full px-3 py-2.5 rounded-lg text-left hover:bg-primary-fixed/35 transition-colors flex items-center justify-between gap-3";
-    option.setAttribute("data-brand-option", "");
-    option.setAttribute("data-brand-value", brandName);
-    const logo = sourceLogos[brandName] || "";
-    option.setAttribute("data-brand-logo", logo);
-
-    const left = document.createElement("span");
-    left.className = "flex items-center gap-3 min-w-0";
-
-    if (logo) {
-      const image = document.createElement("img");
-      image.src = logo;
-      image.alt = `${brandName} logo`;
-      image.loading = "lazy";
-      image.className = "w-4 h-4 object-contain rounded-[3px] bg-white p-[1px] shrink-0";
-      left.appendChild(image);
-    } else {
-      const fallback = document.createElement("span");
-      fallback.className =
-        "w-4 h-4 rounded-[4px] bg-primary-fixed/70 text-primary text-[9px] font-black grid place-items-center shrink-0";
-      fallback.textContent = initialsFromName(brandName);
-      left.appendChild(fallback);
-    }
-
-    const label = document.createElement("span");
-    label.className = "text-sm text-on-surface truncate";
-    label.textContent = brandName;
-    left.appendChild(label);
-
-    const check = document.createElement("span");
-    check.className =
-      "material-symbols-outlined text-[17px] text-primary transition-opacity opacity-0";
-    check.textContent = "check";
-    check.setAttribute("data-brand-option-check", "");
-
-    option.append(left, check);
-    return option;
-  };
-
-  if (brandOptionsRoot && !brandOptionsRoot.children.length) {
-    const fragment = document.createDocumentFragment();
-    BRAND_CATALOG.forEach((brandName) => {
-      fragment.appendChild(createBrandOption(brandName));
-    });
-    brandOptionsRoot.appendChild(fragment);
-  }
-
-  const brandOptions = Array.from(document.querySelectorAll("[data-brand-option]"));
-  let selectedBrand =
-    brandInput?.value || brandSelect?.value || brandOptions[0]?.dataset.brandValue || "Amazon";
+  let selectedBrand = brandInput?.value || brandSelect?.value || "Amazon";
   const payoutRates = {
     Amazon: 0.86,
     "Google Play": 0.84,
@@ -222,11 +385,20 @@ function initCheckBalance() {
     if (!Number.isFinite(parsed) || parsed <= 0) return 0;
     return parsed;
   };
-  const formatUsd = (amount) =>
-    new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-    }).format(amount);
+  const formatCurrencyAmount = (amount, currency = "USD") => {
+    try {
+      return new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency,
+      }).format(amount);
+    } catch {
+      return new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+      }).format(amount);
+    }
+  };
+  const formatUsd = (amount) => formatCurrencyAmount(amount, "USD");
   const getSellRateForBrand = (brandName) => payoutRates[brandName] || 0.85;
 
   const updateSellEstimate = () => {
@@ -281,54 +453,7 @@ function initCheckBalance() {
 
   syncCardTypeUI();
 
-  const findBrandOption = (brandName) =>
-    brandOptions.find((option) => option.dataset.brandValue === brandName);
-
-  const setBrandMenuOpen = (open) => {
-    if (!brandMenu || !brandTrigger) return;
-    brandMenu.classList.toggle("hidden", !open);
-    brandTrigger.setAttribute("aria-expanded", String(open));
-    if (open) {
-      brandSearch?.focus();
-      return;
-    }
-    brandSearch?.blur();
-  };
-
-  const filterBrandOptions = (searchTerm) => {
-    const normalized = String(searchTerm || "").trim().toLowerCase();
-    let visibleCount = 0;
-    brandOptions.forEach((option) => {
-      const name = (option.dataset.brandValue || "").toLowerCase();
-      const visible = !normalized || name.includes(normalized);
-      option.hidden = !visible;
-      if (visible) visibleCount += 1;
-    });
-    if (brandEmptyState) {
-      brandEmptyState.classList.toggle("hidden", visibleCount > 0);
-    }
-  };
-
-  const setSelectedBrand = (nextBrand) => {
-    selectedBrand = String(nextBrand || selectedBrand);
-    if (brandInput) brandInput.value = selectedBrand;
-    if (brandSelect) brandSelect.value = selectedBrand;
-    if (brandCurrentLabel) brandCurrentLabel.textContent = selectedBrand;
-
-    const activeOption = findBrandOption(selectedBrand);
-    const activeLogo = activeOption?.dataset.brandLogo || "";
-    if (brandCurrentLogo) {
-      if (activeLogo) {
-        brandCurrentLogo.src = activeLogo;
-        brandCurrentLogo.alt = `${selectedBrand} logo`;
-        brandCurrentLogo.hidden = false;
-      } else {
-        brandCurrentLogo.removeAttribute("src");
-        brandCurrentLogo.alt = "";
-        brandCurrentLogo.hidden = true;
-      }
-    }
-
+  const syncBrandButtons = () => {
     brandButtons.forEach((item) => {
       const active = item.dataset.brand === selectedBrand;
       item.setAttribute("aria-pressed", String(active));
@@ -347,97 +472,45 @@ function initCheckBalance() {
         image.classList.toggle("grayscale", !active);
       }
     });
-
-    brandOptions.forEach((option) => {
-      const active = option.dataset.brandValue === selectedBrand;
-      option.setAttribute("aria-selected", String(active));
-      option.classList.toggle("bg-primary-fixed/55", active);
-      const check = option.querySelector("[data-brand-option-check]");
-      if (check) {
-        check.classList.toggle("opacity-100", active);
-        check.classList.toggle("opacity-0", !active);
-      }
-    });
-
-    if (isSellFlow) updateSellEstimate();
   };
+
+  const brandPicker = initBrandCombobox({
+    combobox: brandCombobox,
+    hiddenInput: brandInput,
+    nativeSelect: brandSelect,
+    trigger: brandTrigger,
+    menu: brandMenu,
+    search: brandSearch,
+    optionsRoot: brandOptionsRoot,
+    emptyState: brandEmptyState,
+    currentLabel: brandCurrentLabel,
+    currentLogo: brandCurrentLogo,
+    defaultValue: "Amazon",
+    onChange: (brandName) => {
+      selectedBrand = brandName || "Amazon";
+      syncBrandButtons();
+      if (isSellFlow) updateSellEstimate();
+    },
+  });
+
+  if (brandPicker?.getValue()) {
+    selectedBrand = brandPicker.getValue();
+  }
 
   if (brandButtons.length) {
     brandButtons.forEach((button) => {
       button.addEventListener("click", () => {
-        setSelectedBrand(button.dataset.brand || selectedBrand);
+        const nextBrand = button.dataset.brand || selectedBrand;
+        if (brandPicker) {
+          brandPicker.setValue(nextBrand);
+          return;
+        }
+        selectedBrand = nextBrand;
+        syncBrandButtons();
+        if (isSellFlow) updateSellEstimate();
       });
     });
   }
-
-  if (brandSelect) {
-    brandSelect.value = selectedBrand;
-    brandSelect.addEventListener("change", () => {
-      setSelectedBrand(brandSelect.value || selectedBrand);
-    });
-  }
-
-  if (brandTrigger) {
-    brandTrigger.addEventListener("click", () => {
-      const isHidden = brandMenu?.classList.contains("hidden");
-      setBrandMenuOpen(Boolean(isHidden));
-      if (isHidden && brandSearch) {
-        brandSearch.value = "";
-        filterBrandOptions("");
-      }
-    });
-
-    brandTrigger.addEventListener("keydown", (event) => {
-      if (event.key === "ArrowDown" || event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        setBrandMenuOpen(true);
-        if (brandSearch) {
-          brandSearch.value = "";
-          filterBrandOptions("");
-        }
-      }
-    });
-  }
-
-  brandSearch?.addEventListener("input", () => {
-    filterBrandOptions(brandSearch.value);
-  });
-
-  brandSearch?.addEventListener("keydown", (event) => {
-    if (event.key !== "Escape") return;
-    event.preventDefault();
-    setBrandMenuOpen(false);
-    brandTrigger?.focus();
-  });
-
-  brandOptions.forEach((option) => {
-    option.addEventListener("click", () => {
-      setSelectedBrand(option.dataset.brandValue || selectedBrand);
-      setBrandMenuOpen(false);
-      brandTrigger?.focus();
-    });
-  });
-
-  document.addEventListener("pointerdown", (event) => {
-    if (!brandMenu || brandMenu.classList.contains("hidden")) return;
-    if (!(event.target instanceof Node)) return;
-    if (!brandCombobox?.contains(event.target)) {
-      setBrandMenuOpen(false);
-    }
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      setBrandMenuOpen(false);
-    }
-  });
-
-  if (brandOptions.length && !findBrandOption(selectedBrand)) {
-    selectedBrand = brandOptions[0].dataset.brandValue || selectedBrand;
-  }
-
-  setSelectedBrand(selectedBrand);
-  filterBrandOptions("");
 
   if (brandInput && !brandInput.value) {
     brandInput.value = selectedBrand;
@@ -455,6 +528,8 @@ function initCheckBalance() {
     const pinInput = document.querySelector("#pin");
     const digits = (cardNumberInput?.value || "").replace(/\D/g, "");
     const pin = (pinInput?.value || "").trim();
+    const verifyAmount = parseCurrencyInput(cardValueInput?.value);
+    const selectedCurrency = String(currencyInput?.value || "USD").toUpperCase();
 
     if (isSellFlow) {
       const cardValue = parseCurrencyInput(cardValueInput?.value);
@@ -488,6 +563,30 @@ function initCheckBalance() {
         sellStatus.textContent =
           "Quote request received. Final rate may vary after verification and image review.";
       }
+      return;
+    }
+
+    const usesAmountVerification = Boolean(cardValueInput && !cardNumberInput);
+    if (usesAmountVerification) {
+      if (verifyAmount <= 0 || pin.length < 4) {
+        result.hidden = false;
+        result.className =
+          "rounded-[1.5rem] border border-[#f0d1ce] bg-[#fff4f2] p-6 text-[#8c2c22]";
+        resultTitle.textContent = "More details needed";
+        resultCopy.textContent =
+          "Enter the card amount and the original redemption code to run verification.";
+        resultAmount.textContent = "Check input";
+        return;
+      }
+
+      result.hidden = false;
+      result.className =
+        "rounded-[1.5rem] border border-[#d8e7ff] bg-[#f4f9ff] p-6 text-[#14213d]";
+      resultTitle.textContent = `${selectedBrand} card verified`;
+      resultCopy.textContent = `${selectedCurrency} ${verifyAmount.toFixed(
+        2
+      )} submission accepted. Redemption code is formatted correctly and ready for review.`;
+      resultAmount.textContent = formatCurrencyAmount(verifyAmount, selectedCurrency);
       return;
     }
 
@@ -624,28 +723,19 @@ function initMarketplace() {
 }
 
 function initBuyBrandSelect() {
-  const select = document.querySelector("[data-buy-brand-select]");
-  if (!select) return;
-
-  const currentValue = select.value;
-  const fragment = document.createDocumentFragment();
-
-  const placeholder = document.createElement("option");
-  placeholder.textContent = "Select a brand...";
-  placeholder.value = "";
-  fragment.appendChild(placeholder);
-
-  BRAND_CATALOG.forEach((brandName) => {
-    const option = document.createElement("option");
-    option.value = brandName;
-    option.textContent = brandName;
-    fragment.appendChild(option);
+  initBrandCombobox({
+    combobox: document.querySelector("[data-buy-brand-combobox]"),
+    hiddenInput: document.querySelector("#buy_selected_brand"),
+    trigger: document.querySelector("[data-buy-brand-trigger]"),
+    menu: document.querySelector("[data-buy-brand-menu]"),
+    search: document.querySelector("[data-buy-brand-search]"),
+    optionsRoot: document.querySelector("[data-buy-brand-options]"),
+    emptyState: document.querySelector("[data-buy-brand-empty]"),
+    currentLabel: document.querySelector("[data-buy-brand-current]"),
+    currentLogo: document.querySelector("[data-buy-brand-current-logo]"),
+    placeholderLabel: "Select a brand...",
+    allowEmpty: true,
   });
-
-  select.replaceChildren(fragment);
-  if (BRAND_CATALOG.includes(currentValue)) {
-    select.value = currentValue;
-  }
 }
 
 initCheckBalance();

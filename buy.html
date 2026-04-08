@@ -98,9 +98,6 @@
     <header class="bg-[#fbf8ff]/70 backdrop-blur-xl fixed top-0 w-full z-50">
       <div class="flex justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto">
         <div class="flex items-center gap-3">
-          <button class="md:hidden hover:bg-violet-100/50 transition-colors p-1.5 rounded-full" aria-label="Open menu">
-            <span class="material-symbols-outlined text-[#1a1a2e]" data-icon="menu">menu</span>
-          </button>
           <div class="w-9 h-9 rounded-[10px] bg-gradient-to-br from-[#9b59b6] to-[#8e44ad] flex items-center justify-center">
             <span class="material-symbols-outlined text-white text-lg" style="font-variation-settings:'FILL' 1">redeem</span>
           </div>
@@ -130,12 +127,45 @@
         <div class="bg-surface-container-low rounded-2xl p-6 space-y-6 shadow-sm border border-outline-variant/15">
           <!-- Dropdown -->
           <div class="space-y-2">
-            <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant opacity-70 px-1">Choose Brand</label>
-            <div class="relative">
-              <select class="w-full h-14 pl-4 pr-10 bg-surface-container-lowest border-none rounded-xl text-body appearance-none focus:ring-2 focus:ring-primary outline-none" data-buy-brand-select>
-                <option>Select a brand...</option>
-              </select>
-              <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+            <div class="space-y-2 relative" data-buy-brand-combobox>
+              <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant opacity-70 px-1" for="buy_brand_picker">Choose Brand</label>
+              <input id="buy_selected_brand" name="selected_brand" type="hidden" value="" />
+              <button
+                aria-controls="buy_brand_picker_menu"
+                aria-expanded="false"
+                aria-haspopup="listbox"
+                class="w-full h-14 px-4 bg-surface-container-lowest border border-outline-variant/20 rounded-xl text-body focus:ring-2 focus:ring-primary outline-none transition-all flex items-center justify-between gap-3"
+                data-buy-brand-trigger
+                id="buy_brand_picker"
+                type="button"
+              >
+                <span class="flex items-center gap-2 min-w-0">
+                  <img alt="" class="w-5 h-5 object-contain rounded-[4px] bg-white p-[2px] shrink-0" data-buy-brand-current-logo hidden />
+                  <span class="truncate text-left" data-buy-brand-current>Select a brand...</span>
+                </span>
+                <span class="material-symbols-outlined shrink-0 text-on-surface-variant">expand_more</span>
+              </button>
+
+              <div
+                class="hidden absolute top-[calc(100%+0.5rem)] left-0 right-0 z-30 bg-surface-container-lowest border border-outline-variant/30 rounded-2xl shadow-[0px_14px_30px_rgba(0,0,0,0.14)] overflow-hidden"
+                data-buy-brand-menu
+                id="buy_brand_picker_menu"
+              >
+                <div class="p-3 border-b border-outline-variant/20">
+                  <label class="relative block">
+                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+                    <input
+                      autocomplete="off"
+                      class="w-full h-10 pl-10 pr-3 rounded-xl border border-outline-variant/25 bg-surface text-on-surface text-sm placeholder:text-on-surface-variant/60 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none"
+                      data-buy-brand-search
+                      placeholder="Search brands..."
+                      type="text"
+                    />
+                  </label>
+                </div>
+                <div class="max-h-64 overflow-y-auto p-1.5 space-y-0.5" data-buy-brand-options role="listbox"></div>
+                <p class="hidden px-3 py-2 text-xs text-on-surface-variant" data-buy-brand-empty>No matching brands found.</p>
+              </div>
             </div>
           </div>
           <!-- Value Grid -->
@@ -170,7 +200,7 @@
           <div class="bg-surface-container-lowest p-4 rounded-2xl relative shadow-sm hover:shadow-md transition-shadow group border border-outline-variant/15">
             <div class="absolute top-2 right-2 bg-tertiary-container text-on-tertiary text-[10px] font-bold px-2 py-0.5 rounded-full">Save 5%</div>
             <div class="h-20 w-full flex items-center justify-center mb-4">
-              <img alt="Adidas logo" class="h-12 object-contain grayscale group-hover:grayscale-0 transition-all" src="./assets/brand-logos/adidas.svg" />
+              <img alt="Adidas logo" class="h-12 object-contain transition-transform duration-200 group-hover:scale-105" src="./assets/brand-logos/adidas.svg" />
             </div>
             <p class="font-bold text-center">Adidas</p>
           </div>
@@ -178,7 +208,7 @@
           <div class="bg-surface-container-lowest p-4 rounded-2xl relative shadow-sm hover:shadow-md transition-shadow group border border-outline-variant/15">
             <div class="absolute top-2 right-2 bg-tertiary-container text-on-tertiary text-[10px] font-bold px-2 py-0.5 rounded-full">Save 3%</div>
             <div class="h-20 w-full flex items-center justify-center mb-4">
-              <img alt="Aldi logo" class="h-12 object-contain grayscale group-hover:grayscale-0 transition-all" src="./assets/brand-logos/aldi.svg" />
+              <img alt="Aldi logo" class="h-12 object-contain transition-transform duration-200 group-hover:scale-105" src="./assets/brand-logos/aldi.svg" />
             </div>
             <p class="font-bold text-center">Aldi</p>
           </div>
@@ -186,7 +216,7 @@
           <div class="bg-surface-container-lowest p-4 rounded-2xl relative shadow-sm hover:shadow-md transition-shadow group border border-outline-variant/15">
             <div class="absolute top-2 right-2 bg-tertiary-container text-on-tertiary text-[10px] font-bold px-2 py-0.5 rounded-full">Save 8%</div>
             <div class="h-20 w-full flex items-center justify-center mb-4">
-              <img alt="Alo logo" class="h-10 object-contain grayscale group-hover:grayscale-0 transition-all" src="./assets/brand-logos/alo.svg" />
+              <img alt="Alo logo" class="h-10 object-contain transition-transform duration-200 group-hover:scale-105" src="./assets/brand-logos/alo.svg" />
             </div>
             <p class="font-bold text-center">Alo</p>
           </div>
@@ -194,7 +224,7 @@
           <div class="bg-surface-container-lowest p-4 rounded-2xl relative shadow-sm hover:shadow-md transition-shadow group border border-outline-variant/15">
             <div class="absolute top-2 right-2 bg-tertiary-container text-on-tertiary text-[10px] font-bold px-2 py-0.5 rounded-full">Save 2%</div>
             <div class="h-20 w-full flex items-center justify-center mb-4">
-              <img alt="Amazon logo" class="h-8 object-contain grayscale group-hover:grayscale-0 transition-all" src="./assets/brand-logos/amazon.svg" />
+              <img alt="Amazon logo" class="h-8 object-contain transition-transform duration-200 group-hover:scale-105" src="./assets/brand-logos/amazon.svg" />
             </div>
             <p class="font-bold text-center">Amazon</p>
           </div>
