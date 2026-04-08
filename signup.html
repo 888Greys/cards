@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Sign Up - GiftCardsHub</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" src="./auth-ui.js"></script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        min-height: 100dvh;
+        background:
+          radial-gradient(circle at 10% 10%, rgba(107, 56, 212, 0.16), transparent 28rem),
+          radial-gradient(circle at 88% 88%, rgba(160, 65, 0, 0.1), transparent 24rem),
+          #fbf8ff;
+      }
+    </style>
+  </head>
+  <body class="text-[#060963]">
+    <main class="min-h-screen px-6 py-16">
+      <div class="mx-auto max-w-5xl grid gap-10 lg:grid-cols-2 items-center">
+        <section class="space-y-6">
+          <a class="text-sm font-bold tracking-[0.2em] uppercase text-[#6b38d4]" href="home.html">GiftCardsHub</a>
+          <h1 class="text-5xl font-black leading-tight">
+            Create your account and start <span class="text-[#6b38d4]">trading securely</span>.
+          </h1>
+          <p class="text-[#494454] text-lg leading-relaxed">
+            We will send your welcome email through Brevo when your account is created.
+          </p>
+          <p class="text-sm text-[#494454]">
+            Already have an account?
+            <a class="font-bold text-[#6b38d4] hover:underline" href="signin.html">Sign in</a>
+          </p>
+        </section>
+
+        <section class="rounded-3xl bg-white/90 border border-[#cbc3d7] p-8 shadow-[0_24px_40px_rgba(6,9,99,0.08)]">
+          <form class="space-y-5" data-auth-form="signup">
+            <div>
+              <label class="block text-sm font-bold mb-2" for="name">Full name</label>
+              <input
+                class="w-full rounded-xl border-none bg-[#f5f2ff] px-4 py-3 focus:ring-2 focus:ring-[#6b38d4]"
+                id="name"
+                name="name"
+                type="text"
+                autocomplete="name"
+                required
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-bold mb-2" for="email">Email</label>
+              <input
+                class="w-full rounded-xl border-none bg-[#f5f2ff] px-4 py-3 focus:ring-2 focus:ring-[#6b38d4]"
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-bold mb-2" for="password">Password</label>
+              <input
+                class="w-full rounded-xl border-none bg-[#f5f2ff] px-4 py-3 focus:ring-2 focus:ring-[#6b38d4]"
+                id="password"
+                name="password"
+                type="password"
+                autocomplete="new-password"
+                minlength="8"
+                required
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-bold mb-2" for="confirmPassword">Confirm password</label>
+              <input
+                class="w-full rounded-xl border-none bg-[#f5f2ff] px-4 py-3 focus:ring-2 focus:ring-[#6b38d4]"
+                id="confirmPassword"
+                name="confirmPassword"
+                type="password"
+                autocomplete="new-password"
+                minlength="8"
+                required
+              />
+            </div>
+            <button
+              class="w-full rounded-full bg-[#a04100] px-6 py-3 text-white font-bold hover:opacity-90 transition"
+              type="submit"
+            >
+              Create Account
+            </button>
+            <p class="rounded-xl px-4 py-3 text-sm hidden" data-auth-notice></p>
+          </form>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

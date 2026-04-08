@@ -90,7 +90,8 @@
     }
   </style>
   </head>
-<body class="bg-surface text-on-surface" data-page="account">
+<body class="bg-surface text-on-surface" data-page="account" data-auth-required="true">
+<script type="module" src="./auth-ui.js"></script>
 <!-- TopAppBar Shell -->
 <header class="bg-[#fbf8ff]/70 dark:bg-slate-950/70 backdrop-blur-xl fixed top-0 w-full z-50">
 <div class="flex justify-between items-center px-6 py-4 w-full">
@@ -118,7 +119,7 @@
 <section class="mb-12">
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
 <div>
-<h2 class="text-on-surface font-bold text-[3.5rem] leading-none tracking-[-0.02em] mb-2">Hello, <span class="text-primary">Julian</span></h2>
+<h2 class="text-on-surface font-bold text-[3.5rem] leading-none tracking-[-0.02em] mb-2">Hello, <span class="text-primary" data-auth-name="">Julian</span></h2>
 <p class="text-on-surface-variant font-medium">Manage your assets and trade history in one secure place.</p>
 </div>
 <div class="bg-primary-container p-6 rounded-2xl flex items-center gap-6 min-w-[280px]">
@@ -291,6 +292,15 @@
 <div>
 <p class="font-bold">Help &amp; Support</p>
 <p class="text-xs text-on-surface-variant">Contact center &amp; FAQ guides</p>
+</div>
+</a>
+<a class="group bg-surface-container-lowest p-6 rounded-2xl flex items-center gap-4 border border-outline-variant/15 hover:border-primary transition-all" data-signout="" href="signin.html">
+<div class="w-12 h-12 rounded-xl bg-surface-container-low flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+</div>
+<div>
+<p class="font-bold">Sign Out</p>
+<p class="text-xs text-on-surface-variant">End your active session on this device</p>
 </div>
 </a>
 </div>
