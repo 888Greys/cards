@@ -27,6 +27,11 @@
             Enter the code sent to <strong data-auth-email>your email</strong>. Verification secures your account before
             your first session.
           </p>
+          <div class="auth-pill-row" aria-label="Verification highlights">
+            <span class="auth-pill">One-time secure challenge</span>
+            <span class="auth-pill">Attempt-limited verification</span>
+            <span class="auth-pill">Session auto-activation</span>
+          </div>
           <ul class="auth-checklist">
             <li><span class="auth-dot" aria-hidden="true"></span>OTP expires after 10 minutes</li>
             <li><span class="auth-dot" aria-hidden="true"></span>Maximum 5 attempts before reset</li>
@@ -39,6 +44,20 @@
             <p class="auth-eyebrow">Secure verification</p>
             <h2 class="auth-title">Confirm OTP</h2>
             <p class="auth-helper">Use the latest code in your inbox. Copy and paste works too.</p>
+            <div class="auth-proof-grid" aria-label="Verification trust metrics">
+              <article class="auth-proof-item">
+                <p class="auth-proof-value">6 digits</p>
+                <p class="auth-proof-label">Verification code</p>
+              </article>
+              <article class="auth-proof-item">
+                <p class="auth-proof-value">5 tries</p>
+                <p class="auth-proof-label">Max attempts</p>
+              </article>
+              <article class="auth-proof-item">
+                <p class="auth-proof-value">~5 sec</p>
+                <p class="auth-proof-label">Average delivery</p>
+              </article>
+            </div>
 
             <form class="auth-form" data-auth-form="verify-otp" novalidate>
               <label class="auth-field" for="verify-otp-code">
@@ -60,6 +79,7 @@
 
               <button class="auth-submit" type="submit">Verify Email</button>
               <button class="auth-secondary" data-auth-resend type="button">Resend OTP</button>
+              <p class="auth-form-disclaimer">Only your latest OTP is valid. Request a new code if the current one expires.</p>
               <p class="auth-links">
                 Wrong email address?
                 <a href="signup.html">Create account again</a>

@@ -92,6 +92,24 @@ body[data-page="verify-otp"] {
   max-width: 46ch;
 }
 
+.auth-pill-row {
+  margin: 1.05rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.auth-pill {
+  border: 1px solid rgba(98, 54, 217, 0.18);
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+  padding: 0.32rem 0.72rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #3a2e61;
+  letter-spacing: 0.02em;
+}
+
 .auth-checklist {
   list-style: none;
   padding: 0;
@@ -154,6 +172,37 @@ body[data-page="verify-otp"] {
   font-size: 0.94rem;
   line-height: 1.6;
   color: var(--auth-muted);
+}
+
+.auth-proof-grid {
+  margin-top: 0.95rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.auth-proof-item {
+  border: 1px solid #ebe4f8;
+  background: #f9f7ff;
+  border-radius: 0.72rem;
+  padding: 0.55rem 0.62rem;
+}
+
+.auth-proof-value {
+  margin: 0;
+  font-size: 0.96rem;
+  font-weight: 850;
+  line-height: 1.1;
+  color: #2e2451;
+}
+
+.auth-proof-label {
+  margin: 0.2rem 0 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #655d81;
 }
 
 .auth-form {
@@ -269,6 +318,13 @@ body[data-page="verify-otp"] {
 .auth-secondary:disabled {
   opacity: 0.7;
   cursor: not-allowed;
+}
+
+.auth-form-disclaimer {
+  margin: 0.2rem 0 0;
+  font-size: 0.76rem;
+  line-height: 1.55;
+  color: #645c7f;
 }
 
 .auth-inline-message {
@@ -391,6 +447,10 @@ body[data-page="verify-otp"] {
 @media (max-width: 640px) {
   .auth-shell {
     width: calc(100vw - 1rem);
+  }
+
+  .auth-proof-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .auth-card {
