@@ -117,6 +117,132 @@ function setButtonState(button, active) {
   }
 }
 
+function ensureSitePopup() {
+  let popup = document.getElementById("site-flow-popup");
+  if (!popup) {
+    popup = document.createElement("div");
+    popup.id = "site-flow-popup";
+    popup.className =
+      "fixed inset-0 z-[75] hidden items-end justify-center bg-[#101828]/45 p-4 backdrop-blur-[8px] sm:items-center";
+    popup.setAttribute("role", "dialog");
+    popup.setAttribute("aria-modal", "true");
+    popup.setAttribute("aria-labelledby", "site-flow-popup-title");
+    popup.innerHTML = `
+      <div class="absolute inset-0" data-site-popup-close></div>
+      <div class="relative w-full max-w-md overflow-hidden rounded-[2rem] bg-white shadow-[0_30px_80px_rgba(15,23,42,0.28)]">
+        <div class="h-1.5 bg-gradient-to-r from-[#0f9af4] via-[#6b38d4] to-[#141922]" data-site-popup-accent></div>
+        <div class="relative px-6 pb-6 pt-7 sm:px-8">
+          <button class="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#f2f5f9] text-[#4b5563] transition-colors hover:bg-[#e6ebf1]" data-site-popup-close type="button" aria-label="Close popup">
+            <span class="material-symbols-outlined text-[20px]">close</span>
+          </button>
+          <div class="flex items-start gap-4">
+            <div class="grid h-14 w-14 shrink-0 place-items-center rounded-[1.25rem] bg-[#e8fff3] text-[#067647]" data-site-popup-icon-wrap>
+              <span class="material-symbols-outlined text-[28px]" data-site-popup-icon>verified</span>
+            </div>
+            <div class="min-w-0 pt-1">
+              <p class="text-[11px] font-bold uppercase tracking-[0.24em] text-[#60758f]" data-site-popup-kicker>Update</p>
+              <h3 class="mt-2 text-[1.9rem] font-black leading-none tracking-tight text-[#18212b]" data-site-popup-title id="site-flow-popup-title">Done</h3>
+              <p class="mt-3 text-sm leading-relaxed text-[#5b6c80]" data-site-popup-copy>Everything is ready.</p>
+            </div>
+          </div>
+          <div class="mt-6 rounded-[1.5rem] border border-[#e2e8f0] bg-[#f8fafc] px-5 py-5" data-site-popup-amount-card>
+            <p class="text-[11px] font-bold uppercase tracking-[0.24em] text-[#60758f]" data-site-popup-amount-label>Summary</p>
+            <p class="mt-2 text-[2.4rem] font-black leading-none tracking-tight text-[#18212b]" data-site-popup-amount>$0.00</p>
+          </div>
+          <div class="mt-6 flex gap-3">
+            <button class="flex-1 rounded-full bg-[#23282f] px-5 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#171b20]" data-site-popup-primary type="button">
+              Continue
+            </button>
+            <button class="rounded-full border border-[#d7dee8] px-5 py-3.5 text-sm font-semibold text-[#344054] transition-colors hover:bg-[#f8fafc]" data-site-popup-close type="button">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+    document.body.append(popup);
+  }
+
+  const refs = {
+    root: popup,
+    accent: popup.querySelector("[data-site-popup-accent]"),
+    iconWrap: popup.querySelector("[data-site-popup-icon-wrap]"),
+    icon: popup.querySelector("[data-site-popup-icon]"),
+    kicker: popup.querySelector("[data-site-popup-kicker]"),
+    title: popup.querySelector("[data-site-popup-title]"),
+    copy: popup.querySelector("[data-site-popup-copy]"),
+    amountCard: popup.querySelector("[data-site-popup-amount-card]"),
+    amountLabel: popup.querySelector("[data-site-popup-amount-label]"),
+    amount: popup.querySelector("[data-site-popup-amount]"),
+    primary: popup.querySelector("[data-site-popup-primary]"),
+  };
+
+  if (!popup.dataset.bound) {
+    const closePopup = () => {
+      popup.classList.add("hidden");
+      popup.classList.remove("flex");
+      document.body.classList.remove("overflow-hidden");
+      popup._onPrimary = null;
+    };
+
+    popup.querySelectorAll("[data-site-popup-close]").forEach((button) => {
+      button.addEventListener("click", closePopup);
+    });
+    refs.primary?.addEventListener("click", () => {
+      const action = popup._onPrimary;
+      closePopup();
+      if (typeof action === "function") action();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !popup.classList.contains("hidden")) {
+        closePopup();
+      }
+    });
+    popup.dataset.bound = "true";
+  }
+
+  return refs;
+}
+
+function openSitePopup({
+  variant = "success",
+  kicker,
+  title,
+  copy,
+  amount = "",
+  amountLabel = "Summary",
+  primaryLabel = "Continue",
+  onPrimary,
+}) {
+  const popup = ensureSitePopup();
+  const isError = variant === "error";
+
+  popup.kicker.textContent = kicker;
+  popup.title.textContent = title;
+  popup.copy.textContent = copy;
+  popup.amountLabel.textContent = amountLabel;
+  popup.amount.textContent = amount;
+  popup.primary.textContent = primaryLabel;
+  popup.amountCard.classList.toggle("hidden", !amount);
+
+  popup.accent.className = isError
+    ? "h-1.5 bg-gradient-to-r from-[#ff9a62] via-[#ff6b57] to-[#8c2c22]"
+    : "h-1.5 bg-gradient-to-r from-[#0f9af4] via-[#6b38d4] to-[#141922]";
+  popup.iconWrap.className = isError
+    ? "grid h-14 w-14 shrink-0 place-items-center rounded-[1.25rem] bg-[#fff0ea] text-[#c2410c]"
+    : "grid h-14 w-14 shrink-0 place-items-center rounded-[1.25rem] bg-[#e8fff3] text-[#067647]";
+  popup.icon.textContent = isError ? "error" : "verified";
+  popup.primary.className = isError
+    ? "flex-1 rounded-full bg-[#23282f] px-5 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#171b20]"
+    : "flex-1 rounded-full bg-[#0f172a] px-5 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#020617]";
+
+  popup.root._onPrimary = onPrimary || null;
+  popup.root.classList.remove("hidden");
+  popup.root.classList.add("flex");
+  document.body.classList.add("overflow-hidden");
+  popup.primary.focus();
+}
+
 function initialsFromName(name) {
   const words = String(name || "")
     .split(/\s+/)
@@ -358,16 +484,23 @@ function initCheckBalance() {
   const brandEmptyState = document.querySelector("[data-brand-empty]");
   const brandCurrentLabel = document.querySelector("[data-brand-current]");
   const brandCurrentLogo = document.querySelector("[data-brand-current-logo]");
-  const result = document.querySelector("#balance-result");
-  const resultTitle = document.querySelector("#balance-result-title");
-  const resultCopy = document.querySelector("#balance-result-copy");
-  const resultAmount = document.querySelector("#balance-result-amount");
+  const result = document.querySelector("#verify-popup");
+  const resultAccent = document.querySelector("#verify-popup-accent");
+  const resultTitle = document.querySelector("#verify-popup-title");
+  const resultCopy = document.querySelector("#verify-popup-copy");
+  const resultAmount = document.querySelector("#verify-popup-amount");
+  const resultAmountCard = document.querySelector("#verify-popup-amount-card");
+  const resultAmountLabel = document.querySelector("#verify-popup-amount-label");
+  const resultKicker = document.querySelector("#verify-popup-kicker");
+  const resultIconWrap = document.querySelector("#verify-popup-icon-wrap");
+  const resultIcon = document.querySelector("#verify-popup-icon");
+  const resultPrimaryButton = document.querySelector("#verify-popup-primary");
+  const resultCloseButtons = Array.from(document.querySelectorAll("[data-verify-popup-close]"));
   const cardValueInput = document.querySelector("#card_value");
   const currencyInput = document.querySelector("#card_currency");
   const sellerEmailInput = document.querySelector("#seller_email");
   const sellEstimatedPayout = document.querySelector("#sell-estimated-payout");
   const sellEstimateCopy = document.querySelector("#sell-estimate-copy");
-  const sellStatus = document.querySelector("#sell-status");
   const cardTypeButtons = Array.from(document.querySelectorAll("[data-card-type-button]"));
   const cardImageSection = document.querySelector("[data-card-image-section]");
   let selectedBrand = brandInput?.value || brandSelect?.value || "Amazon";
@@ -400,6 +533,71 @@ function initCheckBalance() {
   };
   const formatUsd = (amount) => formatCurrencyAmount(amount, "USD");
   const getSellRateForBrand = (brandName) => payoutRates[brandName] || 0.85;
+
+  const closeVerifyPopup = () => {
+    if (!result) return;
+    result.classList.add("hidden");
+    result.classList.remove("flex");
+    document.body.classList.remove("overflow-hidden");
+  };
+
+  const openVerifyPopup = ({
+    variant = "success",
+    kicker,
+    title,
+    copy,
+    amount = "",
+    amountLabel = "Submitted Amount",
+    primaryLabel = "Continue",
+  }) => {
+    if (
+      !result ||
+      !resultTitle ||
+      !resultCopy ||
+      !resultAmount ||
+      !resultKicker ||
+      !resultAccent ||
+      !resultIconWrap ||
+      !resultIcon ||
+      !resultPrimaryButton ||
+      !resultAmountCard ||
+      !resultAmountLabel
+    ) {
+      return;
+    }
+
+    const isError = variant === "error";
+    resultKicker.textContent = kicker;
+    resultTitle.textContent = title;
+    resultCopy.textContent = copy;
+    resultPrimaryButton.textContent = primaryLabel;
+    resultAmountLabel.textContent = amountLabel;
+    resultAmount.textContent = amount;
+    resultAmountCard.classList.toggle("hidden", !amount);
+
+    resultAccent.className = isError
+      ? "h-1.5 bg-gradient-to-r from-[#ff9a62] via-[#ff6b57] to-[#8c2c22]"
+      : "h-1.5 bg-gradient-to-r from-[#0f9af4] via-[#6b38d4] to-[#141922]";
+
+    resultIconWrap.className = isError
+      ? "grid h-14 w-14 shrink-0 place-items-center rounded-[1.25rem] bg-[#fff0ea] text-[#c2410c]"
+      : "grid h-14 w-14 shrink-0 place-items-center rounded-[1.25rem] bg-[#e8fff3] text-[#067647]";
+
+    resultIcon.textContent = isError ? "error" : "verified";
+    resultPrimaryButton.className = isError
+      ? "flex-1 rounded-full bg-[#23282f] px-5 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#171b20]"
+      : "flex-1 rounded-full bg-[#0f172a] px-5 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#020617]";
+
+    result.classList.remove("hidden");
+    result.classList.add("flex");
+    document.body.classList.add("overflow-hidden");
+    resultPrimaryButton.focus();
+  };
+
+  resultPrimaryButton?.addEventListener("click", closeVerifyPopup);
+  resultCloseButtons.forEach((button) => {
+    button.addEventListener("click", closeVerifyPopup);
+  });
 
   const updateSellEstimate = () => {
     if (!isSellFlow || !sellEstimatedPayout) return;
@@ -537,13 +735,15 @@ function initCheckBalance() {
       const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(sellerEmail);
 
       if (digits.length < 8 || cardValue <= 0 || !emailIsValid) {
-        if (sellStatus) {
-          sellStatus.hidden = false;
-          sellStatus.className =
-            "rounded-xl border border-error/20 bg-error-container px-4 py-3 text-sm text-on-error-container";
-          sellStatus.textContent =
-            "Enter a valid card number, card value, and email address to get your payout quote.";
-        }
+        openSitePopup({
+          variant: "error",
+          kicker: "Action Needed",
+          title: "More details needed",
+          copy: "Enter a valid card number, card value, and email address to get your payout quote.",
+          amount: "Review form",
+          amountLabel: "What to fix",
+          primaryLabel: "Try again",
+        });
         updateSellEstimate();
         return;
       }
@@ -556,48 +756,57 @@ function initCheckBalance() {
       if (sellEstimateCopy) {
         sellEstimateCopy.textContent = `Up to ${Math.round(rate * 100)}% of your ${selectedBrand} card value`;
       }
-      if (sellStatus) {
-        sellStatus.hidden = false;
-        sellStatus.className =
-          "rounded-xl border border-primary/20 bg-primary-fixed/40 px-4 py-3 text-sm text-on-surface";
-        sellStatus.textContent =
-          "Quote request received. Final rate may vary after verification and image review.";
-      }
+      openSitePopup({
+        variant: "success",
+        kicker: "Quote Ready",
+        title: `${selectedBrand} payout prepared`,
+        copy: "Quote request received. Final rate may vary after verification and image review.",
+        amount: formatUsd(estimated),
+        amountLabel: "Estimated Payout",
+        primaryLabel: "Done",
+      });
       return;
     }
 
     const usesAmountVerification = Boolean(cardValueInput && !cardNumberInput);
     if (usesAmountVerification) {
       if (verifyAmount <= 0 || pin.length < 4) {
-        result.hidden = false;
-        result.className =
-          "rounded-[1.5rem] border border-[#f0d1ce] bg-[#fff4f2] p-6 text-[#8c2c22]";
-        resultTitle.textContent = "More details needed";
-        resultCopy.textContent =
-          "Enter the card amount and the original redemption code to run verification.";
-        resultAmount.textContent = "Check input";
+        openVerifyPopup({
+          variant: "error",
+          kicker: "Action Needed",
+          title: "More details needed",
+          copy: "Enter the card amount and the original redemption code to run verification.",
+          amount: "Review form",
+          amountLabel: "What to fix",
+          primaryLabel: "Try again",
+        });
         return;
       }
 
-      result.hidden = false;
-      result.className =
-        "rounded-[1.5rem] border border-[#d8e7ff] bg-[#f4f9ff] p-6 text-[#14213d]";
-      resultTitle.textContent = `${selectedBrand} card verified`;
-      resultCopy.textContent = `${selectedCurrency} ${verifyAmount.toFixed(
-        2
-      )} submission accepted. Redemption code is formatted correctly and ready for review.`;
-      resultAmount.textContent = formatCurrencyAmount(verifyAmount, selectedCurrency);
+      openVerifyPopup({
+        variant: "success",
+        kicker: "Verification Complete",
+        title: `${selectedBrand} card verified`,
+        copy: `${selectedCurrency} ${verifyAmount.toFixed(
+          2
+        )} submission accepted. Redemption code is formatted correctly and ready for review.`,
+        amount: formatCurrencyAmount(verifyAmount, selectedCurrency),
+        amountLabel: "Submitted Amount",
+        primaryLabel: "Done",
+      });
       return;
     }
 
     if (digits.length < 8 || pin.length < 4) {
-      result.hidden = false;
-      result.className =
-        "rounded-xl border border-error/20 bg-error-container p-6 text-on-error-container";
-      resultTitle.textContent = "More details needed";
-      resultCopy.textContent =
-        "Enter at least 8 card digits and a 4-digit security code to run a balance check.";
-      resultAmount.textContent = "Check input";
+      openVerifyPopup({
+        variant: "error",
+        kicker: "Action Needed",
+        title: "More details needed",
+        copy: "Enter at least 8 card digits and a 4-digit security code to run a balance check.",
+        amount: "Check input",
+        amountLabel: "What to fix",
+        primaryLabel: "Try again",
+      });
       return;
     }
 
@@ -612,13 +821,21 @@ function initCheckBalance() {
     const computedBalance = ((lastFour % 375) + (brandOffsets[selectedBrand] || 20)) / 1.37;
     const maskedNumber = digits.slice(-4).padStart(4, "0");
 
-    result.hidden = false;
-    result.className =
-      "rounded-xl border border-primary/10 bg-primary-fixed/40 p-6 text-on-surface";
-    resultTitle.textContent = `${selectedBrand} card verified`;
-    resultCopy.textContent =
-      `Card ending in ${maskedNumber} is active and ready for trade or redemption.`;
-    resultAmount.textContent = formatUsd(computedBalance);
+    openVerifyPopup({
+      variant: "success",
+      kicker: "Verification Complete",
+      title: `${selectedBrand} card verified`,
+      copy: `Card ending in ${maskedNumber} is active and ready for trade or redemption.`,
+      amount: formatUsd(computedBalance),
+      amountLabel: "Available Balance",
+      primaryLabel: "Done",
+    });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && result && !result.classList.contains("hidden")) {
+      closeVerifyPopup();
+    }
   });
 }
 
@@ -738,6 +955,82 @@ function initBuyBrandSelect() {
   });
 }
 
+function initBuyPageActions() {
+  if (document.body.dataset.page !== "buy") return;
+
+  const brandInput = document.querySelector("#buy_selected_brand");
+  const valueButtons = Array.from(document.querySelectorAll("[data-buy-value-button]"));
+  const submitButton = document.querySelector("[data-buy-submit]");
+  const cartCount = document.querySelector("[data-buy-cart-count]");
+  const cartTitle = document.querySelector("[data-buy-cart-title]");
+  const cartCopy = document.querySelector("[data-buy-cart-copy]");
+
+  if (!submitButton || !valueButtons.length) return;
+
+  let selectedValue =
+    valueButtons.find((button) => button.classList.contains("border-primary-container"))?.dataset
+      .buyValue || valueButtons[0]?.dataset.buyValue || "25";
+  let cartItems = Number.parseInt(cartCount?.textContent || "0", 10) || 0;
+
+  const syncValueButtons = () => {
+    valueButtons.forEach((button) => {
+      const active = button.dataset.buyValue === selectedValue;
+      button.classList.toggle("text-primary", active);
+      button.classList.toggle("font-bold", active);
+      button.classList.toggle("border-2", active);
+      button.classList.toggle("border-primary-container", active);
+      button.classList.toggle("text-on-surface", !active);
+      button.classList.toggle("font-semibold", !active);
+      button.classList.toggle("border", !active);
+      button.classList.toggle("border-transparent", !active);
+    });
+  };
+
+  valueButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedValue = button.dataset.buyValue || selectedValue;
+      syncValueButtons();
+    });
+  });
+
+  submitButton.addEventListener("click", () => {
+    const selectedBrand = String(brandInput?.value || "").trim();
+    if (!selectedBrand) {
+      openSitePopup({
+        variant: "error",
+        kicker: "Choose Brand",
+        title: "Select a gift card brand",
+        copy: "Pick a brand from the dropdown before adding a card value to your cart.",
+        amount: "",
+        primaryLabel: "Got it",
+      });
+      return;
+    }
+
+    cartItems += 1;
+    if (cartCount) cartCount.textContent = String(cartItems);
+    if (cartTitle) {
+      cartTitle.textContent = cartItems === 1 ? "1 item ready" : `${cartItems} items ready`;
+    }
+    if (cartCopy) {
+      cartCopy.textContent = `${selectedBrand} ${selectedValue === "Custom" ? "custom amount" : `$${selectedValue}`} added to your cart.`;
+    }
+
+    openSitePopup({
+      variant: "success",
+      kicker: "Added To Cart",
+      title: `${selectedBrand} ready for checkout`,
+      copy: "Your selected gift card has been saved to the cart. You can keep browsing or move to checkout next.",
+      amount: selectedValue === "Custom" ? "Custom" : `$${selectedValue}`,
+      amountLabel: "Card Value",
+      primaryLabel: "Continue",
+    });
+  });
+
+  syncValueButtons();
+}
+
 initCheckBalance();
 initMarketplace();
 initBuyBrandSelect();
+initBuyPageActions();

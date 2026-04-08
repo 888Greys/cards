@@ -208,6 +208,143 @@ function flushQueuedToasts() {
   });
 }
 
+function ensureAuthPopup() {
+  let popup = document.getElementById("auth-flow-popup");
+  if (!popup) {
+    popup = document.createElement("div");
+    popup.id = "auth-flow-popup";
+    popup.className =
+      "fixed inset-0 z-[90] hidden items-end justify-center bg-[#101828]/45 p-4 backdrop-blur-[8px] sm:items-center";
+    popup.setAttribute("role", "dialog");
+    popup.setAttribute("aria-modal", "true");
+    popup.setAttribute("aria-labelledby", "auth-flow-popup-title");
+    popup.innerHTML = `
+      <div class="absolute inset-0" data-auth-popup-close></div>
+      <div class="relative w-full max-w-sm overflow-hidden rounded-[2rem] bg-white shadow-[0_30px_80px_rgba(15,23,42,0.28)]">
+        <div class="h-1.5 bg-gradient-to-r from-[#0f9af4] via-[#6b38d4] to-[#141922]" data-auth-popup-accent></div>
+        <div class="relative px-6 pb-6 pt-7 sm:px-8">
+          <button class="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#f2f5f9] text-[#4b5563] transition-colors hover:bg-[#e6ebf1]" data-auth-popup-close type="button" aria-label="Close popup">
+            <span class="material-symbols-outlined text-[20px]">close</span>
+          </button>
+          <div class="grid h-14 w-14 place-items-center rounded-[1.25rem] bg-[#eef4ff] text-[#2454ff]" data-auth-popup-icon-wrap>
+            <span class="material-symbols-outlined text-[28px]" data-auth-popup-icon>info</span>
+          </div>
+          <p class="mt-5 text-[11px] font-bold uppercase tracking-[0.24em] text-[#60758f]" data-auth-popup-kicker>Update</p>
+          <h2 class="mt-2 text-[1.9rem] font-black leading-none tracking-tight text-[#18212b]" data-auth-popup-title id="auth-flow-popup-title">All set</h2>
+          <p class="mt-4 text-sm leading-relaxed text-[#5b6c80]" data-auth-popup-copy>Your request is being processed.</p>
+          <div class="mt-6 flex gap-3">
+            <button class="flex-1 rounded-full bg-[#0f172a] px-5 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#020617]" data-auth-popup-primary type="button">
+              Continue
+            </button>
+            <button class="rounded-full border border-[#d7dee8] px-5 py-3.5 text-sm font-semibold text-[#344054] transition-colors hover:bg-[#f8fafc]" data-auth-popup-close type="button">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+    document.body.append(popup);
+  }
+
+  if (!popup.dataset.bound) {
+    const closePopup = () => {
+      popup.classList.add("hidden");
+      popup.classList.remove("flex");
+      document.body.classList.remove("overflow-hidden");
+      popup._onPrimary = null;
+      if (popup._timer) {
+        window.clearTimeout(popup._timer);
+        popup._timer = null;
+      }
+    };
+
+    popup.querySelectorAll("[data-auth-popup-close]").forEach((button) => {
+      button.addEventListener("click", closePopup);
+    });
+    popup.querySelector("[data-auth-popup-primary]")?.addEventListener("click", () => {
+      const action = popup._onPrimary;
+      closePopup();
+      if (typeof action === "function") action();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !popup.classList.contains("hidden")) {
+        closePopup();
+      }
+    });
+    popup.dataset.bound = "true";
+  }
+
+  return {
+    root: popup,
+    accent: popup.querySelector("[data-auth-popup-accent]"),
+    iconWrap: popup.querySelector("[data-auth-popup-icon-wrap]"),
+    icon: popup.querySelector("[data-auth-popup-icon]"),
+    kicker: popup.querySelector("[data-auth-popup-kicker]"),
+    title: popup.querySelector("[data-auth-popup-title]"),
+    copy: popup.querySelector("[data-auth-popup-copy]"),
+    primary: popup.querySelector("[data-auth-popup-primary]"),
+  };
+}
+
+function openAuthPopup({
+  variant = "info",
+  kicker,
+  title,
+  text,
+  primaryLabel = "Continue",
+  onPrimary,
+  autoActionMs = 0,
+}) {
+  const popup = ensureAuthPopup();
+  const isWarning = variant === "warning";
+  const isSuccess = variant === "success";
+
+  popup.kicker.textContent = kicker;
+  popup.title.textContent = title;
+  popup.copy.textContent = text;
+  popup.primary.textContent = primaryLabel;
+
+  popup.accent.className = isWarning
+    ? "h-1.5 bg-gradient-to-r from-[#ff9a62] via-[#ff6b57] to-[#8c2c22]"
+    : isSuccess
+      ? "h-1.5 bg-gradient-to-r from-[#11a75c] via-[#0f9af4] to-[#141922]"
+      : "h-1.5 bg-gradient-to-r from-[#0f9af4] via-[#6b38d4] to-[#141922]";
+
+  popup.iconWrap.className = isWarning
+    ? "grid h-14 w-14 place-items-center rounded-[1.25rem] bg-[#fff0ea] text-[#c2410c]"
+    : isSuccess
+      ? "grid h-14 w-14 place-items-center rounded-[1.25rem] bg-[#e8fff3] text-[#067647]"
+      : "grid h-14 w-14 place-items-center rounded-[1.25rem] bg-[#eef4ff] text-[#2454ff]";
+
+  popup.icon.textContent = isWarning ? "error" : isSuccess ? "verified" : "mail";
+  popup.primary.className = isWarning
+    ? "flex-1 rounded-full bg-[#23282f] px-5 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#171b20]"
+    : "flex-1 rounded-full bg-[#0f172a] px-5 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#020617]";
+
+  popup.root._onPrimary = onPrimary || null;
+  if (popup.root._timer) {
+    window.clearTimeout(popup.root._timer);
+    popup.root._timer = null;
+  }
+  if (autoActionMs > 0 && typeof onPrimary === "function") {
+    popup.root._timer = window.setTimeout(() => {
+      if (popup.root.classList.contains("hidden")) return;
+      const action = popup.root._onPrimary;
+      popup.root.classList.add("hidden");
+      popup.root.classList.remove("flex");
+      document.body.classList.remove("overflow-hidden");
+      popup.root._onPrimary = null;
+      popup.root._timer = null;
+      if (typeof action === "function") action();
+    }, autoActionMs);
+  }
+
+  popup.root.classList.remove("hidden");
+  popup.root.classList.add("flex");
+  document.body.classList.add("overflow-hidden");
+  popup.primary.focus();
+}
+
 function clearMessage(element) {
   if (!element) return;
   element.hidden = true;
@@ -360,26 +497,34 @@ function initSignin(state) {
         saveAuthState(state);
         const sent = await sendOtpEmail(result.user.name, result.user.email, otpCode);
         const redirect = `verify-otp.html?email=${encodeURIComponent(result.user.email)}`;
-        queueAndRedirect(
-          redirect,
-          sent
-            ? {
-                tone: "info",
-                title: "OTP required",
-                text: "A verification code has been sent to your email.",
-              }
-            : {
-                tone: "warning",
-                title: "OTP pending",
-                text: "Could not send OTP now. Use Resend OTP on the next screen.",
-              },
-        );
         setButtonPending(submit, false, "Signing In...");
+        let redirected = false;
+        const continueToOtp = () => {
+          if (redirected) return;
+          redirected = true;
+          window.location.replace(redirect);
+        };
+        openAuthPopup({
+          variant: sent ? "info" : "warning",
+          kicker: sent ? "OTP Required" : "OTP Pending",
+          title: sent ? "Check your email" : "Verification needed",
+          text: sent
+            ? "A verification code has been sent to your email. We’ll take you to the OTP screen now."
+            : "Could not send OTP now. Use Resend OTP on the next screen.",
+          primaryLabel: "Continue",
+          onPrimary: continueToOtp,
+          autoActionMs: 1100,
+        });
         return;
       }
 
-      setMessage(notice, "warning", result.error);
-      showToast({ tone: "warning", title: "Sign in failed", text: result.error });
+      openAuthPopup({
+        variant: "warning",
+        kicker: "Sign In Failed",
+        title: "Check your details",
+        text: result.error,
+        primaryLabel: "Try again",
+      });
       setButtonPending(submit, false, "Signing In...");
       return;
     }
@@ -387,16 +532,23 @@ function initSignin(state) {
     state.users = result.state.users;
     state.session = result.state.session;
     saveAuthState({ ...state, otp: state.otp || null });
-    showToast({
-      tone: "success",
-      title: "Signed in",
-      text: `Welcome back, ${result.state.session?.name || "there"}.`,
-    });
     const nextValue = new URLSearchParams(window.location.search).get("next");
-    window.setTimeout(() => {
-      window.location.replace(getSafeNextPath(nextValue));
-    }, 260);
     setButtonPending(submit, false, "Signing In...");
+    let redirected = false;
+    const continueHome = () => {
+      if (redirected) return;
+      redirected = true;
+      window.location.replace(getSafeNextPath(nextValue));
+    };
+    openAuthPopup({
+      variant: "success",
+      kicker: "Signed In",
+      title: `Welcome back${result.state.session?.name ? `, ${result.state.session.name}` : ""}`,
+      text: "Your secure workspace is ready. We’ll take you there now.",
+      primaryLabel: "Continue",
+      onPrimary: continueHome,
+      autoActionMs: 900,
+    });
   });
 }
 
@@ -420,8 +572,13 @@ function initSignup(state) {
     const result = registerUserInState(state, payload);
 
     if (!result.ok) {
-      setMessage(notice, "warning", result.error);
-      showToast({ tone: "warning", title: "Sign up failed", text: result.error });
+      openAuthPopup({
+        variant: "warning",
+        kicker: "Sign Up Failed",
+        title: "We couldn't create that account",
+        text: result.error,
+        primaryLabel: "Try again",
+      });
       setButtonPending(submit, false, "Creating Account...");
       return;
     }
@@ -431,31 +588,26 @@ function initSignup(state) {
     const otpCode = createOtpCode();
     state.otp = createOtpChallenge(result.user.email, otpCode);
     saveAuthState(state);
-
-    setMessage(notice, "info", "Account created. Sending OTP to your email...");
     const sent = await sendOtpEmail(result.user.name, result.user.email, otpCode);
-    if (sent) {
-      setMessage(notice, "success", "Account created. Check your email for OTP.");
-    } else {
-      setMessage(notice, "warning", "Account created, but OTP email failed. Use Resend OTP on the next page.");
-    }
-
-    queueAndRedirect(
-      `verify-otp.html?email=${encodeURIComponent(result.user.email)}`,
-      sent
-        ? {
-            tone: "success",
-            title: "OTP sent",
-            text: "Your verification code is on the way.",
-          }
-        : {
-            tone: "warning",
-            title: "Email send issue",
-            text: "Could not send OTP immediately. Use Resend OTP.",
-          },
-      280,
-    );
     setButtonPending(submit, false, "Creating Account...");
+    const redirect = `verify-otp.html?email=${encodeURIComponent(result.user.email)}`;
+    let redirected = false;
+    const continueToOtp = () => {
+      if (redirected) return;
+      redirected = true;
+      window.location.replace(redirect);
+    };
+    openAuthPopup({
+      variant: sent ? "success" : "warning",
+      kicker: sent ? "OTP Sent" : "Email Send Issue",
+      title: "Account created",
+      text: sent
+        ? "Your verification code is on the way. We’ll take you to OTP verification now."
+        : "Account created, but OTP email failed. Use Resend OTP on the next page.",
+      primaryLabel: "Continue",
+      onPrimary: continueToOtp,
+      autoActionMs: 1100,
+    });
   });
 }
 
