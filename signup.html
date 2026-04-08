@@ -1,100 +1,127 @@
 <!DOCTYPE html>
-<html class="light" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Sign Up - GiftCardsHub</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link href="./responsive.css" rel="stylesheet" />
+    <link href="./auth-pages.css" rel="stylesheet" />
     <script type="module" src="./auth-ui.js"></script>
-    <style>
-      body {
-        font-family: "Inter", sans-serif;
-        min-height: 100dvh;
-        background:
-          radial-gradient(circle at 10% 10%, rgba(107, 56, 212, 0.16), transparent 28rem),
-          radial-gradient(circle at 88% 88%, rgba(160, 65, 0, 0.1), transparent 24rem),
-          #fbf8ff;
-      }
-    </style>
   </head>
-  <body class="text-[#060963]" data-page="signup">
-    <main class="min-h-screen px-6 py-16">
-      <div class="mx-auto max-w-5xl grid gap-10 lg:grid-cols-2 items-center">
-        <section class="space-y-6">
-          <a class="text-sm font-bold tracking-[0.2em] uppercase text-[#6b38d4]" href="home.html">GiftCardsHub</a>
-          <h1 class="text-5xl font-black leading-tight">
-            Create your account and start <span class="text-[#6b38d4]">trading securely</span>.
+  <body data-page="signup">
+    <main class="auth-main">
+      <div class="auth-shell">
+        <section class="auth-hero">
+          <a class="auth-brand" href="home.html">
+            <span class="auth-brand-mark" aria-hidden="true"></span>
+            GiftCardsHub
+          </a>
+          <h1 class="auth-headline">
+            Create your account and
+            <span class="auth-headline-emphasis">start trading securely</span>
           </h1>
-          <p class="text-[#494454] text-lg leading-relaxed">
-            We will send a 6-digit OTP to verify your email before account access.
+          <p class="auth-subcopy">
+            Set up your profile in less than a minute. We send a one-time verification code to your email before first access.
           </p>
-          <p class="text-sm text-[#494454]">
-            Already have an account?
-            <a class="font-bold text-[#6b38d4] hover:underline" href="signin.html">Sign in</a>
-          </p>
+          <ul class="auth-checklist">
+            <li><span class="auth-dot" aria-hidden="true"></span>Reliable OTP-based email verification</li>
+            <li><span class="auth-dot" aria-hidden="true"></span>Encrypted credentials in local auth state</li>
+            <li><span class="auth-dot" aria-hidden="true"></span>Smooth handoff into your account dashboard</li>
+          </ul>
         </section>
 
-        <section class="rounded-3xl bg-white/90 border border-[#cbc3d7] p-8 shadow-[0_24px_40px_rgba(6,9,99,0.08)]">
-          <form class="space-y-5" data-auth-form="signup">
-            <div>
-              <label class="block text-sm font-bold mb-2" for="name">Full name</label>
-              <input
-                class="w-full rounded-xl border-none bg-[#f5f2ff] px-4 py-3 focus:ring-2 focus:ring-[#6b38d4]"
-                id="name"
-                name="name"
-                type="text"
-                autocomplete="name"
-                required
-              />
-            </div>
-            <div>
-              <label class="block text-sm font-bold mb-2" for="email">Email</label>
-              <input
-                class="w-full rounded-xl border-none bg-[#f5f2ff] px-4 py-3 focus:ring-2 focus:ring-[#6b38d4]"
-                id="email"
-                name="email"
-                type="email"
-                autocomplete="email"
-                required
-              />
-            </div>
-            <div>
-              <label class="block text-sm font-bold mb-2" for="password">Password</label>
-              <input
-                class="w-full rounded-xl border-none bg-[#f5f2ff] px-4 py-3 focus:ring-2 focus:ring-[#6b38d4]"
-                id="password"
-                name="password"
-                type="password"
-                autocomplete="new-password"
-                minlength="8"
-                required
-              />
-            </div>
-            <div>
-              <label class="block text-sm font-bold mb-2" for="confirmPassword">Confirm password</label>
-              <input
-                class="w-full rounded-xl border-none bg-[#f5f2ff] px-4 py-3 focus:ring-2 focus:ring-[#6b38d4]"
-                id="confirmPassword"
-                name="confirmPassword"
-                type="password"
-                autocomplete="new-password"
-                minlength="8"
-                required
-              />
-            </div>
-            <button
-              class="w-full rounded-full bg-[#a04100] px-6 py-3 text-white font-bold hover:opacity-90 transition"
-              type="submit"
-            >
-              Create Account &amp; Send OTP
-            </button>
-            <p class="rounded-xl px-4 py-3 text-sm hidden" data-auth-notice></p>
-          </form>
+        <section class="auth-panel">
+          <div class="auth-card">
+            <p class="auth-eyebrow">Create account</p>
+            <h2 class="auth-title">Sign up</h2>
+            <p class="auth-helper">Use an active email so you can receive OTP verification instantly.</p>
+
+            <form class="auth-form" data-auth-form="signup" novalidate>
+              <label class="auth-field" for="signup-name">
+                <span class="auth-label">Full name</span>
+                <input
+                  class="auth-input"
+                  id="signup-name"
+                  name="name"
+                  type="text"
+                  autocomplete="name"
+                  placeholder="Your full name"
+                  required
+                />
+              </label>
+
+              <label class="auth-field" for="signup-email">
+                <span class="auth-label">Email address</span>
+                <input
+                  class="auth-input"
+                  id="signup-email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  placeholder="you@example.com"
+                  required
+                />
+              </label>
+
+              <label class="auth-field" for="signup-password">
+                <span class="auth-label">Password</span>
+                <span class="auth-input-wrap">
+                  <input
+                    class="auth-input"
+                    id="signup-password"
+                    name="password"
+                    type="password"
+                    autocomplete="new-password"
+                    minlength="8"
+                    placeholder="Minimum 8 characters"
+                    required
+                  />
+                  <button
+                    class="auth-password-toggle"
+                    data-auth-password-toggle
+                    data-target="signup-password"
+                    type="button"
+                  >
+                    Show
+                  </button>
+                </span>
+              </label>
+
+              <label class="auth-field" for="signup-confirm-password">
+                <span class="auth-label">Confirm password</span>
+                <span class="auth-input-wrap">
+                  <input
+                    class="auth-input"
+                    id="signup-confirm-password"
+                    name="confirmPassword"
+                    type="password"
+                    autocomplete="new-password"
+                    minlength="8"
+                    placeholder="Repeat your password"
+                    required
+                  />
+                  <button
+                    class="auth-password-toggle"
+                    data-auth-password-toggle
+                    data-target="signup-confirm-password"
+                    type="button"
+                  >
+                    Show
+                  </button>
+                </span>
+              </label>
+
+              <button class="auth-submit" type="submit">Create Account</button>
+              <p class="auth-links">
+                Already have an account?
+                <a href="signin.html">Sign in</a>
+              </p>
+              <p class="auth-inline-message" data-auth-notice hidden></p>
+            </form>
+          </div>
         </section>
       </div>
     </main>

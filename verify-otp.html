@@ -1,75 +1,72 @@
 <!DOCTYPE html>
-<html class="light" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Verify Email - GiftCardsHub</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link href="./responsive.css" rel="stylesheet" />
+    <link href="./auth-pages.css" rel="stylesheet" />
     <script type="module" src="./auth-ui.js"></script>
-    <style>
-      body {
-        font-family: "Inter", sans-serif;
-        min-height: 100dvh;
-        background:
-          radial-gradient(circle at 20% 15%, rgba(107, 56, 212, 0.16), transparent 28rem),
-          radial-gradient(circle at 85% 88%, rgba(160, 65, 0, 0.1), transparent 24rem),
-          #fbf8ff;
-      }
-    </style>
   </head>
-  <body class="text-[#060963]" data-page="verify-otp">
-    <main class="min-h-screen px-6 py-16">
-      <div class="mx-auto max-w-5xl grid gap-10 lg:grid-cols-2 items-center">
-        <section class="space-y-6">
-          <a class="text-sm font-bold tracking-[0.2em] uppercase text-[#6b38d4]" href="home.html">GiftCardsHub</a>
-          <h1 class="text-5xl font-black leading-tight">
-            Verify your <span class="text-[#6b38d4]">email with OTP</span>.
+  <body data-page="verify-otp">
+    <main class="auth-main">
+      <div class="auth-shell">
+        <section class="auth-hero">
+          <a class="auth-brand" href="home.html">
+            <span class="auth-brand-mark" aria-hidden="true"></span>
+            GiftCardsHub
+          </a>
+          <h1 class="auth-headline">
+            Verify your email with a
+            <span class="auth-headline-emphasis">6-digit OTP</span>
           </h1>
-          <p class="text-[#494454] text-lg leading-relaxed">
-            Enter the 6-digit code sent to <span class="font-bold text-[#060963]" data-auth-email>your email</span>.
+          <p class="auth-subcopy">
+            Enter the code sent to <strong data-auth-email>your email</strong>. Verification secures your account before
+            your first session.
           </p>
-          <p class="text-sm text-[#494454]">
-            Wrong address?
-            <a class="font-bold text-[#6b38d4] hover:underline" href="signup.html">Create account again</a>
-          </p>
+          <ul class="auth-checklist">
+            <li><span class="auth-dot" aria-hidden="true"></span>OTP expires after 10 minutes</li>
+            <li><span class="auth-dot" aria-hidden="true"></span>Maximum 5 attempts before reset</li>
+            <li><span class="auth-dot" aria-hidden="true"></span>Need a new code? Resend in one tap</li>
+          </ul>
         </section>
 
-        <section class="rounded-3xl bg-white/90 border border-[#cbc3d7] p-8 shadow-[0_24px_40px_rgba(6,9,99,0.08)]">
-          <form class="space-y-5" data-auth-form="verify-otp">
-            <div>
-              <label class="block text-sm font-bold mb-2" for="otp">OTP code</label>
-              <input
-                class="w-full rounded-xl border-none bg-[#f5f2ff] px-4 py-3 focus:ring-2 focus:ring-[#6b38d4] tracking-[0.35em] text-center text-xl font-black"
-                id="otp"
-                name="otp"
-                type="text"
-                inputmode="numeric"
-                pattern="[0-9]{6}"
-                maxlength="6"
-                autocomplete="one-time-code"
-                required
-              />
-            </div>
-            <button
-              class="w-full rounded-full bg-[#a04100] px-6 py-3 text-white font-bold hover:opacity-90 transition"
-              type="submit"
-            >
-              Verify Email
-            </button>
-            <button
-              class="w-full rounded-full border border-[#cbc3d7] bg-white px-6 py-3 text-[#060963] font-bold hover:bg-[#f5f2ff] transition"
-              data-auth-resend
-              type="button"
-            >
-              Resend OTP
-            </button>
-            <p class="rounded-xl px-4 py-3 text-sm hidden" data-auth-notice></p>
-          </form>
+        <section class="auth-panel">
+          <div class="auth-card">
+            <p class="auth-eyebrow">Secure verification</p>
+            <h2 class="auth-title">Confirm OTP</h2>
+            <p class="auth-helper">Use the latest code in your inbox. Copy and paste works too.</p>
+
+            <form class="auth-form" data-auth-form="verify-otp" novalidate>
+              <label class="auth-field" for="verify-otp-code">
+                <span class="auth-label">OTP code</span>
+                <input
+                  class="auth-input"
+                  data-otp="true"
+                  id="verify-otp-code"
+                  name="otp"
+                  type="text"
+                  inputmode="numeric"
+                  pattern="[0-9]{6}"
+                  maxlength="6"
+                  autocomplete="one-time-code"
+                  placeholder="000000"
+                  required
+                />
+              </label>
+
+              <button class="auth-submit" type="submit">Verify Email</button>
+              <button class="auth-secondary" data-auth-resend type="button">Resend OTP</button>
+              <p class="auth-links">
+                Wrong email address?
+                <a href="signup.html">Create account again</a>
+              </p>
+              <p class="auth-inline-message" data-auth-notice hidden></p>
+            </form>
+          </div>
         </section>
       </div>
     </main>
