@@ -5,8 +5,10 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>GiftCardsHub - Home</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script defer="" src="./mobile-menu.js"></script>
 <script defer="" src="./site.js"></script>
 <link href="./responsive.css" rel="stylesheet"/>
+<link href="./mobile-menu.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -91,23 +93,28 @@
   </head>
 <body class="bg-surface text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed" data-page="home">
 <!-- TopAppBar Shell -->
-<header class="bg-[#fbf8ff]/70 dark:bg-slate-950/70 backdrop-blur-xl fixed top-0 w-full z-50">
+<header class="bg-[#fbf8ff]/70 dark:bg-slate-950/70 backdrop-blur-xl fixed top-0 w-full z-50 border-b border-[#e5e7eb]">
 <div class="flex justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto">
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-[#8B5CF6] dark:text-violet-400" data-icon="menu">menu</span>
-<span class="text-xl font-black text-[#060963] dark:text-slate-100 font-['Inter'] tracking-tight">GiftCardsHub</span>
+<div class="flex items-center gap-3">
+<button class="md:hidden hover:bg-violet-100/50 transition-colors p-1.5 rounded-full" aria-label="Open menu">
+<span class="material-symbols-outlined text-[#1a1a2e]" data-icon="menu">menu</span>
+</button>
+<div class="w-9 h-9 rounded-[10px] bg-gradient-to-br from-[#9b59b6] to-[#8e44ad] flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-lg" style="font-variation-settings:'FILL' 1">redeem</span>
 </div>
-<!-- Desktop Nav Items -->
+<span class="text-lg font-extrabold text-[#1a1a2e] font-['Inter'] tracking-tight">GiftcardsHub</span>
+</div>
 <nav class="hidden md:flex items-center gap-8">
-<a class="text-[#6b38d4] dark:text-violet-300 font-bold hover:bg-violet-100/50 dark:hover:bg-slate-800 transition-colors px-3 py-1 rounded-lg" href="home.html">Home</a>
-<a class="text-[#060963] dark:text-slate-400 opacity-70 font-['Inter'] hover:bg-violet-100/50 dark:hover:bg-slate-800 transition-colors px-3 py-1 rounded-lg" href="checkbalance.html">Verify</a>
-<a class="text-[#060963] dark:text-slate-400 opacity-70 font-['Inter'] hover:bg-violet-100/50 dark:hover:bg-slate-800 transition-colors px-3 py-1 rounded-lg" href="buy.html">Buy</a>
-<a class="text-[#060963] dark:text-slate-400 opacity-70 font-['Inter'] hover:bg-violet-100/50 dark:hover:bg-slate-800 transition-colors px-3 py-1 rounded-lg" href="sell.html">Sell</a>
-<a class="text-[#060963] dark:text-slate-400 opacity-70 font-['Inter'] hover:bg-violet-100/50 dark:hover:bg-slate-800 transition-colors px-3 py-1 rounded-lg" href="home.html#reviews">Reviews</a>
+<a class="text-[#1a1a2e]/80 font-medium hover:text-[#1a1a2e] transition-colors" href="home.html">Home</a>
+<a class="text-[#1a1a2e]/80 font-medium hover:text-[#1a1a2e] transition-colors" href="checkbalance.html">Verify</a>
+<a class="text-[#1a1a2e]/80 font-medium hover:text-[#1a1a2e] transition-colors" href="buy.html">Buy</a>
+<a class="text-[#1a1a2e]/80 font-medium hover:text-[#1a1a2e] transition-colors" href="sell.html">Sell</a>
+<a class="text-[#1a1a2e]/80 font-medium hover:text-[#1a1a2e] transition-colors" href="home.html#reviews">Reviews</a>
 </nav>
-<div class="flex items-center">
-<img alt="user profile" class="w-10 h-10 rounded-full object-cover ring-2 ring-primary-fixed" data-alt="Close-up portrait of a professional man with a friendly expression, studio lighting, clean background, high resolution" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8vo23B06ZiLpYlyz5YjhLPX22rtH9bDni5_1f29cvflHnYY8HR92iB9lwRI369xb5PDcqTSGLzJif0UPiN8afesg_fhskIIvvY8_A6TpJwCqetl7rEaCbR--u3_JZ_Is02X3gf9DwXIveK0FQUFPPatKEQZGZ1I32x1k5orEgSJEFM6Za2qvv7jnLNdPA7mdzU1GcZkMwYg8xRiNTvhXu0JyzAvBYe5dKzS4BhXxspFgNPo2thKYl8-Y08ted8tS7ELzdmMdRb9Qm"/>
-</div>
+<a href="signin.html" class="hidden md:inline-flex bg-[#6b38d4] hover:bg-[#5b2eb5] text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm">Get Started</a>
+<button class="md:hidden" aria-label="Open menu">
+<span class="material-symbols-outlined text-[#1a1a2e]" data-icon="menu">menu</span>
+</button>
 </div>
 </header>
 <main class="pt-24 pb-32">
@@ -129,7 +136,7 @@
                         The most secure platform to check, buy, and sell gift cards. Experience the Luminous Vault where your digital assets are protected by industry-leading encryption and instant liquidity.
                     </p>
 <div class="flex flex-wrap gap-4 pt-4">
-<a class="bg-secondary text-on-secondary px-8 py-4 rounded-full font-bold text-lg hover:shadow-[0px_0px_20px_rgba(160,65,0,0.3)] transition-all active:scale-95 inline-flex items-center justify-center" href="signin.html">
+<a class="bg-[#6b38d4] text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-[0px_0px_20px_rgba(107,56,212,0.3)] hover:bg-[#5b2eb5] transition-all active:scale-95 inline-flex items-center justify-center border-none" href="signin.html">
                             Get Started
                         </a>
 <a class="bg-surface-container-lowest text-on-surface border border-outline-variant/15 px-8 py-4 rounded-full font-bold text-lg hover:bg-surface-container-low transition-all active:scale-95 inline-flex items-center justify-center" href="checkbalance.html">
