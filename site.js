@@ -485,15 +485,18 @@ function initCheckBalance() {
   const brandCurrentLabel = document.querySelector("[data-brand-current]");
   const brandCurrentLogo = document.querySelector("[data-brand-current-logo]");
   const result = document.querySelector("#verify-popup");
-  const resultAccent = document.querySelector("#verify-popup-accent");
   const resultTitle = document.querySelector("#verify-popup-title");
   const resultCopy = document.querySelector("#verify-popup-copy");
+  const resultBrand = document.querySelector("#verify-popup-brand");
+  const resultBrandLabel = document.querySelector("#verify-popup-brand-label");
+  const resultBrandRow = document.querySelector("#verify-popup-brand-row");
   const resultAmount = document.querySelector("#verify-popup-amount");
-  const resultAmountCard = document.querySelector("#verify-popup-amount-card");
   const resultAmountLabel = document.querySelector("#verify-popup-amount-label");
+  const resultAmountRow = document.querySelector("#verify-popup-amount-row");
   const resultKicker = document.querySelector("#verify-popup-kicker");
-  const resultIconWrap = document.querySelector("#verify-popup-icon-wrap");
-  const resultIcon = document.querySelector("#verify-popup-icon");
+  const resultStatus = document.querySelector("#verify-popup-status");
+  const resultStatusLabel = document.querySelector("#verify-popup-status-label");
+  const resultStatusRow = document.querySelector("#verify-popup-status-row");
   const resultPrimaryButton = document.querySelector("#verify-popup-primary");
   const resultCloseButtons = Array.from(document.querySelectorAll("[data-verify-popup-close]"));
   const cardValueInput = document.querySelector("#card_value");
@@ -546,22 +549,29 @@ function initCheckBalance() {
     kicker,
     title,
     copy,
+    brand = selectedBrand,
+    brandLabel = "Brand",
     amount = "",
-    amountLabel = "Submitted Amount",
-    primaryLabel = "Continue",
+    amountLabel = "Amount",
+    status = "",
+    statusLabel = "Status",
+    primaryLabel = "Close",
   }) => {
     if (
       !result ||
       !resultTitle ||
       !resultCopy ||
+      !resultBrand ||
+      !resultBrandLabel ||
+      !resultBrandRow ||
       !resultAmount ||
       !resultKicker ||
-      !resultAccent ||
-      !resultIconWrap ||
-      !resultIcon ||
       !resultPrimaryButton ||
-      !resultAmountCard ||
-      !resultAmountLabel
+      !resultAmountLabel ||
+      !resultAmountRow ||
+      !resultStatus ||
+      !resultStatusLabel ||
+      !resultStatusRow
     ) {
       return;
     }
@@ -571,22 +581,22 @@ function initCheckBalance() {
     resultTitle.textContent = title;
     resultCopy.textContent = copy;
     resultPrimaryButton.textContent = primaryLabel;
+    resultBrandLabel.textContent = `${brandLabel}:`;
+    resultBrand.textContent = brand;
     resultAmountLabel.textContent = amountLabel;
     resultAmount.textContent = amount;
-    resultAmountCard.classList.toggle("hidden", !amount);
+    resultStatusLabel.textContent = `${statusLabel}:`;
+    resultStatus.textContent = status;
+    resultBrandRow.classList.toggle("hidden", !brand);
+    resultAmountRow.classList.toggle("hidden", !amount);
+    resultStatusRow.classList.toggle("hidden", !status);
 
-    resultAccent.className = isError
-      ? "h-1.5 bg-gradient-to-r from-[#ff9a62] via-[#ff6b57] to-[#8c2c22]"
-      : "h-1.5 bg-gradient-to-r from-[#0f9af4] via-[#6b38d4] to-[#141922]";
+    resultKicker.className = isError
+      ? "text-4xl font-light tracking-tight text-[#d92d20] sm:text-5xl lg:text-6xl"
+      : "text-4xl font-light tracking-tight text-[#198754] sm:text-5xl lg:text-6xl";
 
-    resultIconWrap.className = isError
-      ? "grid h-14 w-14 shrink-0 place-items-center rounded-[1.25rem] bg-[#fff0ea] text-[#c2410c]"
-      : "grid h-14 w-14 shrink-0 place-items-center rounded-[1.25rem] bg-[#e8fff3] text-[#067647]";
-
-    resultIcon.textContent = isError ? "error" : "verified";
-    resultPrimaryButton.className = isError
-      ? "flex-1 rounded-full bg-[#23282f] px-5 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#171b20]"
-      : "flex-1 rounded-full bg-[#0f172a] px-5 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#020617]";
+    resultPrimaryButton.className =
+      "mx-auto mt-10 inline-flex rounded-[0.9rem] bg-[#e63946] px-6 py-3 text-lg font-semibold text-white transition-colors hover:bg-[#cf3340]";
 
     result.classList.remove("hidden");
     result.classList.add("flex");
@@ -773,26 +783,28 @@ function initCheckBalance() {
       if (verifyAmount <= 0 || pin.length < 4) {
         openVerifyPopup({
           variant: "error",
-          kicker: "Action Needed",
-          title: "More details needed",
-          copy: "Enter the card amount and the original redemption code to run verification.",
-          amount: "Review form",
-          amountLabel: "What to fix",
-          primaryLabel: "Try again",
+          kicker: "ATTENTION",
+          title: "We need a few more details to continue",
+          copy: "Please review this result",
+          brand: selectedBrand,
+          amount: "Card amount and redemption code",
+          amountLabel: "Required",
+          status: "Check your input",
+          primaryLabel: "Close",
         });
         return;
       }
 
       openVerifyPopup({
         variant: "success",
-        kicker: "Verification Complete",
-        title: `${selectedBrand} card verified`,
-        copy: `${selectedCurrency} ${verifyAmount.toFixed(
-          2
-        )} submission accepted. Redemption code is formatted correctly and ready for review.`,
+        kicker: "SUCCESS!",
+        title: `Your ${selectedBrand} gift card has been verified`,
+        copy: "Here's the result",
+        brand: selectedBrand,
         amount: formatCurrencyAmount(verifyAmount, selectedCurrency),
-        amountLabel: "Submitted Amount",
-        primaryLabel: "Done",
+        amountLabel: "Amount",
+        status: "Ready for review",
+        primaryLabel: "Close",
       });
       return;
     }
@@ -800,12 +812,14 @@ function initCheckBalance() {
     if (digits.length < 8 || pin.length < 4) {
       openVerifyPopup({
         variant: "error",
-        kicker: "Action Needed",
-        title: "More details needed",
-        copy: "Enter at least 8 card digits and a 4-digit security code to run a balance check.",
-        amount: "Check input",
-        amountLabel: "What to fix",
-        primaryLabel: "Try again",
+        kicker: "ATTENTION",
+        title: "We need a few more details to continue",
+        copy: "Please review this result",
+        brand: selectedBrand,
+        amount: "Card digits and security code",
+        amountLabel: "Required",
+        status: "Check your input",
+        primaryLabel: "Close",
       });
       return;
     }
@@ -823,12 +837,14 @@ function initCheckBalance() {
 
     openVerifyPopup({
       variant: "success",
-      kicker: "Verification Complete",
-      title: `${selectedBrand} card verified`,
-      copy: `Card ending in ${maskedNumber} is active and ready for trade or redemption.`,
+      kicker: "SUCCESS!",
+      title: `Your ${selectedBrand} gift card has been verified`,
+      copy: "Here's the result",
+      brand: selectedBrand,
       amount: formatUsd(computedBalance),
       amountLabel: "Available Balance",
-      primaryLabel: "Done",
+      status: `Active ending in ${maskedNumber}`,
+      primaryLabel: "Close",
     });
   });
 

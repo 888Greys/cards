@@ -56,7 +56,7 @@
   width: 36px;
   height: 36px;
   border-radius: 10px;
-  background: linear-gradient(135deg, #9b59b6, #8e44ad);
+  background: linear-gradient(135deg, #0f9af4, #0d63ea);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -106,7 +106,7 @@
 }
 .mobile-menu-link:hover,
 .mobile-menu-link.active {
-  color: #6b38d4;
+  color: #0f6fe8;
 }
 
 .mobile-menu-footer {
@@ -115,7 +115,7 @@
 
 .mobile-menu-cta {
   display: block;
-  background: #6b38d4;
+  background: #0f6fe8;
   color: #fff;
   font-family: "Inter", sans-serif;
   font-weight: 700;
@@ -127,7 +127,7 @@
   transition: background 0.2s;
 }
 .mobile-menu-cta:hover {
-  background: #5b2eb5;
+  background: #0d63ea;
 }
 
 /* Hide on desktop */

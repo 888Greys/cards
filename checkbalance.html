@@ -30,37 +30,10 @@
               "on-surface": "#060963",
               "on-surface-variant": "#494454",
               "surface-tint": "#6d3bd7",
-              "secondary-fixed": "#ffdbcc",
-              "on-secondary-fixed-variant": "#7a3000",
               outline: "#7b7486",
-              error: "#ba1a1a",
-              "outline-variant": "#cbc3d7",
-              "on-tertiary-container": "#fffbff",
-              "surface-container-high": "#e7e6ff",
-              "tertiary-container": "#676dc0",
-              "surface-bright": "#fbf8ff",
-              "primary-fixed-dim": "#d0bcff",
-              "on-primary-container": "#fffbff",
-              "on-error-container": "#93000a",
-              "on-primary-fixed": "#23005c",
-              "on-secondary-fixed": "#351000",
-              "on-tertiary-fixed": "#060963",
-              primary: "#6b38d4",
-              "on-background": "#060963",
-              "surface-dim": "#d6d7ff",
-              "on-error": "#ffffff",
-              "on-secondary-container": "#572000",
-              "error-container": "#ffdad6",
-              "surface-variant": "#e0e0ff",
-              "secondary-container": "#fe6b00",
-              "primary-container": "#8455ef",
-              "on-primary-fixed-variant": "#5516be",
-              "on-secondary": "#ffffff",
-              secondary: "#a04100",
+              primary: "#0f6fe8",
+              "primary-container": "#1588f6",
               "surface-container-low": "#f5f2ff",
-              tertiary: "#4e54a5",
-              "inverse-primary": "#d0bcff",
-              "primary-fixed": "#e9ddff",
             },
             borderRadius: {
               DEFAULT: "0.25rem",
@@ -80,232 +53,272 @@
     </script>
     <style>
       .material-symbols-outlined {
-        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+        font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 24;
       }
+
       body {
+        min-height: 100dvh;
         font-family: "Inter", sans-serif;
-        min-height: max(884px, 100dvh);
       }
     </style>
   </head>
-  <body class="bg-surface text-on-surface" data-page="check-balance" data-auth-required="true">
+  <body class="bg-[#f3f8ff] text-[#10213a]" data-page="check-balance" data-auth-required="true">
     <script type="module" src="./auth-ui.js"></script>
 
-    <!-- TopAppBar -->
-    <header class="bg-[#fbf8ff]/70 backdrop-blur-xl fixed top-0 w-full z-50">
-      <div class="flex justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto">
-        <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-[10px] bg-gradient-to-br from-[#9b59b6] to-[#8e44ad] flex items-center justify-center">
-            <span class="material-symbols-outlined text-white text-lg" style="font-variation-settings:'FILL' 1">redeem</span>
+    <header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#0f84f4]/78 backdrop-blur-xl">
+      <div class="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4">
+        <a class="flex items-center gap-3" href="home.html">
+          <div class="grid h-11 w-11 place-items-center rounded-full border border-white/30 bg-white/12 text-white shadow-[0_10px_30px_rgba(9,57,128,0.25)]">
+            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1">redeem</span>
           </div>
-          <span class="text-lg font-extrabold text-[#1a1a2e] font-['Inter'] tracking-tight">GiftcardsHub</span>
-        </div>
-        <nav class="hidden md:flex items-center gap-8">
-          <a class="text-[#1a1a2e]/80 font-medium hover:text-[#1a1a2e] transition-colors" href="home.html">Home</a>
-          <a class="text-[#1a1a2e] font-bold" href="checkbalance.html">Verify</a>
-          <a class="text-[#1a1a2e]/80 font-medium hover:text-[#1a1a2e] transition-colors" href="buy.html">Buy</a>
-          <a class="text-[#1a1a2e]/80 font-medium hover:text-[#1a1a2e] transition-colors" href="sell.html">Sell</a>
-          <a class="text-[#1a1a2e]/80 font-medium hover:text-[#1a1a2e] transition-colors" href="home.html#reviews">Reviews</a>
+          <span class="text-xl font-black tracking-tight text-white">GiftCardsHub</span>
+        </a>
+
+        <nav class="hidden items-center gap-10 md:flex">
+          <a class="pb-1 text-lg font-medium text-white/86 transition-colors hover:text-white" href="home.html">Home</a>
+          <a class="border-b-2 border-white pb-1 text-lg font-semibold text-white" href="checkbalance.html">Verify</a>
+          <a class="pb-1 text-lg font-medium text-white/86 transition-colors hover:text-white" href="buy.html">Buy</a>
+          <a class="pb-1 text-lg font-medium text-white/86 transition-colors hover:text-white" href="sell.html">Sell</a>
+          <a class="pb-1 text-lg font-medium text-white/86 transition-colors hover:text-white" href="home.html#reviews">Reviews</a>
         </nav>
-        <a href="signin.html" class="hidden md:inline-flex bg-[#6b38d4] hover:bg-[#5b2eb5] text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm">Get Started</a>
-        <button class="md:hidden" aria-label="Open menu">
-          <span class="material-symbols-outlined text-[#1a1a2e]" data-icon="menu">menu</span>
+
+        <a
+          class="hidden rounded-[1.1rem] bg-white px-6 py-3 text-lg font-bold text-[#101828] shadow-[0_14px_30px_rgba(10,42,98,0.18)] transition-transform hover:-translate-y-0.5 md:inline-flex"
+          href="home.html"
+        >
+          Back home
+        </a>
+
+        <button aria-label="Open menu" class="md:hidden">
+          <span class="material-symbols-outlined text-white" data-icon="menu">menu</span>
         </button>
       </div>
     </header>
 
-    <main class="pt-20 pb-32">
-      <section class="relative overflow-hidden">
-        <div class="relative h-28 sm:h-32 bg-gradient-to-r from-[#1197f3] via-[#1588f6] to-[#0f67eb]">
-          <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(135deg, transparent 0%, transparent 32%, rgba(255,255,255,0.2) 32%, rgba(255,255,255,0.2) 44%, transparent 44%, transparent 100%);"></div>
-        </div>
-        <div class="relative -mt-10 sm:-mt-12 flex justify-center px-6">
-          <img alt="Gift card brand collage" class="w-full max-w-[34rem] object-contain drop-shadow-[0_30px_42px_rgba(17,86,180,0.24)]" src="./ann.webp" />
+    <main class="pb-32">
+      <section class="relative overflow-hidden bg-[linear-gradient(135deg,#1197f3_0%,#1486f5_38%,#0c67ea_100%)] pt-28 pb-28">
+        <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(135deg, transparent 0%, transparent 33%, rgba(255,255,255,0.18) 33%, rgba(255,255,255,0.18) 47%, transparent 47%, transparent 100%);"></div>
+        <div class="absolute -left-20 top-12 h-72 w-72 rounded-full bg-white/10 blur-3xl"></div>
+        <div class="absolute right-0 top-8 h-80 w-80 translate-x-1/4 rounded-full bg-[#0a54c8]/30 blur-3xl"></div>
+
+        <div class="relative mx-auto max-w-6xl px-6 text-center">
+          <p class="text-[11px] font-black uppercase tracking-[0.28em] text-white/88">Verification portal</p>
+          <h1 class="mx-auto mt-4 max-w-4xl text-4xl font-black leading-[1.02] tracking-tight text-white lg:text-6xl">
+            Verify gift card codes with a cleaner, review-ready flow.
+          </h1>
+          <p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/82 lg:text-lg">
+            Choose the exact brand, enter the amount and redemption code, and get a focused result popup without extra clutter around the form.
+          </p>
+
+          <div class="mt-10 flex justify-center">
+            <img
+              alt="Gift card brand collage"
+              class="w-full max-w-[34rem] object-contain drop-shadow-[0_30px_42px_rgba(7,33,79,0.22)]"
+              src="./ann.webp"
+            />
+          </div>
         </div>
       </section>
 
-      <section class="max-w-4xl mx-auto px-4 sm:px-6 mt-4 sm:mt-6 space-y-6">
-        <div class="text-center space-y-2">
-          <p class="text-[11px] font-bold uppercase tracking-[0.28em] text-[#60758f]">Verify Gift Card</p>
-          <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-[#20262e]">Fast checks for premium brand cards.</h2>
-        </div>
-
-        <section class="flex justify-center">
-          <div class="inline-grid w-full max-w-[24rem] grid-cols-2 gap-2 rounded-full bg-[#eef2f6] p-1.5">
-            <button
-              aria-pressed="true"
-              class="min-w-0 flex items-center justify-center gap-2 px-4 py-3 bg-surface-container-lowest border-2 border-primary rounded-full shadow-sm font-semibold text-primary"
-              data-card-type-button="physical"
-              type="button"
-            >
-              <span class="material-symbols-outlined text-primary text-[20px]">credit_card</span>
-              Physical Card
-            </button>
-            <button
-              aria-pressed="false"
-              class="min-w-0 flex items-center justify-center gap-2 px-4 py-3 bg-surface-container-low border-2 border-transparent hover:border-outline-variant/30 rounded-full transition-all font-semibold text-on-surface-variant"
-              data-card-type-button="digital"
-              type="button"
-            >
-              <span class="material-symbols-outlined text-outline text-[20px]">qr_code_2</span>
-              Digital Card
-            </button>
-          </div>
-        </section>
-
-        <section class="bg-white rounded-[2rem] border border-[#e2e8f0] px-4 py-6 sm:px-8 sm:py-8 shadow-[0_18px_40px_rgba(15,23,42,0.06)]">
-          <form class="space-y-5" id="balance-form">
-            <input id="selected_brand" name="selected_brand" type="hidden" value="Amazon" />
-
-            <div class="space-y-2 relative" data-brand-combobox>
-              <label class="sr-only" for="brand_picker">Gift Card Brand</label>
+      <section class="relative z-10 -mt-12 px-4 sm:px-6">
+        <div class="mx-auto max-w-4xl space-y-6">
+          <section class="flex justify-center">
+            <div class="inline-grid w-full max-w-[24rem] grid-cols-2 gap-2 rounded-full border border-white/70 bg-white/92 p-1.5 shadow-[0_22px_50px_rgba(15,23,42,0.1)]">
               <button
-                aria-controls="brand_picker_menu"
-                aria-expanded="false"
-                aria-haspopup="listbox"
-                class="w-full h-16 px-6 bg-white border border-[#cfd8e3] rounded-full text-[#20262e] text-lg font-medium focus:ring-2 focus:ring-[#157cf6]/15 focus:border-[#157cf6] outline-none transition-all flex items-center justify-between gap-3"
-                data-brand-trigger
-                id="brand_picker"
+                aria-pressed="true"
+                class="min-w-0 flex items-center justify-center gap-2 rounded-full border-2 border-primary bg-surface-container-lowest px-4 py-3 font-semibold text-primary shadow-sm"
+                data-card-type-button="physical"
                 type="button"
               >
-                <span class="flex items-center gap-3 min-w-0">
-                  <img alt="Selected gift card brand logo" class="w-5 h-5 object-contain rounded-[4px] bg-white p-[1px] shrink-0" data-brand-current-logo src="./assets/brand-logos/amazon.svg" />
-                  <span class="truncate text-left" data-brand-current>Amazon</span>
-                </span>
-                <span class="material-symbols-outlined text-[#3f4652] shrink-0">expand_more</span>
+                <span class="material-symbols-outlined text-[20px] text-primary">credit_card</span>
+                Physical Card
               </button>
-
-              <div
-                class="hidden absolute top-[calc(100%+0.5rem)] left-0 right-0 z-30 bg-white border border-[#d7dee8] rounded-[1.75rem] shadow-[0px_18px_36px_rgba(15,23,42,0.12)] overflow-hidden"
-                data-brand-menu
-                id="brand_picker_menu"
+              <button
+                aria-pressed="false"
+                class="min-w-0 flex items-center justify-center gap-2 rounded-full border-2 border-transparent bg-surface-container-low px-4 py-3 font-semibold text-on-surface-variant transition-all hover:border-outline/20"
+                data-card-type-button="digital"
+                type="button"
               >
-                <div class="p-3 border-b border-[#e8edf3]">
-                  <label class="relative block">
-                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#7b8795] text-[18px]">search</span>
-                    <input
-                      autocomplete="off"
-                      class="w-full h-11 pl-10 pr-3 rounded-full border border-[#d7dee8] bg-white text-[#20262e] text-sm placeholder:text-[#7b8795] focus:border-[#157cf6] focus:ring-2 focus:ring-[#157cf6]/15 outline-none"
-                      data-brand-search
-                      placeholder="Search brands..."
-                      type="text"
-                    />
-                  </label>
-                </div>
-                <div class="max-h-64 overflow-y-auto p-1.5 space-y-0.5" data-brand-options role="listbox"></div>
-                <p class="hidden px-3 py-2 text-xs text-[#60758f]" data-brand-empty>No matching brands found.</p>
-              </div>
+                <span class="material-symbols-outlined text-[20px] text-outline">qr_code_2</span>
+                Digital Card
+              </button>
+            </div>
+          </section>
+
+          <section class="rounded-[2rem] border border-white bg-white px-4 py-6 shadow-[0_28px_80px_rgba(15,23,42,0.08)] sm:px-8 sm:py-8">
+            <div class="mb-6 text-center">
+              <p class="text-[11px] font-bold uppercase tracking-[0.28em] text-[#60758f]">Verify card</p>
+              <h2 class="mt-2 text-3xl font-black tracking-tight text-[#20262e] sm:text-4xl">Fast checks for premium brand cards.</h2>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-[11rem_minmax(0,1fr)] gap-4">
-              <div class="relative">
-                <label class="sr-only" for="card_currency">Currency</label>
-                <select
-                  class="w-full h-16 pl-6 pr-12 bg-white border border-[#cfd8e3] rounded-full text-[#20262e] text-lg appearance-none focus:ring-2 focus:ring-[#157cf6]/15 focus:border-[#157cf6] outline-none"
-                  id="card_currency"
+            <form class="space-y-5" id="balance-form">
+              <input id="selected_brand" name="selected_brand" type="hidden" value="Amazon" />
+
+              <div class="relative space-y-2" data-brand-combobox>
+                <label class="sr-only" for="brand_picker">Gift Card Brand</label>
+                <button
+                  aria-controls="brand_picker_menu"
+                  aria-expanded="false"
+                  aria-haspopup="listbox"
+                  class="flex h-16 w-full items-center justify-between gap-3 rounded-full border border-[#cfd8e3] bg-white px-6 text-lg font-medium text-[#20262e] outline-none transition-all focus:border-[#157cf6] focus:ring-2 focus:ring-[#157cf6]/15"
+                  data-brand-trigger
+                  id="brand_picker"
+                  type="button"
                 >
-                  <option value="USD">USD</option>
-                  <option value="EUR">EUR</option>
-                  <option value="GBP">GBP</option>
-                </select>
-                <span class="material-symbols-outlined absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-[#3f4652]">expand_more</span>
+                  <span class="flex min-w-0 items-center gap-3">
+                    <img alt="Selected gift card brand logo" class="h-5 w-5 shrink-0 rounded-[4px] bg-white p-[1px] object-contain" data-brand-current-logo src="./assets/brand-logos/amazon.svg" />
+                    <span class="truncate text-left" data-brand-current>Amazon</span>
+                  </span>
+                  <span class="material-symbols-outlined shrink-0 text-[#3f4652]">expand_more</span>
+                </button>
+
+                <div
+                  class="absolute left-0 right-0 top-[calc(100%+0.5rem)] z-30 hidden overflow-hidden rounded-[1.75rem] border border-[#d7dee8] bg-white shadow-[0px_18px_36px_rgba(15,23,42,0.12)]"
+                  data-brand-menu
+                  id="brand_picker_menu"
+                >
+                  <div class="border-b border-[#e8edf3] p-3">
+                    <label class="relative block">
+                      <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[18px] text-[#7b8795]">search</span>
+                      <input
+                        autocomplete="off"
+                        class="h-11 w-full rounded-full border border-[#d7dee8] bg-white pl-10 pr-3 text-sm text-[#20262e] outline-none placeholder:text-[#7b8795] focus:border-[#157cf6] focus:ring-2 focus:ring-[#157cf6]/15"
+                        data-brand-search
+                        placeholder="Search brands..."
+                        type="text"
+                      />
+                    </label>
+                  </div>
+                  <div class="max-h-64 space-y-0.5 overflow-y-auto p-1.5" data-brand-options role="listbox"></div>
+                  <p class="hidden px-3 py-2 text-xs text-[#60758f]" data-brand-empty>No matching brands found.</p>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 gap-4 sm:grid-cols-[11rem_minmax(0,1fr)]">
+                <div class="relative">
+                  <label class="sr-only" for="card_currency">Currency</label>
+                  <select
+                    class="h-16 w-full appearance-none rounded-full border border-[#cfd8e3] bg-white pl-6 pr-12 text-lg text-[#20262e] outline-none focus:border-[#157cf6] focus:ring-2 focus:ring-[#157cf6]/15"
+                    id="card_currency"
+                  >
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="GBP">GBP</option>
+                  </select>
+                  <span class="material-symbols-outlined pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-[#3f4652]">expand_more</span>
+                </div>
+
+                <div>
+                  <label class="sr-only" for="card_value">Card Amount</label>
+                  <input
+                    class="h-16 w-full rounded-full border border-[#cfd8e3] bg-white px-6 text-lg text-[#20262e] outline-none placeholder:text-[#60758f] focus:border-[#157cf6] focus:ring-2 focus:ring-[#157cf6]/15"
+                    id="card_value"
+                    inputmode="decimal"
+                    placeholder="60"
+                    type="text"
+                  />
+                </div>
               </div>
 
               <div>
-                <label class="sr-only" for="card_value">Card Amount</label>
+                <label class="sr-only" for="pin">Redemption Code</label>
                 <input
-                  class="w-full h-16 px-6 bg-white border border-[#cfd8e3] rounded-full text-[#20262e] text-lg focus:ring-2 focus:ring-[#157cf6]/15 focus:border-[#157cf6] outline-none placeholder:text-[#60758f]"
-                  id="card_value"
-                  inputmode="decimal"
-                  placeholder="60"
+                  class="h-16 w-full rounded-full border border-[#cfd8e3] bg-white px-6 text-lg text-[#20262e] outline-none placeholder:text-[#60758f] focus:border-[#157cf6] focus:ring-2 focus:ring-[#157cf6]/15"
+                  id="pin"
+                  placeholder="Redemption Code"
                   type="text"
                 />
               </div>
-            </div>
 
-            <div>
-              <label class="sr-only" for="pin">Redemption Code</label>
-              <input
-                class="w-full h-16 px-6 bg-white border border-[#cfd8e3] rounded-full text-[#20262e] text-lg focus:ring-2 focus:ring-[#157cf6]/15 focus:border-[#157cf6] outline-none placeholder:text-[#60758f]"
-                id="pin"
-                placeholder="Redemption Code"
-                type="text"
-              />
-            </div>
+              <div class="flex items-start gap-3 px-2 pt-1 text-[#5b6c80]">
+                <span class="material-symbols-outlined mt-0.5 text-[22px] text-[#ffb400]">error</span>
+                <p class="text-base font-semibold leading-snug sm:text-lg">
+                  Please make sure the redemption code is the original scratched code on the face of the card.
+                </p>
+              </div>
 
-            <div class="flex items-start gap-3 px-2 pt-1 text-[#5b6c80]">
-              <span class="material-symbols-outlined text-[#ffb400] text-[22px] mt-0.5">error</span>
-              <p class="text-base sm:text-lg font-semibold leading-snug">Please make sure the redemption code is the original scratched code on the face of the card.</p>
-            </div>
+              <button class="mt-2 h-16 w-full rounded-full bg-[#23282f] text-[1.1rem] font-semibold text-white shadow-[0_10px_24px_rgba(17,24,39,0.16)] transition-all hover:bg-[#171b20] active:scale-[0.99]" type="submit">
+                Verify Card
+              </button>
 
-            <button class="w-full h-16 bg-[#23282f] hover:bg-[#171b20] text-white font-semibold text-[1.1rem] rounded-full shadow-[0_10px_24px_rgba(17,24,39,0.16)] active:scale-[0.99] transition-all mt-2" type="submit">
-              Verify Card
-            </button>
+              <p class="px-2 text-center text-base text-[#60758f]">
+                Please make sure the codes you are about to input are correct and according to details.
+              </p>
+            </form>
+          </section>
 
-            <p class="text-center text-base text-[#60758f] px-2">Please make sure the codes you are about to input are correct and according to details.</p>
-          </form>
-        </section>
+          <section class="grid gap-4 sm:grid-cols-3">
+            <article class="rounded-[1.6rem] border border-[#dce6f4] bg-white px-5 py-5 shadow-[0_18px_38px_rgba(15,23,42,0.05)]">
+              <p class="text-[10px] font-black uppercase tracking-[0.24em] text-[#60758f]">Brand match</p>
+              <p class="mt-2 text-lg font-black text-[#18212b]">Logo-backed selection</p>
+              <p class="mt-2 text-sm text-[#5b6c80]">Search the exact brand from the same local logo set used across the site.</p>
+            </article>
+            <article class="rounded-[1.6rem] border border-[#dce6f4] bg-white px-5 py-5 shadow-[0_18px_38px_rgba(15,23,42,0.05)]">
+              <p class="text-[10px] font-black uppercase tracking-[0.24em] text-[#60758f]">Fast output</p>
+              <p class="mt-2 text-lg font-black text-[#18212b]">Popup-based results</p>
+              <p class="mt-2 text-sm text-[#5b6c80]">Warnings and confirmations stay focused instead of stretching the page.</p>
+            </article>
+            <article class="rounded-[1.6rem] border border-[#dce6f4] bg-white px-5 py-5 shadow-[0_18px_38px_rgba(15,23,42,0.05)]">
+              <p class="text-[10px] font-black uppercase tracking-[0.24em] text-[#60758f]">Clear route</p>
+              <p class="mt-2 text-lg font-black text-[#18212b]">Verify before next action</p>
+              <p class="mt-2 text-sm text-[#5b6c80]">The page is built to confirm card details before a buy or sell decision.</p>
+            </article>
+          </section>
+        </div>
       </section>
     </main>
 
-    <div class="fixed inset-0 z-[70] hidden items-end justify-center bg-[#101828]/45 p-4 backdrop-blur-[8px] sm:items-center" id="verify-popup" role="dialog" aria-modal="true" aria-labelledby="verify-popup-title">
+    <div class="fixed inset-0 z-[70] hidden items-center justify-center bg-[#101828]/42 p-4 backdrop-blur-[6px]" id="verify-popup" role="dialog" aria-modal="true" aria-labelledby="verify-popup-title">
       <div class="absolute inset-0" data-verify-popup-close></div>
-      <div class="relative w-full max-w-md overflow-hidden rounded-[2rem] bg-white shadow-[0_30px_80px_rgba(15,23,42,0.28)]">
-        <div class="h-1.5 bg-gradient-to-r from-[#0f9af4] via-[#6b38d4] to-[#141922]" id="verify-popup-accent"></div>
-        <div class="relative px-6 pb-6 pt-7 sm:px-8">
-          <button class="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#f2f5f9] text-[#4b5563] transition-colors hover:bg-[#e6ebf1]" data-verify-popup-close type="button" aria-label="Close popup">
-            <span class="material-symbols-outlined text-[20px]">close</span>
-          </button>
+      <div class="relative w-full max-w-5xl rounded-[1.15rem] bg-white px-6 py-12 text-center shadow-[0_32px_100px_rgba(15,23,42,0.26)] sm:px-10 lg:px-16 lg:py-16">
+        <p class="text-4xl font-light tracking-tight text-[#198754] sm:text-5xl lg:text-6xl" id="verify-popup-kicker">SUCCESS!</p>
+        <h3 class="mx-auto mt-5 max-w-4xl text-2xl font-medium leading-tight tracking-tight text-[#20262e] sm:text-4xl lg:text-[3.1rem]" id="verify-popup-title">
+          Your gift card has been verified
+        </h3>
+        <p class="mt-8 text-lg text-[#344054] sm:text-[2rem]" id="verify-popup-copy">Here's the result</p>
+        <div class="mx-auto mt-3 h-px w-full max-w-4xl bg-[#d7dee8]"></div>
 
-          <div class="flex items-start gap-4">
-            <div class="grid h-14 w-14 shrink-0 place-items-center rounded-[1.25rem] bg-[#e8fff3] text-[#067647]" id="verify-popup-icon-wrap">
-              <span class="material-symbols-outlined text-[28px]" id="verify-popup-icon">verified</span>
-            </div>
-            <div class="min-w-0 pt-1">
-              <p class="text-[11px] font-bold uppercase tracking-[0.24em] text-[#60758f]" id="verify-popup-kicker">Verification Complete</p>
-              <h3 class="mt-2 text-[1.9rem] font-black leading-none tracking-tight text-[#18212b]" id="verify-popup-title">Card verified</h3>
-              <p class="mt-3 text-sm leading-relaxed text-[#5b6c80]" id="verify-popup-copy">Your submission looks good.</p>
-            </div>
+        <div class="mx-auto mt-10 w-fit space-y-5 text-left text-xl text-[#101828] sm:text-2xl">
+          <div class="flex flex-wrap items-baseline gap-x-2" id="verify-popup-brand-row">
+            <span class="text-[#667085]" id="verify-popup-brand-label">Brand:</span>
+            <span class="font-bold" id="verify-popup-brand">Amazon</span>
           </div>
-
-          <div class="mt-6 rounded-[1.5rem] border border-[#e2e8f0] bg-[#f8fafc] px-5 py-5" id="verify-popup-amount-card">
-            <p class="text-[11px] font-bold uppercase tracking-[0.24em] text-[#60758f]" id="verify-popup-amount-label">Submitted Amount</p>
-            <p class="mt-2 text-[2.4rem] font-black leading-none tracking-tight text-[#18212b]" id="verify-popup-amount">$0.00</p>
+          <div class="flex flex-wrap items-baseline gap-x-2" id="verify-popup-amount-row">
+            <span class="text-[#667085]" id="verify-popup-amount-label">Amount:</span>
+            <span class="font-bold" id="verify-popup-amount">USD60.00</span>
           </div>
-
-          <div class="mt-6 flex gap-3">
-            <button class="flex-1 rounded-full bg-[#23282f] px-5 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#171b20]" id="verify-popup-primary" type="button">
-              Continue
-            </button>
-            <button class="rounded-full border border-[#d7dee8] px-5 py-3.5 text-sm font-semibold text-[#344054] transition-colors hover:bg-[#f8fafc]" data-verify-popup-close type="button">
-              Close
-            </button>
+          <div class="flex flex-wrap items-baseline gap-x-2" id="verify-popup-status-row">
+            <span class="text-[#667085]" id="verify-popup-status-label">Status:</span>
+            <span class="font-bold" id="verify-popup-status">Ready for review</span>
           </div>
         </div>
+
+        <button class="mx-auto mt-10 inline-flex rounded-[0.9rem] bg-[#e63946] px-6 py-3 text-lg font-semibold text-white transition-colors hover:bg-[#cf3340]" id="verify-popup-primary" type="button">
+          Close
+        </button>
       </div>
     </div>
 
-    <!-- Bottom Nav -->
-    <nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 backdrop-blur-2xl rounded-t-[1.5rem] z-50 shadow-[0px_-4px_20px_rgba(6,9,99,0.04)]">
-      <a class="flex flex-col items-center justify-center text-[#060963]/60 px-3 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="home.html">
+    <nav class="fixed bottom-0 left-0 z-50 flex w-full items-center justify-around rounded-t-[1.5rem] bg-white/88 px-4 pb-6 pt-3 shadow-[0px_-4px_20px_rgba(6,9,99,0.04)] backdrop-blur-2xl md:hidden">
+      <a class="flex flex-col items-center justify-center px-3 py-2 text-[#24364a]/60 transition-opacity hover:opacity-80 active:scale-90 duration-150" href="home.html">
         <span class="material-symbols-outlined">home</span>
-        <span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Home</span>
+        <span class="mt-1 text-[10px] font-semibold uppercase tracking-wider">Home</span>
       </a>
-      <a class="flex flex-col items-center justify-center bg-[#e9ddff] text-[#6b38d4] rounded-[1rem] px-3 py-2 active:scale-90 duration-150" href="checkbalance.html">
+      <a class="flex flex-col items-center justify-center rounded-[1rem] bg-[#dcebff] px-3 py-2 text-[#0f6fe8] active:scale-90 duration-150" href="checkbalance.html">
         <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">verified_user</span>
-        <span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Verify</span>
+        <span class="mt-1 text-[10px] font-semibold uppercase tracking-wider">Verify</span>
       </a>
-      <a class="flex flex-col items-center justify-center text-[#060963]/60 px-3 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="buy.html">
+      <a class="flex flex-col items-center justify-center px-3 py-2 text-[#24364a]/60 transition-opacity hover:opacity-80 active:scale-90 duration-150" href="buy.html">
         <span class="material-symbols-outlined">shopping_bag</span>
-        <span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Buy</span>
+        <span class="mt-1 text-[10px] font-semibold uppercase tracking-wider">Buy</span>
       </a>
-      <a class="flex flex-col items-center justify-center text-[#060963]/60 px-3 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="sell.html">
+      <a class="flex flex-col items-center justify-center px-3 py-2 text-[#24364a]/60 transition-opacity hover:opacity-80 active:scale-90 duration-150" href="sell.html">
         <span class="material-symbols-outlined">sell</span>
-        <span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Sell</span>
+        <span class="mt-1 text-[10px] font-semibold uppercase tracking-wider">Sell</span>
       </a>
-      <a class="flex flex-col items-center justify-center text-[#060963]/60 px-3 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="home.html#reviews">
+      <a class="flex flex-col items-center justify-center px-3 py-2 text-[#24364a]/60 transition-opacity hover:opacity-80 active:scale-90 duration-150" href="home.html#reviews">
         <span class="material-symbols-outlined">star</span>
-        <span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Reviews</span>
+        <span class="mt-1 text-[10px] font-semibold uppercase tracking-wider">Reviews</span>
       </a>
     </nav>
   </body>

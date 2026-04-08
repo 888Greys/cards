@@ -34,8 +34,10 @@
   }
 
   body[data-page="home"] main {
-    padding-top: 5.5rem !important;
+    padding-top: 0 !important;
     padding-bottom: 9rem !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 
   body[data-page="home"] section[class*="py-20"],
@@ -77,8 +79,13 @@
 
   body[data-page="check-balance"] main,
   body[data-page="marketplace"] main {
-    padding-top: 5.5rem !important;
+    padding-top: 0 !important;
     padding-bottom: 8rem !important;
+  }
+
+  body[data-page="check-balance"] main {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 
   body[data-page="check-balance"] h2,

@@ -1,7 +1,7 @@
 /**
  * GiftCardsHub — Mobile Menu (full-screen overlay)
- * Matches the reference site design: hamburger opens a slide-down overlay
- * with nav links and an orange "Get Started" CTA.
+ * Opens a slide-down overlay with the main nav links
+ * and a verification-first primary CTA.
  */
 (function () {
   "use strict";
@@ -32,7 +32,7 @@
         <a href="home.html#reviews" class="mobile-menu-link">Reviews</a>
       </nav>
       <div class="mobile-menu-footer">
-        <a href="signin.html" class="mobile-menu-cta">Get Started</a>
+        <a href="checkbalance.html" class="mobile-menu-cta">Verify now</a>
       </div>
     </div>
   `;

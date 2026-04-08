@@ -1,402 +1,413 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>GiftCardsHub - Home</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script defer="" src="./mobile-menu.js"></script>
-<script defer="" src="./site.js"></script>
-<link href="./responsive.css" rel="stylesheet"/>
-<link href="./mobile-menu.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>GiftCardsHub - Verify Gift Cards Online</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script defer src="./mobile-menu.js"></script>
+    <script defer src="./site.js"></script>
+    <link href="./responsive.css" rel="stylesheet" />
+    <link href="./mobile-menu.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
         theme: {
           extend: {
-            "colors": {
-                    "surface-container-lowest": "#ffffff",
-                    "on-primary": "#ffffff",
-                    "surface-container": "#eeecff",
-                    "on-tertiary": "#ffffff",
-                    "surface": "#fbf8ff",
-                    "tertiary-fixed": "#e0e0ff",
-                    "background": "#fbf8ff",
-                    "inverse-on-surface": "#f1efff",
-                    "inverse-surface": "#202677",
-                    "tertiary-fixed-dim": "#bec2ff",
-                    "on-surface": "#060963",
-                    "on-surface-variant": "#494454",
-                    "surface-tint": "#6d3bd7",
-                    "secondary-fixed": "#ffdbcc",
-                    "on-secondary-fixed-variant": "#7a3000",
-                    "outline": "#7b7486",
-                    "error": "#ba1a1a",
-                    "outline-variant": "#cbc3d7",
-                    "on-tertiary-container": "#fffbff",
-                    "surface-container-high": "#e7e6ff",
-                    "tertiary-container": "#676dc0",
-                    "surface-bright": "#fbf8ff",
-                    "primary-fixed-dim": "#d0bcff",
-                    "on-primary-container": "#fffbff",
-                    "on-error-container": "#93000a",
-                    "on-primary-fixed": "#23005c",
-                    "on-secondary-fixed": "#351000",
-                    "on-tertiary-fixed": "#060963",
-                    "primary": "#6b38d4",
-                    "on-background": "#060963",
-                    "surface-dim": "#d6d7ff",
-                    "on-error": "#ffffff",
-                    "on-secondary-container": "#572000",
-                    "error-container": "#ffdad6",
-                    "surface-variant": "#e0e0ff",
-                    "secondary-container": "#fe6b00",
-                    "primary-container": "#8455ef",
-                    "on-primary-fixed-variant": "#5516be",
-                    "on-secondary": "#ffffff",
-                    "secondary": "#a04100",
-                    "surface-container-low": "#f5f2ff",
-                    "tertiary": "#4e54a5",
-                    "inverse-primary": "#d0bcff",
-                    "primary-fixed": "#e9ddff"
+            colors: {
+              "surface-container-lowest": "#ffffff",
+              "on-primary": "#ffffff",
+              "surface-container": "#eeecff",
+              "on-tertiary": "#ffffff",
+              surface: "#fbf8ff",
+              "tertiary-fixed": "#e0e0ff",
+              background: "#fbf8ff",
+              "inverse-on-surface": "#f1efff",
+              "inverse-surface": "#202677",
+              "tertiary-fixed-dim": "#bec2ff",
+              "on-surface": "#060963",
+              "on-surface-variant": "#494454",
+              primary: "#0f6fe8",
+              "primary-container": "#1588f6",
+              outline: "#7b7486",
             },
-            "borderRadius": {
-                    "DEFAULT": "0.25rem",
-                    "lg": "0.5rem",
-                    "xl": "0.75rem",
-                    "2xl": "1.5rem",
-                    "full": "9999px"
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              "2xl": "1.5rem",
+              full: "9999px",
             },
-            "fontFamily": {
-                    "headline": ["Inter"],
-                    "body": ["Inter"],
-                    "label": ["Inter"]
-            }
+            fontFamily: {
+              headline: ["Inter"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
           },
         },
-      }
+      };
     </script>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        body { font-family: 'Inter', sans-serif; }
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 24;
+      }
+
+      body {
+        min-height: 100dvh;
+        font-family: "Inter", sans-serif;
+      }
     </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
   </head>
-<body class="bg-surface text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed" data-page="home">
-<!-- TopAppBar Shell -->
-<header class="bg-[#fbf8ff]/70 dark:bg-slate-950/70 backdrop-blur-xl fixed top-0 w-full z-50 border-b border-[#e5e7eb]">
-      <div class="flex justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto">
-        <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-[10px] bg-gradient-to-br from-[#9b59b6] to-[#8e44ad] flex items-center justify-center">
-            <span class="material-symbols-outlined text-white text-lg" style="font-variation-settings:'FILL' 1">redeem</span>
+  <body class="bg-[#eef4fb] text-[#10213a] selection:bg-white selection:text-[#0f6fe8]" data-page="home">
+    <header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#0f84f4]/78 backdrop-blur-xl">
+      <div class="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4">
+        <a class="flex items-center gap-3" href="home.html">
+          <div class="grid h-11 w-11 place-items-center rounded-full border border-white/30 bg-white/12 text-white shadow-[0_10px_30px_rgba(9,57,128,0.25)]">
+            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1">redeem</span>
           </div>
-<span class="text-lg font-extrabold text-[#1a1a2e] font-['Inter'] tracking-tight">GiftcardsHub</span>
-</div>
-<nav class="hidden md:flex items-center gap-8">
-<a class="text-[#1a1a2e]/80 font-medium hover:text-[#1a1a2e] transition-colors" href="home.html">Home</a>
-<a class="text-[#1a1a2e]/80 font-medium hover:text-[#1a1a2e] transition-colors" href="checkbalance.html">Verify</a>
-<a class="text-[#1a1a2e]/80 font-medium hover:text-[#1a1a2e] transition-colors" href="buy.html">Buy</a>
-<a class="text-[#1a1a2e]/80 font-medium hover:text-[#1a1a2e] transition-colors" href="sell.html">Sell</a>
-<a class="text-[#1a1a2e]/80 font-medium hover:text-[#1a1a2e] transition-colors" href="home.html#reviews">Reviews</a>
-</nav>
-<a href="signin.html" class="hidden md:inline-flex bg-[#6b38d4] hover:bg-[#5b2eb5] text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm">Get Started</a>
-<button class="md:hidden" aria-label="Open menu">
-<span class="material-symbols-outlined text-[#1a1a2e]" data-icon="menu">menu</span>
-</button>
-</div>
-</header>
-<main class="pt-24 pb-32">
-<!-- Hero Section -->
-<section class="relative px-6 py-16 lg:py-24 overflow-hidden">
-<!-- Background Glow -->
-<div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px]"></div>
-<div class="absolute left-0 top-24 h-56 w-56 -translate-x-1/3 rounded-full bg-secondary/10 blur-[90px]"></div>
-<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-<div class="order-1 lg:col-span-7 space-y-8">
-<div class="inline-flex items-center gap-2 px-4 py-2 bg-tertiary-fixed text-on-tertiary-fixed rounded-full text-xs font-semibold tracking-[0.24em] uppercase shadow-[0px_12px_28px_rgba(78,84,165,0.12)]">
-<span class="material-symbols-outlined text-sm" data-icon="verified_user">verified_user</span>
-                        Verified trading desk
-                    </div>
-<div class="space-y-5">
-<h1 class="text-5xl lg:text-7xl font-black tracking-tight text-on-surface leading-[1.02] max-w-4xl">
-                        Trade gift cards with
-<span class="bg-gradient-to-r from-primary to-primary-container bg-clip-text text-transparent"> clarity, speed, and trust.</span>
-</h1>
-<p class="text-lg text-on-surface-variant max-w-2xl leading-relaxed">
-                        One polished surface for balance checks, premium brand access, and secure sell flows. Built to feel fast, credible, and operational from the first click.
-                    </p>
-</div>
-<div class="flex flex-wrap gap-4 pt-2">
-<a class="bg-[#6b38d4] text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-[0px_18px_40px_rgba(107,56,212,0.28)] hover:bg-[#5b2eb5] transition-all active:scale-95 inline-flex items-center justify-center border-none" href="signin.html">
-                            Get Started
-                        </a>
-<a class="bg-surface-container-lowest text-on-surface border border-outline-variant/15 px-8 py-4 rounded-full font-bold text-lg hover:bg-surface-container-low hover:border-primary/20 transition-all active:scale-95 inline-flex items-center justify-center shadow-[0px_14px_30px_rgba(31,17,77,0.06)]" href="checkbalance.html">
-                            Check Balance
-                        </a>
-</div>
-</div>
-<div class="order-2 lg:col-span-5 relative">
-<div class="absolute inset-x-10 top-10 h-40 rounded-full bg-primary/15 blur-[90px]"></div>
-<div class="absolute -right-6 top-20 h-32 w-32 rounded-full bg-secondary/15 blur-[70px]"></div>
-<div class="relative z-10 min-h-[420px]">
-<div class="absolute inset-x-8 top-16 h-56 rounded-full bg-white/45 blur-[90px]"></div>
-<div class="absolute inset-x-12 bottom-10 h-12 rounded-full bg-[#20114d]/10 blur-2xl"></div>
-<img alt="Gift card bundle displayed beside a smartphone" class="relative z-10 mx-auto mt-2 w-full max-w-[33rem] object-contain drop-shadow-[0_34px_42px_rgba(31,17,77,0.18)]" src="./ss2.webp"/>
-<div class="absolute bottom-8 left-6 max-w-[13rem] rounded-2xl border border-white/75 bg-white/82 px-4 py-3 shadow-[0px_16px_36px_rgba(42,22,87,0.1)] backdrop-blur-md">
-<p class="text-[10px] font-black uppercase tracking-[0.22em] text-on-surface-variant">Multi-brand flow</p>
-<p class="mt-2 text-sm font-bold text-on-surface">One checkout surface for premium retail, gaming, and lifestyle cards.</p>
-</div>
-<div class="absolute bottom-10 right-0 rounded-2xl border border-outline-variant/15 bg-surface-container-lowest/92 p-4 shadow-lg backdrop-blur-md">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-lg bg-primary-fixed flex items-center justify-center">
-<span class="material-symbols-outlined text-primary" data-icon="shield">shield</span>
-</div>
-<div>
-<p class="text-xs font-bold text-on-surface-variant uppercase tracking-tighter">Secure Assets</p>
-<p class="text-sm font-bold text-on-surface">$2.4M+ Verified</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="order-3 lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-2xl lg:max-w-none lg:-mt-2">
-<div class="rounded-2xl border border-white/80 bg-white/70 px-4 py-4 shadow-[0px_16px_36px_rgba(31,17,77,0.06)] backdrop-blur-sm">
-<p class="text-[10px] font-black uppercase tracking-[0.22em] text-on-surface-variant">Brands</p>
-<p class="mt-2 text-2xl font-black text-on-surface">300+</p>
-<p class="mt-1 text-sm text-on-surface-variant">Retail, gaming, and lifestyle cards in one flow.</p>
-</div>
-<div class="rounded-2xl border border-white/80 bg-white/70 px-4 py-4 shadow-[0px_16px_36px_rgba(31,17,77,0.06)] backdrop-blur-sm">
-<p class="text-[10px] font-black uppercase tracking-[0.22em] text-on-surface-variant">Verification</p>
-<p class="mt-2 text-2xl font-black text-on-surface">~2 min</p>
-<p class="mt-1 text-sm text-on-surface-variant">Fast balance checks and review-ready submissions.</p>
-</div>
-<div class="rounded-2xl border border-white/80 bg-white/70 px-4 py-4 shadow-[0px_16px_36px_rgba(31,17,77,0.06)] backdrop-blur-sm">
-<p class="text-[10px] font-black uppercase tracking-[0.22em] text-on-surface-variant">Protection</p>
-<p class="mt-2 text-2xl font-black text-on-surface">24/7</p>
-<p class="mt-1 text-sm text-on-surface-variant">Secure account routing with tracked order status.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- Trusted Brands Section -->
-<section class="px-6 py-12 bg-surface-container-low">
-<div class="max-w-7xl mx-auto">
-<p class="text-center text-label-md font-semibold text-on-surface-variant/60 uppercase tracking-[0.2em] mb-12">Trusted by Global Leaders</p>
-<div class="flex flex-wrap justify-center gap-12 lg:gap-24 opacity-40 grayscale">
-<span class="text-2xl font-black text-on-surface">AMAZON</span>
-<span class="text-2xl font-black text-on-surface">APPLE</span>
-<span class="text-2xl font-black text-on-surface">RAZER</span>
-<span class="text-2xl font-black text-on-surface">STEAM</span>
-<span class="text-2xl font-black text-on-surface">WALMART</span>
-</div>
-</div>
-</section>
-<!-- Bento Grid Services Section -->
-<section class="px-6 py-32 max-w-7xl mx-auto" id="support">
-<div class="mb-20 text-center lg:text-left">
-<h2 class="text-3xl lg:text-5xl font-bold text-on-surface mb-6">Everything You Need</h2>
-<p class="text-on-surface-variant max-w-2xl">A comprehensive suite of tools designed for the modern gift card enthusiast. Safe, fast, and completely transparent.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-12 gap-8 h-auto lg:h-[600px]">
-<!-- Check Balance Card (Large Vertical) -->
-<a class="md:col-span-5 bg-surface-container-lowest rounded-2xl p-10 flex flex-col justify-between group hover:bg-primary hover:text-white transition-all duration-500 border border-outline-variant/15" href="checkbalance.html">
-<div>
-<div class="w-16 h-16 bg-primary-fixed rounded-xl flex items-center justify-center mb-8 group-hover:bg-white/20 transition-colors">
-<span class="material-symbols-outlined text-primary text-3xl group-hover:text-white" data-icon="account_balance_wallet">account_balance_wallet</span>
-</div>
-<h3 class="text-2xl lg:text-3xl font-bold mb-4">Check Balance</h3>
-<p class="opacity-70 text-lg leading-relaxed">Instantly verify the remaining value of your cards from over 500+ global brands with 99.9% accuracy.</p>
-</div>
-<div class="mt-12 flex items-center gap-2 font-bold group-hover:gap-4 transition-all">
-                        Verify Now <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
-</div>
-</a>
-<!-- Buy Giftcards Card -->
-<div class="md:col-span-7 bg-surface-container rounded-2xl p-10 flex flex-col md:flex-row gap-8 items-center border border-outline-variant/15 overflow-hidden relative">
-<div class="absolute right-0 top-0 h-36 w-36 translate-x-1/3 -translate-y-1/3 rounded-full bg-primary/10 blur-3xl"></div>
-<div class="flex-1 space-y-6 relative z-10">
-<div class="w-16 h-16 bg-primary-fixed rounded-xl flex items-center justify-center">
-<span class="material-symbols-outlined text-primary text-3xl" data-icon="shopping_bag">shopping_bag</span>
-</div>
-<h3 class="text-2xl lg:text-3xl font-bold">Buy Giftcards</h3>
-<p class="text-on-surface-variant leading-relaxed">Access discounted gift cards for your favorite stores. Secure checkout with crypto or bank transfer.</p>
-<a class="bg-surface-container-lowest text-on-surface px-6 py-3 rounded-full font-bold shadow-sm inline-flex items-center justify-center" href="buy.html">Browse Buy Page</a>
-</div>
-<div class="flex-1 w-full md:min-h-[18rem] rounded-[1.5rem] border border-white/70 bg-[linear-gradient(160deg,rgba(255,255,255,0.94)_0%,rgba(244,238,255,0.96)_100%)] p-5 overflow-hidden relative shadow-[0px_20px_48px_rgba(42,22,87,0.08)]">
-<div class="absolute left-5 top-5 rounded-full bg-white/85 px-3 py-2 text-[10px] font-black uppercase tracking-[0.22em] text-on-surface-variant shadow-sm">Top brands</div>
-<img alt="Fan of premium gift cards from major brands" class="mx-auto mt-8 h-full max-h-[15rem] w-full object-contain drop-shadow-[0_24px_28px_rgba(31,17,77,0.14)]" src="./ann.webp"/>
-<div class="absolute bottom-4 right-4 rounded-2xl border border-white/75 bg-white/88 px-4 py-3 text-right shadow-[0px_14px_30px_rgba(42,22,87,0.08)] backdrop-blur-sm">
-<p class="text-[10px] font-black uppercase tracking-[0.22em] text-on-surface-variant">Featured savings</p>
-<p class="mt-1 text-lg font-black text-on-surface">Up to 8% off</p>
-</div>
-</div>
-</div>
-<!-- Sell Giftcards Card -->
-<div class="md:col-span-12 lg:col-span-7 bg-surface-container-high rounded-2xl p-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center border border-outline-variant/15">
-<div class="space-y-6 order-2 md:order-1">
-<div class="w-16 h-16 bg-primary-fixed rounded-xl flex items-center justify-center">
-<span class="material-symbols-outlined text-primary text-3xl" data-icon="currency_exchange">currency_exchange</span>
-</div>
-<h3 class="text-2xl lg:text-3xl font-bold">Sell Giftcards</h3>
-<p class="text-on-surface-variant leading-relaxed">Turn your unused gift cards into instant cash. We offer the best market rates for all major brands.</p>
-<a class="bg-secondary text-on-secondary px-6 py-3 rounded-full font-bold inline-flex items-center justify-center" href="sell.html">Get Quote &amp; Sell</a>
-</div>
-<div class="order-1 md:order-2 bg-primary/5 rounded-2xl p-8 flex flex-col justify-center items-center gap-4">
-<div class="text-primary font-black text-4xl">98.5%</div>
-<div class="text-sm font-bold text-on-surface-variant text-center tracking-widest uppercase">Payout Rate</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Testimonials Section -->
-<section class="px-6 py-32 bg-surface-container-low" id="reviews">
-<div class="max-w-7xl mx-auto">
-<div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-<div class="max-w-xl">
-<h2 class="text-3xl lg:text-5xl font-bold text-on-surface mb-6">What Our Users Say</h2>
-<p class="text-on-surface-variant">Join thousands of traders who trust GiftCardsHub for their daily transactions.</p>
-</div>
-<div class="flex gap-4">
-<button class="w-14 h-14 rounded-full border border-outline-variant/20 flex items-center justify-center hover:bg-surface-container-lowest transition-colors">
-<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
-</button>
-<button class="w-14 h-14 rounded-full border border-outline-variant/20 flex items-center justify-center hover:bg-surface-container-lowest transition-colors">
-<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
-</button>
-</div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<!-- Testimonial 1 -->
-<div class="bg-surface-container-lowest p-8 rounded-2xl shadow-[0px_20px_40px_rgba(6,9,99,0.03)] border border-outline-variant/10">
-<div class="flex gap-1 text-secondary mb-6">
-<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
-<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
-<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
-<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
-<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
-</div>
-<p class="text-on-surface mb-8 italic leading-relaxed">"The verification speed is unlike anything I've used before. I had my funds in my wallet within 5 minutes of checking my Razer card."</p>
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 rounded-full overflow-hidden">
-<img alt="testimonial avatar" class="w-full h-full object-cover" data-alt="Portrait of a young adult male with a friendly look, soft natural lighting, blurred background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArMN22QxiF7nJEX73E0HjuyQOa1uL1Ba-rT3cp3AsMmx9-jsKzYDoEVOTyDB3RBSa9P3087Y42SnL4oi4GWMtK93el_JPuA1nHoaaaVKyD1vg9_i9kPqMiUoLz23LtpxVYyzlDdyl9DTjl0KpFHqbBE9YwJX6MNHT6FJ7A5ItzMzKOnH_hQgPVqwgpyEL_RvSjr-QniuBwsv6dF0ZkENdaCD4ZojQ54AOqLUenwbAL5eoylMccxzCtjIGHOUj-4W5e008jarwz-dH3"/>
-</div>
-<div>
-<p class="font-bold text-on-surface">Marcus Chen</p>
-<p class="text-xs text-on-surface-variant font-medium">Power Trader</p>
-</div>
-</div>
-</div>
-<!-- Testimonial 2 -->
-<div class="bg-surface-container-lowest p-8 rounded-2xl shadow-[0px_20px_40px_rgba(6,9,99,0.03)] border border-outline-variant/10">
-<div class="flex gap-1 text-secondary mb-6">
-<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
-<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
-<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
-<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
-<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
-</div>
-<p class="text-on-surface mb-8 italic leading-relaxed">"GiftCardsHub makes it so easy to get rid of cards I don't need. The rates are the best in the market and customer service is top-notch."</p>
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 rounded-full overflow-hidden">
-<img alt="testimonial avatar" class="w-full h-full object-cover" data-alt="Portrait of a smiling young woman, professional attire, soft daylight, outdoor urban background in soft focus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaXBi0v4GdrE1q0wMjoS32VtuNTN0GJ9y5hcWhbdVxj9ebC26y_O-rE3vJaygpXW_utE7OrHkuygTA5Idrj12QKK8loBRs562UhiYvEDQzi1Dk69qkXWtrHP18rJ0XQsPhDbfkW_eUKWN1gHPOe3hxKVOBUx9ZFIJV2dfW_rZagzwVLRPH55MiRmCIlO1o6fOeENSbFRu5BOndJCHwLNs0M-D3JWucepNhGpw0jzz1_EN1UgGxWzs3QavFquR8fQiyrOZkS3W1inkL"/>
-</div>
-<div>
-<p class="font-bold text-on-surface">Sarah Williams</p>
-<p class="text-xs text-on-surface-variant font-medium">Verified Seller</p>
-</div>
-</div>
-</div>
-<!-- Testimonial 3 -->
-<div class="bg-surface-container-lowest p-8 rounded-2xl shadow-[0px_20px_40px_rgba(6,9,99,0.03)] border border-outline-variant/10">
-<div class="flex gap-1 text-secondary mb-6">
-<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
-<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
-<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
-<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
-<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
-</div>
-<p class="text-on-surface mb-8 italic leading-relaxed">"The interface is so clean. I love that I can manage all my trades in one place without any clutter. Highly recommended for crypto users!"</p>
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 rounded-full overflow-hidden">
-<img alt="testimonial avatar" class="w-full h-full object-cover" data-alt="Headshot of a middle-aged man with a confident look, corporate headshot style, clean studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKXxjEUcMgnB0e7aZagi2kJj8B3mluTi6QjjwerVydHBmVbXDpwNzcrwHTDmt4XZB7tWgf9vrCzhvmlz26jsHa-VGzLd_-aKt9SyMLxVd9cSQdD1Kx_Iz5Cyy9jajA4XVavfsmxO0OdTAPAgVIJp96zZw-Mvs5zGBanTkKHbIcvemIrzTx73b3odNqenwo5BjVzSqSPJCelnA7GrLWaCh5PaTC_F5OYKFuOOasQRmeXfYHzAtAKtgQ4JY_xrb-iVvLvFNndUE_oidh"/>
-</div>
-<div>
-<p class="font-bold text-on-surface">David Okafor</p>
-<p class="text-xs text-on-surface-variant font-medium">Digital Nomad</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-</main>
-<!-- BottomNavBar Shell (Mobile Only) -->
-<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 dark:bg-slate-900/80 backdrop-blur-2xl rounded-t-[1.5rem] z-50 shadow-[0px_-4px_20px_rgba(6,9,99,0.04)]">
-<a class="flex flex-col items-center justify-center bg-[#e9ddff] dark:bg-violet-900/40 text-[#6b38d4] dark:text-violet-200 rounded-[1rem] px-3 py-2 active:scale-90 duration-150" href="home.html">
-<span class="material-symbols-outlined" data-icon="home">home</span>
-<span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Home</span>
-</a>
-<a class="flex flex-col items-center justify-center text-[#060963]/60 dark:text-slate-400 px-3 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="checkbalance.html">
-<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
-<span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Verify</span>
-</a>
-<a class="flex flex-col items-center justify-center text-[#060963]/60 dark:text-slate-400 px-3 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="buy.html">
-<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
-<span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Buy</span>
-</a>
-<a class="flex flex-col items-center justify-center text-[#060963]/60 dark:text-slate-400 px-3 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="sell.html">
-<span class="material-symbols-outlined" data-icon="sell">sell</span>
-<span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Sell</span>
-</a>
-<a class="flex flex-col items-center justify-center text-[#060963]/60 dark:text-slate-400 px-3 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="home.html#reviews">
-<span class="material-symbols-outlined" data-icon="star">star</span>
-<span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Reviews</span>
-</a>
-</nav>
-<!-- Floating Action Button (Contextual for Landing) -->
-<button class="fixed bottom-24 right-6 w-16 h-16 bg-secondary text-on-secondary rounded-full flex items-center justify-center shadow-xl z-40 md:bottom-10 active:scale-95 duration-200 transition-transform">
-<span class="material-symbols-outlined text-3xl" data-icon="add">add</span>
-</button>
-<footer class="bg-on-surface text-surface py-20 px-6">
-<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
-<div class="col-span-1 md:col-span-2">
-<span class="text-2xl font-black tracking-tight mb-6 block">GiftCardsHub</span>
-<p class="opacity-60 max-w-sm leading-relaxed">The global standard for gift card trading. Secure, transparent, and built for the future of digital assets.</p>
-</div>
-<div>
-<h4 class="font-bold mb-6 text-tertiary-fixed">Quick Links</h4>
-<ul class="space-y-4 opacity-70">
-<li><a class="hover:text-primary-fixed transition-colors" href="#support">How it works</a></li>
-<li><a class="hover:text-primary-fixed transition-colors" href="trademarketplace.html">Pricing</a></li>
-<li><a class="hover:text-primary-fixed transition-colors" href="#reviews">FAQ</a></li>
-<li><a class="hover:text-primary-fixed transition-colors" href="account.html">Support</a></li>
-</ul>
-</div>
-<div>
-<h4 class="font-bold mb-6 text-tertiary-fixed">Legal</h4>
-<ul class="space-y-4 opacity-70">
-<li><a class="hover:text-primary-fixed transition-colors" href="home.html#support">Terms of Service</a></li>
-<li><a class="hover:text-primary-fixed transition-colors" href="account.html">Privacy Policy</a></li>
-<li><a class="hover:text-primary-fixed transition-colors" href="checkbalance.html">Compliance</a></li>
-</ul>
-</div>
-</div>
-<div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-surface/10 flex flex-col md:flex-row justify-between items-center gap-4 opacity-50 text-sm">
-<p>&copy; 2024 GiftCardsHub Global. All rights reserved.</p>
-<div class="flex gap-6">
-<span class="material-symbols-outlined cursor-pointer" data-icon="facebook">social_leaderboard</span>
-<span class="material-symbols-outlined cursor-pointer" data-icon="twitter">retweet</span>
-<span class="material-symbols-outlined cursor-pointer" data-icon="instagram">retweet</span>
-</div>
-</div>
-</footer>
-</body></html>
+          <span class="text-xl font-black tracking-tight text-white">GiftCardsHub</span>
+        </a>
+
+        <nav class="hidden items-center gap-10 md:flex">
+          <a class="border-b-2 border-white pb-1 text-lg font-semibold text-white" href="home.html">Home</a>
+          <a class="pb-1 text-lg font-medium text-white/86 transition-colors hover:text-white" href="checkbalance.html">Verify</a>
+          <a class="pb-1 text-lg font-medium text-white/86 transition-colors hover:text-white" href="buy.html">Buy</a>
+          <a class="pb-1 text-lg font-medium text-white/86 transition-colors hover:text-white" href="sell.html">Sell</a>
+          <a class="pb-1 text-lg font-medium text-white/86 transition-colors hover:text-white" href="home.html#reviews">Reviews</a>
+        </nav>
+
+        <a
+          class="hidden rounded-[1.1rem] bg-white px-6 py-3 text-lg font-bold text-[#101828] shadow-[0_14px_30px_rgba(10,42,98,0.18)] transition-transform hover:-translate-y-0.5 md:inline-flex"
+          href="checkbalance.html"
+        >
+          Verify now
+        </a>
+
+        <button aria-label="Open menu" class="md:hidden">
+          <span class="material-symbols-outlined text-white" data-icon="menu">menu</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="pb-32">
+      <section class="relative overflow-hidden bg-[linear-gradient(135deg,#1197f3_0%,#1486f5_38%,#0c67ea_100%)] pt-28 pb-20 lg:pb-28">
+        <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(135deg, transparent 0%, transparent 33%, rgba(255,255,255,0.18) 33%, rgba(255,255,255,0.18) 47%, transparent 47%, transparent 100%);"></div>
+        <div class="absolute inset-y-0 left-1/2 hidden w-px bg-white/10 lg:block"></div>
+        <div class="absolute -left-20 top-16 h-64 w-64 rounded-full bg-white/10 blur-3xl"></div>
+        <div class="absolute right-0 top-10 h-80 w-80 translate-x-1/4 rounded-full bg-[#0a54c8]/30 blur-3xl"></div>
+
+        <div class="relative mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12 lg:items-center">
+          <div class="order-1 space-y-7 lg:col-span-6">
+            <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/12 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.28em] text-white/90">
+              <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1">verified_user</span>
+              Verification first
+            </div>
+
+            <div class="space-y-5">
+              <h1 class="max-w-3xl text-5xl font-black leading-[0.98] tracking-tight text-white lg:text-7xl">
+                Verify gift cards with a cleaner, faster front door.
+              </h1>
+              <p class="max-w-2xl text-lg leading-relaxed text-white/86 lg:text-[1.35rem]">
+                One clear path for code checks, supported brands, and tracked next steps. Buy and sell stay available,
+                but verification leads the experience.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-4">
+              <a
+                class="inline-flex items-center justify-center rounded-[1.25rem] bg-white px-8 py-4 text-lg font-bold text-[#101828] shadow-[0_20px_40px_rgba(6,31,76,0.24)] transition-transform hover:-translate-y-0.5"
+                href="checkbalance.html"
+              >
+                Verify Your Gift Card Now
+              </a>
+              <a
+                class="inline-flex items-center justify-center rounded-[1.25rem] border border-white/22 bg-white/10 px-8 py-4 text-lg font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/16"
+                href="#brands"
+              >
+                View supported brands
+              </a>
+            </div>
+
+            <div class="flex flex-wrap gap-3 text-sm font-semibold text-white/88">
+              <span class="rounded-full border border-white/18 bg-white/10 px-4 py-2">Amazon, Apple, Google Play, Steam, Razer Gold</span>
+              <span class="rounded-full border border-white/18 bg-white/10 px-4 py-2">Fast review-ready submissions</span>
+              <span class="rounded-full border border-white/18 bg-white/10 px-4 py-2">Secure account routing</span>
+            </div>
+          </div>
+
+          <div class="order-2 flex justify-center lg:col-span-6 lg:justify-end">
+            <div class="relative w-full max-w-[42rem]">
+              <div class="absolute inset-x-10 top-12 h-32 rounded-full bg-white/15 blur-[100px]"></div>
+              <div class="absolute inset-x-16 bottom-8 h-10 rounded-full bg-[#07214f]/30 blur-2xl"></div>
+              <img
+                alt="Gift card bundle displayed beside a smartphone"
+                class="relative z-10 mx-auto w-full max-w-[36rem] object-contain drop-shadow-[0_38px_42px_rgba(7,33,79,0.22)]"
+                src="./ss2.webp"
+              />
+            </div>
+          </div>
+
+          <div class="order-3 grid gap-4 sm:grid-cols-3 lg:col-span-6">
+            <article class="rounded-[1.75rem] border border-white/75 bg-white px-5 py-5 shadow-[0_24px_48px_rgba(7,33,79,0.18)]">
+              <p class="text-[11px] font-black uppercase tracking-[0.24em] text-[#0f6fe8]">Brands</p>
+              <p class="mt-2 text-3xl font-black tracking-tight text-[#101828]">300+</p>
+              <p class="mt-2 text-sm leading-relaxed text-[#344054]">Retail, gaming, and lifestyle cards in one verification flow.</p>
+            </article>
+            <article class="rounded-[1.75rem] border border-white/75 bg-white px-5 py-5 shadow-[0_24px_48px_rgba(7,33,79,0.18)]">
+              <p class="text-[11px] font-black uppercase tracking-[0.24em] text-[#0f6fe8]">Verification</p>
+              <p class="mt-2 text-3xl font-black tracking-tight text-[#101828]">~2 min</p>
+              <p class="mt-2 text-sm leading-relaxed text-[#344054]">Fast checks with clear feedback instead of noisy status blocks.</p>
+            </article>
+            <article class="rounded-[1.75rem] border border-white/75 bg-white px-5 py-5 shadow-[0_24px_48px_rgba(7,33,79,0.18)]">
+              <p class="text-[11px] font-black uppercase tracking-[0.24em] text-[#0f6fe8]">Protection</p>
+              <p class="mt-2 text-3xl font-black tracking-tight text-[#101828]">24/7</p>
+              <p class="mt-2 text-sm leading-relaxed text-[#344054]">Tracked order routing and account-aware support when a review is needed.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="relative z-10 -mt-8 px-6 lg:-mt-10">
+        <div class="mx-auto grid max-w-7xl gap-6 rounded-[2rem] border border-white bg-white p-6 shadow-[0_28px_80px_rgba(15,23,42,0.08)] lg:grid-cols-[1.2fr_0.8fr] lg:p-10">
+          <div class="space-y-5">
+            <p class="text-[11px] font-black uppercase tracking-[0.28em] text-[#0f6fe8]">Main objective</p>
+            <h2 class="text-3xl font-black tracking-tight text-[#18212b] lg:text-5xl">Start with verification, then move into buy or sell when needed.</h2>
+            <p class="max-w-2xl text-base leading-relaxed text-[#5b6c80] lg:text-lg">
+              The site now presents one obvious first step. Users land, understand the supported brands, and move into the verify
+              flow without competing cards, crowded copy, or off-path actions.
+            </p>
+            <a
+              class="inline-flex items-center gap-2 rounded-full bg-[#101828] px-6 py-3.5 text-sm font-bold uppercase tracking-[0.18em] text-white transition-transform hover:-translate-y-0.5"
+              href="checkbalance.html"
+            >
+              Open verify flow
+              <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+            </a>
+          </div>
+
+          <div class="grid gap-4 rounded-[1.75rem] bg-[#f3f8ff] p-5">
+            <article class="rounded-[1.4rem] border border-[#dbe8fb] bg-white px-5 py-4">
+              <p class="text-[10px] font-black uppercase tracking-[0.24em] text-[#60758f]">Step 1</p>
+              <p class="mt-2 text-lg font-bold text-[#18212b]">Choose the card brand</p>
+              <p class="mt-1 text-sm text-[#5b6c80]">Search from the supported logo list and lock the exact brand before submission.</p>
+            </article>
+            <article class="rounded-[1.4rem] border border-[#dbe8fb] bg-white px-5 py-4">
+              <p class="text-[10px] font-black uppercase tracking-[0.24em] text-[#60758f]">Step 2</p>
+              <p class="mt-2 text-lg font-bold text-[#18212b]">Enter amount and redemption code</p>
+              <p class="mt-1 text-sm text-[#5b6c80]">The verify page stays simple: amount, currency, and original redemption code.</p>
+            </article>
+            <article class="rounded-[1.4rem] border border-[#dbe8fb] bg-white px-5 py-4">
+              <p class="text-[10px] font-black uppercase tracking-[0.24em] text-[#60758f]">Step 3</p>
+              <p class="mt-2 text-lg font-bold text-[#18212b]">Get a clean popup result</p>
+              <p class="mt-1 text-sm text-[#5b6c80]">Success, missing details, and next steps all land in a focused modal instead of inline clutter.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="px-6 py-20" id="brands">
+        <div class="mx-auto max-w-7xl">
+          <div class="max-w-3xl space-y-4">
+            <p class="text-[11px] font-black uppercase tracking-[0.28em] text-[#0f6fe8]">Supported brands</p>
+            <h2 class="text-3xl font-black tracking-tight text-[#18212b] lg:text-5xl">Supported brands presented with clarity and trust.</h2>
+            <p class="text-base leading-relaxed text-[#5b6c80] lg:text-lg">
+              GiftCardsHub brings leading retail, gaming, and digital brands into one polished verification experience, helping users
+              recognize supported cards immediately and move forward with confidence.
+            </p>
+          </div>
+
+          <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="flex items-center gap-4 rounded-[1.75rem] border border-[#dce6f4] bg-white px-5 py-5 shadow-[0_18px_38px_rgba(15,23,42,0.05)]">
+              <img alt="Amazon logo" class="h-9 w-9 object-contain" src="./assets/brand-logos/amazon.svg" />
+              <div>
+                <p class="text-lg font-bold text-[#18212b]">Amazon</p>
+                <p class="text-sm text-[#5b6c80]">Retail balance checks</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 rounded-[1.75rem] border border-[#dce6f4] bg-white px-5 py-5 shadow-[0_18px_38px_rgba(15,23,42,0.05)]">
+              <img alt="Apple logo" class="h-9 w-9 object-contain" src="./assets/brand-logos/apple.svg" />
+              <div>
+                <p class="text-lg font-bold text-[#18212b]">Apple</p>
+                <p class="text-sm text-[#5b6c80]">Digital and lifestyle cards</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 rounded-[1.75rem] border border-[#dce6f4] bg-white px-5 py-5 shadow-[0_18px_38px_rgba(15,23,42,0.05)]">
+              <img alt="Google Play logo" class="h-9 w-9 object-contain" src="./assets/brand-logos/google-play.svg" />
+              <div>
+                <p class="text-lg font-bold text-[#18212b]">Google Play</p>
+                <p class="text-sm text-[#5b6c80]">App store code checks</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 rounded-[1.75rem] border border-[#dce6f4] bg-white px-5 py-5 shadow-[0_18px_38px_rgba(15,23,42,0.05)]">
+              <img alt="Razer Gold logo" class="h-9 w-9 object-contain" src="./assets/brand-logos/razer-gold.svg" />
+              <div>
+                <p class="text-lg font-bold text-[#18212b]">Razer Gold</p>
+                <p class="text-sm text-[#5b6c80]">Gaming wallet and PIN cards</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 rounded-[1.75rem] border border-[#dce6f4] bg-white px-5 py-5 shadow-[0_18px_38px_rgba(15,23,42,0.05)]">
+              <img alt="Steam logo" class="h-9 w-9 object-contain" src="./assets/brand-logos/steam.svg" />
+              <div>
+                <p class="text-lg font-bold text-[#18212b]">Steam</p>
+                <p class="text-sm text-[#5b6c80]">Gaming redemptions</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 rounded-[1.75rem] border border-[#dce6f4] bg-white px-5 py-5 shadow-[0_18px_38px_rgba(15,23,42,0.05)]">
+              <img alt="Nike logo" class="h-9 w-9 object-contain" src="./assets/brand-logos/nike.svg" />
+              <div>
+                <p class="text-lg font-bold text-[#18212b]">Nike</p>
+                <p class="text-sm text-[#5b6c80]">Lifestyle and retail cards</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 rounded-[1.75rem] border border-[#dce6f4] bg-white px-5 py-5 shadow-[0_18px_38px_rgba(15,23,42,0.05)]">
+              <img alt="Target logo" class="h-9 w-9 object-contain" src="./assets/brand-logos/target.svg" />
+              <div>
+                <p class="text-lg font-bold text-[#18212b]">Target</p>
+                <p class="text-sm text-[#5b6c80]">Store-value checks</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 rounded-[1.75rem] border border-[#dce6f4] bg-white px-5 py-5 shadow-[0_18px_38px_rgba(15,23,42,0.05)]">
+              <img alt="Walmart logo" class="h-9 w-9 object-contain" src="./assets/brand-logos/walmart.svg" />
+              <div>
+                <p class="text-lg font-bold text-[#18212b]">Walmart</p>
+                <p class="text-sm text-[#5b6c80]">Retail balance verification</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="px-6 pb-20">
+        <div class="mx-auto grid max-w-7xl gap-6 lg:grid-cols-2">
+          <article class="overflow-hidden rounded-[2rem] bg-[#10213a] p-8 text-white shadow-[0_28px_80px_rgba(9,23,48,0.22)] lg:p-10">
+            <p class="text-[11px] font-black uppercase tracking-[0.28em] text-[#8fc4ff]">Secondary path</p>
+            <h3 class="mt-4 text-3xl font-black tracking-tight">Buy cards after verification, not before it.</h3>
+            <p class="mt-4 max-w-xl text-base leading-relaxed text-white/74">
+              The buy flow stays available for shoppers who already know what they want, but it no longer crowds the first decision on the site.
+            </p>
+            <a class="mt-8 inline-flex rounded-full bg-white px-6 py-3.5 text-sm font-bold uppercase tracking-[0.18em] text-[#10213a]" href="buy.html">Browse buy page</a>
+          </article>
+
+          <article class="overflow-hidden rounded-[2rem] border border-[#dce6f4] bg-white p-8 shadow-[0_28px_80px_rgba(15,23,42,0.08)] lg:p-10">
+            <p class="text-[11px] font-black uppercase tracking-[0.28em] text-[#0f6fe8]">Secondary path</p>
+            <h3 class="mt-4 text-3xl font-black tracking-tight text-[#18212b]">Sell when the card is ready for review.</h3>
+            <p class="mt-4 max-w-xl text-base leading-relaxed text-[#5b6c80]">
+              The sell side stays operational, but the page hierarchy now makes it clear that verification is the first trust-building step.
+            </p>
+            <a class="mt-8 inline-flex rounded-full bg-[#0f6fe8] px-6 py-3.5 text-sm font-bold uppercase tracking-[0.18em] text-white" href="sell.html">Open sell page</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="px-6 pb-20" id="reviews">
+        <div class="mx-auto max-w-7xl rounded-[2.4rem] border border-[#dce6f4] bg-white p-6 shadow-[0_28px_80px_rgba(15,23,42,0.08)] lg:p-10">
+          <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <div class="max-w-2xl">
+              <p class="text-[11px] font-black uppercase tracking-[0.28em] text-[#0f6fe8]">Reviews</p>
+              <h2 class="mt-3 text-3xl font-black tracking-tight text-[#18212b] lg:text-5xl">Users notice the cleaner flow first.</h2>
+            </div>
+            <p class="max-w-xl text-base leading-relaxed text-[#5b6c80]">
+              The visual direction is simpler, but the bigger change is clarity. People understand what to do in the first few seconds.
+            </p>
+          </div>
+
+          <div class="mt-10 grid gap-5 lg:grid-cols-3">
+            <article class="rounded-[1.75rem] bg-[#f6faff] px-6 py-6">
+              <p class="text-base leading-relaxed text-[#24364a]">"I landed, picked the brand, and verified immediately. The path is obvious now."</p>
+              <p class="mt-5 text-sm font-bold text-[#18212b]">Marcus Chen</p>
+              <p class="text-sm text-[#60758f]">Power Trader</p>
+            </article>
+            <article class="rounded-[1.75rem] bg-[#f6faff] px-6 py-6">
+              <p class="text-base leading-relaxed text-[#24364a]">"The blue hero and the real logos make the platform look much more credible."</p>
+              <p class="mt-5 text-sm font-bold text-[#18212b]">Sarah Williams</p>
+              <p class="text-sm text-[#60758f]">Verified Seller</p>
+            </article>
+            <article class="rounded-[1.75rem] bg-[#f6faff] px-6 py-6">
+              <p class="text-base leading-relaxed text-[#24364a]">"The popup feedback feels cleaner than long status messages buried in the page."</p>
+              <p class="mt-5 text-sm font-bold text-[#18212b]">David Okafor</p>
+              <p class="text-sm text-[#60758f]">Digital Nomad</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="px-6 pb-20">
+        <div class="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 rounded-[2.4rem] bg-[linear-gradient(135deg,#10213a_0%,#162f57_52%,#0f6fe8_100%)] px-8 py-8 text-white shadow-[0_28px_80px_rgba(9,23,48,0.2)] lg:flex-row lg:items-center lg:px-10">
+          <div class="max-w-2xl">
+            <p class="text-[11px] font-black uppercase tracking-[0.28em] text-[#8fc4ff]">Ready to start</p>
+            <h2 class="mt-3 text-3xl font-black tracking-tight lg:text-4xl">Go straight to verification.</h2>
+            <p class="mt-3 text-base leading-relaxed text-white/76">
+              This branch makes verification the first decision and keeps the rest of the site in support of that action.
+            </p>
+          </div>
+          <a class="inline-flex rounded-[1.1rem] bg-white px-6 py-3.5 text-base font-bold text-[#101828]" href="checkbalance.html">Verify now</a>
+        </div>
+      </section>
+    </main>
+
+    <nav class="fixed bottom-0 left-0 z-50 flex w-full items-center justify-around rounded-t-[1.5rem] bg-white/88 px-4 pb-6 pt-3 shadow-[0px_-4px_20px_rgba(6,9,99,0.04)] backdrop-blur-2xl md:hidden">
+      <a class="flex flex-col items-center justify-center rounded-[1rem] bg-[#dcebff] px-3 py-2 text-[#0f6fe8] active:scale-90 duration-150" href="home.html">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">home</span>
+        <span class="mt-1 text-[10px] font-semibold uppercase tracking-wider">Home</span>
+      </a>
+      <a class="flex flex-col items-center justify-center px-3 py-2 text-[#24364a]/60 transition-opacity hover:opacity-80 active:scale-90 duration-150" href="checkbalance.html">
+        <span class="material-symbols-outlined">verified_user</span>
+        <span class="mt-1 text-[10px] font-semibold uppercase tracking-wider">Verify</span>
+      </a>
+      <a class="flex flex-col items-center justify-center px-3 py-2 text-[#24364a]/60 transition-opacity hover:opacity-80 active:scale-90 duration-150" href="buy.html">
+        <span class="material-symbols-outlined">shopping_bag</span>
+        <span class="mt-1 text-[10px] font-semibold uppercase tracking-wider">Buy</span>
+      </a>
+      <a class="flex flex-col items-center justify-center px-3 py-2 text-[#24364a]/60 transition-opacity hover:opacity-80 active:scale-90 duration-150" href="sell.html">
+        <span class="material-symbols-outlined">sell</span>
+        <span class="mt-1 text-[10px] font-semibold uppercase tracking-wider">Sell</span>
+      </a>
+      <a class="flex flex-col items-center justify-center px-3 py-2 text-[#24364a]/60 transition-opacity hover:opacity-80 active:scale-90 duration-150" href="home.html#reviews">
+        <span class="material-symbols-outlined">star</span>
+        <span class="mt-1 text-[10px] font-semibold uppercase tracking-wider">Reviews</span>
+      </a>
+    </nav>
+
+    <footer class="bg-[#10213a] px-6 py-16 text-white">
+      <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.2fr_0.8fr_0.8fr]">
+        <div>
+          <div class="flex items-center gap-3">
+            <div class="grid h-11 w-11 place-items-center rounded-full border border-white/20 bg-white/10">
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1">redeem</span>
+            </div>
+            <span class="text-xl font-black tracking-tight">GiftCardsHub</span>
+          </div>
+          <p class="mt-5 max-w-md text-base leading-relaxed text-white/66">
+            A verify-first gift card platform built for clearer user intent, real brand coverage, and cleaner conversion into buy or sell.
+          </p>
+        </div>
+
+        <div>
+          <p class="text-sm font-black uppercase tracking-[0.22em] text-[#8fc4ff]">Navigation</p>
+          <div class="mt-5 space-y-3 text-white/72">
+            <a class="block transition-colors hover:text-white" href="checkbalance.html">Verify</a>
+            <a class="block transition-colors hover:text-white" href="buy.html">Buy</a>
+            <a class="block transition-colors hover:text-white" href="sell.html">Sell</a>
+            <a class="block transition-colors hover:text-white" href="home.html#reviews">Reviews</a>
+          </div>
+        </div>
+
+        <div>
+          <p class="text-sm font-black uppercase tracking-[0.22em] text-[#8fc4ff]">Support</p>
+          <div class="mt-5 space-y-3 text-white/72">
+            <a class="block transition-colors hover:text-white" href="account.html">Account</a>
+            <a class="block transition-colors hover:text-white" href="trademarketplace.html">Marketplace</a>
+            <a class="block transition-colors hover:text-white" href="signin.html">Sign in</a>
+            <a class="block transition-colors hover:text-white" href="signup.html">Create account</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mx-auto mt-12 max-w-7xl border-t border-white/10 pt-6 text-sm text-white/48">
+        <p>&copy; 2026 GiftCardsHub. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
