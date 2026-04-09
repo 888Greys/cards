@@ -732,7 +732,7 @@ function initCheckBalance() {
     const digits = (cardNumberInput?.value || "").replace(/\D/g, "");
     const pin = (pinInput?.value || "").trim();
     const verifyAmount = parseCurrencyInput(cardValueInput?.value);
-    const selectedCurrency = "USD";
+    const selectedCurrency = String(currencyInput?.value || "USD").toUpperCase();
 
     if (isSellFlow) {
       const cardValue = parseCurrencyInput(cardValueInput?.value);
