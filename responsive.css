@@ -78,12 +78,16 @@
   }
 
   body[data-page="check-balance"] main,
+  body[data-page="buy"] main,
+  body[data-page="sell"] main,
   body[data-page="marketplace"] main {
     padding-top: 0 !important;
     padding-bottom: 8rem !important;
   }
 
-  body[data-page="check-balance"] main {
+  body[data-page="check-balance"] main,
+  body[data-page="buy"] main,
+  body[data-page="sell"] main {
     padding-left: 0 !important;
     padding-right: 0 !important;
   }

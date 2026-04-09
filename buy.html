@@ -29,38 +29,10 @@
               "tertiary-fixed-dim": "#bec2ff",
               "on-surface": "#060963",
               "on-surface-variant": "#494454",
-              "surface-tint": "#6d3bd7",
-              "secondary-fixed": "#ffdbcc",
-              "on-secondary-fixed-variant": "#7a3000",
               outline: "#7b7486",
-              error: "#ba1a1a",
-              "outline-variant": "#cbc3d7",
-              "on-tertiary-container": "#fffbff",
-              "surface-container-high": "#e7e6ff",
-              "tertiary-container": "#676dc0",
-              "surface-bright": "#fbf8ff",
-              "primary-fixed-dim": "#d0bcff",
-              "on-primary-container": "#fffbff",
-              "on-error-container": "#93000a",
-              "on-primary-fixed": "#23005c",
-              "on-secondary-fixed": "#351000",
-              "on-tertiary-fixed": "#060963",
-              primary: "#6b38d4",
-              "on-background": "#060963",
-              "surface-dim": "#d6d7ff",
-              "on-error": "#ffffff",
-              "on-secondary-container": "#572000",
-              "error-container": "#ffdad6",
-              "surface-variant": "#e0e0ff",
-              "secondary-container": "#fe6b00",
-              "primary-container": "#8455ef",
-              "on-primary-fixed-variant": "#5516be",
-              "on-secondary": "#ffffff",
-              secondary: "#a04100",
+              primary: "#0f6fe8",
+              "primary-container": "#1588f6",
               "surface-container-low": "#f5f2ff",
-              tertiary: "#4e54a5",
-              "inverse-primary": "#d0bcff",
-              "primary-fixed": "#e9ddff",
             },
             borderRadius: {
               DEFAULT: "0.25rem",
@@ -80,267 +52,277 @@
     </script>
     <style>
       .material-symbols-outlined {
-        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+        font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 24;
       }
+
       body {
+        min-height: 100dvh;
         font-family: "Inter", sans-serif;
-        min-height: max(884px, 100dvh);
-      }
-      .bg-primary-gradient {
-        background: linear-gradient(135deg, #6b38d4 0%, #8455ef 100%);
       }
     </style>
   </head>
-  <body class="bg-surface text-on-surface antialiased pb-32" data-page="buy" data-auth-required="true">
+  <body class="bg-[#eef4fb] text-[#10213a] antialiased" data-page="buy" data-auth-required="true">
     <script type="module" src="./auth-ui.js"></script>
 
-    <!-- TopAppBar -->
-    <header class="bg-[#fbf8ff]/70 backdrop-blur-xl fixed top-0 w-full z-50">
-      <div class="flex justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto">
-        <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-[10px] bg-gradient-to-br from-[#9b59b6] to-[#8e44ad] flex items-center justify-center">
-            <span class="material-symbols-outlined text-white text-lg" style="font-variation-settings:'FILL' 1">redeem</span>
+    <header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#0f84f4]/78 backdrop-blur-xl">
+      <div class="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4">
+        <a class="flex items-center gap-3" href="home.html">
+          <div class="grid h-11 w-11 place-items-center rounded-full border border-white/30 bg-white/12 text-white shadow-[0_10px_30px_rgba(9,57,128,0.25)]">
+            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1">redeem</span>
           </div>
-          <span class="text-lg font-extrabold text-[#1a1a2e] font-['Inter'] tracking-tight">GiftcardsHub</span>
-        </div>
-        <nav class="hidden md:flex items-center gap-8">
-          <a class="text-[#1a1a2e]/80 font-medium hover:text-[#1a1a2e] transition-colors" href="home.html">Home</a>
-          <a class="text-[#1a1a2e]/80 font-medium hover:text-[#1a1a2e] transition-colors" href="checkbalance.html">Verify</a>
-          <a class="text-[#1a1a2e] font-bold" href="buy.html">Buy</a>
-          <a class="text-[#1a1a2e]/80 font-medium hover:text-[#1a1a2e] transition-colors" href="sell.html">Sell</a>
-          <a class="text-[#1a1a2e]/80 font-medium hover:text-[#1a1a2e] transition-colors" href="home.html#reviews">Reviews</a>
+          <span class="text-xl font-black tracking-tight text-white">GiftCardsHub</span>
+        </a>
+
+        <nav class="hidden items-center gap-10 md:flex">
+          <a class="pb-1 text-lg font-medium text-white/86 transition-colors hover:text-white" href="home.html">Home</a>
+          <a class="pb-1 text-lg font-medium text-white/86 transition-colors hover:text-white" href="checkbalance.html">Verify</a>
+          <a class="border-b-2 border-white pb-1 text-lg font-semibold text-white" href="buy.html">Buy</a>
+          <a class="pb-1 text-lg font-medium text-white/86 transition-colors hover:text-white" href="sell.html">Sell</a>
+          <a class="pb-1 text-lg font-medium text-white/86 transition-colors hover:text-white" href="home.html#reviews">Reviews</a>
         </nav>
-        <a href="signin.html" class="hidden md:inline-flex bg-[#6b38d4] hover:bg-[#5b2eb5] text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm">Get Started</a>
-        <button class="md:hidden" aria-label="Open menu">
-          <span class="material-symbols-outlined text-[#1a1a2e]" data-icon="menu">menu</span>
+
+        <a
+          class="hidden rounded-[1.1rem] bg-white px-6 py-3 text-lg font-bold text-[#101828] shadow-[0_14px_30px_rgba(10,42,98,0.18)] transition-transform hover:-translate-y-0.5 md:inline-flex"
+          href="checkbalance.html"
+        >
+          Verify now
+        </a>
+
+        <button aria-label="Open menu" class="md:hidden">
+          <span class="material-symbols-outlined text-white" data-icon="menu">menu</span>
         </button>
       </div>
     </header>
 
-    <main class="mt-24 px-6 space-y-10 max-w-4xl mx-auto">
-      <!-- Hero Selection Section -->
-      <section class="space-y-6">
-        <div class="text-center space-y-2">
-          <h2 class="font-black text-3xl tracking-tight">Buy Gift Cards</h2>
-          <p class="text-on-surface-variant">Choose a brand and pick a value to get started</p>
-        </div>
-        <div class="bg-surface-container-low rounded-2xl p-6 space-y-6 shadow-sm border border-outline-variant/15">
-          <!-- Dropdown -->
-          <div class="space-y-2">
-            <div class="space-y-2 relative" data-buy-brand-combobox>
-              <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant opacity-70 px-1" for="buy_brand_picker">Choose Brand</label>
-              <input id="buy_selected_brand" name="selected_brand" type="hidden" value="" />
-              <button
-                aria-controls="buy_brand_picker_menu"
-                aria-expanded="false"
-                aria-haspopup="listbox"
-                class="w-full h-14 px-4 bg-surface-container-lowest border border-outline-variant/20 rounded-xl text-body focus:ring-2 focus:ring-primary outline-none transition-all flex items-center justify-between gap-3"
-                data-buy-brand-trigger
-                id="buy_brand_picker"
-                type="button"
-              >
-                <span class="flex items-center gap-2 min-w-0">
-                  <img alt="" class="w-5 h-5 object-contain rounded-[4px] bg-white p-[2px] shrink-0" data-buy-brand-current-logo hidden />
-                  <span class="truncate text-left" data-buy-brand-current>Select a brand...</span>
-                </span>
-                <span class="material-symbols-outlined shrink-0 text-on-surface-variant">expand_more</span>
-              </button>
+    <main class="pb-32">
+      <section class="relative overflow-hidden bg-[linear-gradient(135deg,#1197f3_0%,#1486f5_38%,#0c67ea_100%)] pt-28 pb-24">
+        <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(135deg, transparent 0%, transparent 33%, rgba(255,255,255,0.18) 33%, rgba(255,255,255,0.18) 47%, transparent 47%, transparent 100%);"></div>
+        <div class="absolute -left-20 top-12 h-72 w-72 rounded-full bg-white/10 blur-3xl"></div>
+        <div class="absolute right-0 top-10 h-80 w-80 translate-x-1/4 rounded-full bg-[#0a54c8]/30 blur-3xl"></div>
 
-              <div
-                class="hidden absolute top-[calc(100%+0.5rem)] left-0 right-0 z-30 bg-surface-container-lowest border border-outline-variant/30 rounded-2xl shadow-[0px_14px_30px_rgba(0,0,0,0.14)] overflow-hidden"
-                data-buy-brand-menu
-                id="buy_brand_picker_menu"
-              >
-                <div class="p-3 border-b border-outline-variant/20">
-                  <label class="relative block">
-                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
-                    <input
-                      autocomplete="off"
-                      class="w-full h-10 pl-10 pr-3 rounded-xl border border-outline-variant/25 bg-surface text-on-surface text-sm placeholder:text-on-surface-variant/60 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none"
-                      data-buy-brand-search
-                      placeholder="Search brands..."
-                      type="text"
-                    />
-                  </label>
+        <div class="relative mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12 lg:items-center">
+          <div class="space-y-6 lg:col-span-6">
+            <p class="text-[11px] font-black uppercase tracking-[0.28em] text-white/88">Buy supported cards</p>
+            <h1 class="max-w-3xl text-4xl font-black leading-[1.02] tracking-tight text-white lg:text-6xl">
+              Buy gift cards inside the same trusted experience.
+            </h1>
+            <p class="max-w-2xl text-base leading-relaxed text-white/82 lg:text-lg">
+              Choose from supported brands, lock in a value, and move to checkout through a cleaner purchase surface that matches the
+              new verification-first design.
+            </p>
+            <div class="flex flex-wrap gap-3 text-sm font-semibold text-white/88">
+              <span class="rounded-full border border-white/18 bg-white/10 px-4 py-2">Real brand logos</span>
+              <span class="rounded-full border border-white/18 bg-white/10 px-4 py-2">Quick cart actions</span>
+              <span class="rounded-full border border-white/18 bg-white/10 px-4 py-2">Aligned with verify flow</span>
+            </div>
+          </div>
+
+          <div class="flex justify-center lg:col-span-6 lg:justify-end">
+            <div class="relative w-full max-w-[32rem]">
+              <div class="absolute inset-x-8 top-10 h-28 rounded-full bg-white/18 blur-[90px]"></div>
+              <img alt="Gift card collage for supported brands" class="relative z-10 mx-auto w-full max-w-[29rem] object-contain drop-shadow-[0_38px_42px_rgba(7,33,79,0.22)]" src="./ann.webp" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="relative z-10 -mt-12 px-4 sm:px-6">
+        <div class="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[1.12fr_0.88fr]">
+          <section class="rounded-[2rem] border border-white bg-white px-4 py-6 shadow-[0_28px_80px_rgba(15,23,42,0.08)] sm:px-8 sm:py-8">
+            <div class="mb-6 space-y-2">
+              <p class="text-[11px] font-black uppercase tracking-[0.28em] text-[#0f6fe8]">Purchase setup</p>
+              <h2 class="text-3xl font-black tracking-tight text-[#20262e] sm:text-4xl">Choose a brand and card value.</h2>
+            </div>
+
+            <div class="space-y-6">
+              <div class="space-y-2 relative" data-buy-brand-combobox>
+                <label class="px-1 text-[11px] font-black uppercase tracking-[0.24em] text-[#60758f]" for="buy_brand_picker">Choose brand</label>
+                <input id="buy_selected_brand" name="selected_brand" type="hidden" value="" />
+                <button
+                  aria-controls="buy_brand_picker_menu"
+                  aria-expanded="false"
+                  aria-haspopup="listbox"
+                  class="flex h-16 w-full items-center justify-between gap-3 rounded-full border border-[#cfd8e3] bg-white px-6 text-lg font-medium text-[#20262e] outline-none transition-all focus:border-[#157cf6] focus:ring-2 focus:ring-[#157cf6]/15"
+                  data-buy-brand-trigger
+                  id="buy_brand_picker"
+                  type="button"
+                >
+                  <span class="flex min-w-0 items-center gap-3">
+                    <img alt="" class="h-5 w-5 shrink-0 rounded-[4px] bg-white p-[2px] object-contain" data-buy-brand-current-logo hidden />
+                    <span class="truncate text-left" data-buy-brand-current>Select a brand...</span>
+                  </span>
+                  <span class="material-symbols-outlined shrink-0 text-[#3f4652]">expand_more</span>
+                </button>
+
+                <div
+                  class="absolute left-0 right-0 top-[calc(100%+0.5rem)] z-30 hidden overflow-hidden rounded-[1.75rem] border border-[#d7dee8] bg-white shadow-[0px_18px_36px_rgba(15,23,42,0.12)]"
+                  data-buy-brand-menu
+                  id="buy_brand_picker_menu"
+                >
+                  <div class="border-b border-[#e8edf3] p-3">
+                    <label class="relative block">
+                      <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[18px] text-[#7b8795]">search</span>
+                      <input
+                        autocomplete="off"
+                        class="h-11 w-full rounded-full border border-[#d7dee8] bg-white pl-10 pr-3 text-sm text-[#20262e] outline-none placeholder:text-[#7b8795] focus:border-[#157cf6] focus:ring-2 focus:ring-[#157cf6]/15"
+                        data-buy-brand-search
+                        placeholder="Search brands..."
+                        type="text"
+                      />
+                    </label>
+                  </div>
+                  <div class="max-h-64 space-y-0.5 overflow-y-auto p-1.5" data-buy-brand-options role="listbox"></div>
+                  <p class="hidden px-3 py-2 text-xs text-[#60758f]" data-buy-brand-empty>No matching brands found.</p>
                 </div>
-                <div class="max-h-64 overflow-y-auto p-1.5 space-y-0.5" data-buy-brand-options role="listbox"></div>
-                <p class="hidden px-3 py-2 text-xs text-on-surface-variant" data-buy-brand-empty>No matching brands found.</p>
               </div>
-            </div>
-          </div>
-          <!-- Value Grid -->
-          <div class="space-y-3">
-            <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant opacity-70 px-1">Card Value</label>
-            <div class="grid grid-cols-4 gap-2">
-              <button class="h-12 flex items-center justify-center bg-surface-container-lowest text-primary font-bold rounded-xl border-2 border-primary-container" data-buy-value="25" data-buy-value-button type="button">$25</button>
-              <button class="h-12 flex items-center justify-center bg-surface-container-lowest text-on-surface font-semibold rounded-xl border border-transparent" data-buy-value="50" data-buy-value-button type="button">$50</button>
-              <button class="h-12 flex items-center justify-center bg-surface-container-lowest text-on-surface font-semibold rounded-xl border border-transparent" data-buy-value="100" data-buy-value-button type="button">$100</button>
-              <button class="h-12 flex items-center justify-center bg-surface-container-lowest text-on-surface font-semibold rounded-xl border border-transparent" data-buy-value="150" data-buy-value-button type="button">$150</button>
-              <button class="h-12 flex items-center justify-center bg-surface-container-lowest text-on-surface font-semibold rounded-xl border border-transparent" data-buy-value="200" data-buy-value-button type="button">$200</button>
-              <button class="h-12 flex items-center justify-center bg-surface-container-lowest text-on-surface font-semibold rounded-xl border border-transparent" data-buy-value="250" data-buy-value-button type="button">$250</button>
-              <button class="h-12 flex items-center justify-center bg-surface-container-lowest text-on-surface font-semibold rounded-xl border border-transparent" data-buy-value="500" data-buy-value-button type="button">$500</button>
-              <button class="h-12 flex items-center justify-center bg-surface-container-lowest text-on-surface font-semibold rounded-xl border border-transparent" data-buy-value="Custom" data-buy-value-button type="button">Custom</button>
-            </div>
-          </div>
-          <button class="w-full bg-[#6b38d4] hover:bg-[#5b2eb5] h-14 text-white font-bold rounded-2xl shadow-lg active:scale-95 transition-all flex items-center justify-center gap-2" data-buy-submit type="button">
-            <span class="material-symbols-outlined">add_shopping_cart</span>
-            + Add to Cart
-          </button>
-        </div>
-      </section>
 
-      <!-- Popular Brands Section -->
-      <section class="space-y-4">
-        <div class="flex items-center justify-between">
-          <h3 class="font-bold text-xl">Popular Brands</h3>
-          <span class="text-primary text-sm font-semibold">View All</span>
-        </div>
-        <div class="grid grid-cols-2 gap-4">
-          <!-- Adidas -->
-          <div class="bg-surface-container-lowest p-4 rounded-2xl relative shadow-sm hover:shadow-md transition-shadow group border border-outline-variant/15">
-            <div class="absolute top-2 right-2 bg-tertiary-container text-on-tertiary text-[10px] font-bold px-2 py-0.5 rounded-full">Save 5%</div>
-            <div class="h-20 w-full flex items-center justify-center mb-4">
-              <img alt="Adidas logo" class="h-12 object-contain transition-transform duration-200 group-hover:scale-105" src="./assets/brand-logos/adidas.svg" />
+              <div class="space-y-3">
+                <label class="px-1 text-[11px] font-black uppercase tracking-[0.24em] text-[#60758f]">Card value</label>
+                <div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                  <button class="flex h-14 items-center justify-center rounded-[1rem] border-2 border-primary-container bg-surface-container-lowest text-lg font-bold text-primary shadow-sm" data-buy-value="25" data-buy-value-button type="button">$25</button>
+                  <button class="flex h-14 items-center justify-center rounded-[1rem] border border-transparent bg-[#f6faff] text-lg font-semibold text-[#20262e]" data-buy-value="50" data-buy-value-button type="button">$50</button>
+                  <button class="flex h-14 items-center justify-center rounded-[1rem] border border-transparent bg-[#f6faff] text-lg font-semibold text-[#20262e]" data-buy-value="100" data-buy-value-button type="button">$100</button>
+                  <button class="flex h-14 items-center justify-center rounded-[1rem] border border-transparent bg-[#f6faff] text-lg font-semibold text-[#20262e]" data-buy-value="150" data-buy-value-button type="button">$150</button>
+                  <button class="flex h-14 items-center justify-center rounded-[1rem] border border-transparent bg-[#f6faff] text-lg font-semibold text-[#20262e]" data-buy-value="200" data-buy-value-button type="button">$200</button>
+                  <button class="flex h-14 items-center justify-center rounded-[1rem] border border-transparent bg-[#f6faff] text-lg font-semibold text-[#20262e]" data-buy-value="250" data-buy-value-button type="button">$250</button>
+                  <button class="flex h-14 items-center justify-center rounded-[1rem] border border-transparent bg-[#f6faff] text-lg font-semibold text-[#20262e]" data-buy-value="500" data-buy-value-button type="button">$500</button>
+                  <button class="flex h-14 items-center justify-center rounded-[1rem] border border-transparent bg-[#f6faff] text-lg font-semibold text-[#20262e]" data-buy-value="Custom" data-buy-value-button type="button">Custom</button>
+                </div>
+              </div>
+
+              <button class="mt-2 flex h-16 w-full items-center justify-center gap-2 rounded-full bg-[#23282f] text-[1.05rem] font-semibold text-white shadow-[0_10px_24px_rgba(17,24,39,0.16)] transition-all hover:bg-[#171b20] active:scale-[0.99]" data-buy-submit type="button">
+                <span class="material-symbols-outlined">add_shopping_cart</span>
+                Add to cart
+              </button>
             </div>
-            <p class="font-bold text-center">Adidas</p>
-          </div>
-          <!-- Aldi -->
-          <div class="bg-surface-container-lowest p-4 rounded-2xl relative shadow-sm hover:shadow-md transition-shadow group border border-outline-variant/15">
-            <div class="absolute top-2 right-2 bg-tertiary-container text-on-tertiary text-[10px] font-bold px-2 py-0.5 rounded-full">Save 3%</div>
-            <div class="h-20 w-full flex items-center justify-center mb-4">
-              <img alt="Aldi logo" class="h-12 object-contain transition-transform duration-200 group-hover:scale-105" src="./assets/brand-logos/aldi.svg" />
-            </div>
-            <p class="font-bold text-center">Aldi</p>
-          </div>
-          <!-- Alo -->
-          <div class="bg-surface-container-lowest p-4 rounded-2xl relative shadow-sm hover:shadow-md transition-shadow group border border-outline-variant/15">
-            <div class="absolute top-2 right-2 bg-tertiary-container text-on-tertiary text-[10px] font-bold px-2 py-0.5 rounded-full">Save 8%</div>
-            <div class="h-20 w-full flex items-center justify-center mb-4">
-              <img alt="Alo logo" class="h-10 object-contain transition-transform duration-200 group-hover:scale-105" src="./assets/brand-logos/alo.svg" />
-            </div>
-            <p class="font-bold text-center">Alo</p>
-          </div>
-          <!-- Amazon -->
-          <div class="bg-surface-container-lowest p-4 rounded-2xl relative shadow-sm hover:shadow-md transition-shadow group border border-outline-variant/15">
-            <div class="absolute top-2 right-2 bg-tertiary-container text-on-tertiary text-[10px] font-bold px-2 py-0.5 rounded-full">Save 2%</div>
-            <div class="h-20 w-full flex items-center justify-center mb-4">
-              <img alt="Amazon logo" class="h-8 object-contain transition-transform duration-200 group-hover:scale-105" src="./assets/brand-logos/amazon.svg" />
-            </div>
-            <p class="font-bold text-center">Amazon</p>
-          </div>
-          <!-- Razer Gold -->
-          <div class="bg-surface-container-lowest p-4 rounded-2xl relative shadow-sm hover:shadow-md transition-shadow group border border-outline-variant/15">
-            <div class="absolute top-2 right-2 bg-tertiary-container text-on-tertiary text-[10px] font-bold px-2 py-0.5 rounded-full">Hot</div>
-            <div class="h-20 w-full flex items-center justify-center mb-4">
-              <img alt="Razer Gold logo" class="h-10 object-contain transition-transform duration-200 group-hover:scale-105" src="./assets/brand-logos/razer-gold.svg" />
-            </div>
-            <p class="font-bold text-center">Razer Gold</p>
+          </section>
+
+          <div class="space-y-6">
+            <section class="rounded-[2rem] border border-white bg-white p-6 shadow-[0_28px_80px_rgba(15,23,42,0.08)] sm:p-8">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-[11px] font-black uppercase tracking-[0.24em] text-[#0f6fe8]">Cart summary</p>
+                  <h3 class="mt-2 text-2xl font-black tracking-tight text-[#18212b]">Ready for checkout</h3>
+                </div>
+                <span class="grid h-10 w-10 place-items-center rounded-full bg-[#dcebff] text-sm font-black text-[#0f6fe8]" data-buy-cart-count>0</span>
+              </div>
+              <div class="mt-8 rounded-[1.5rem] bg-[#f6faff] px-5 py-6 text-center">
+                <div class="mx-auto grid h-16 w-16 place-items-center rounded-full bg-white text-[#0f6fe8] shadow-[0_12px_24px_rgba(15,111,232,0.12)]">
+                  <span class="material-symbols-outlined text-[32px]">shopping_basket</span>
+                </div>
+                <p class="mt-4 text-lg font-bold text-[#18212b]" data-buy-cart-title>Your cart is empty</p>
+                <p class="mt-2 text-sm leading-relaxed text-[#5b6c80]" data-buy-cart-copy>Add a supported brand and value to start your purchase flow.</p>
+              </div>
+            </section>
+
+            <section class="rounded-[2rem] bg-[#10213a] p-6 text-white shadow-[0_28px_80px_rgba(9,23,48,0.22)] sm:p-8">
+              <p class="text-[11px] font-black uppercase tracking-[0.24em] text-[#8fc4ff]">Why this page changed</p>
+              <h3 class="mt-3 text-2xl font-black tracking-tight">Buy now supports the verify-first direction.</h3>
+              <p class="mt-4 text-sm leading-relaxed text-white/74">
+                The purchase flow still moves fast, but the page now inherits the same cleaner visual structure, stronger hierarchy, and brand trust language used on home and verify.
+              </p>
+            </section>
           </div>
         </div>
       </section>
 
-      <!-- Shopping Cart Section -->
-      <section class="space-y-4">
-        <div class="bg-surface-container-low rounded-2xl p-6 border border-outline-variant/15">
-          <div class="flex items-center gap-2 mb-4">
-            <h3 class="font-bold text-xl">Your Cart</h3>
-            <span class="bg-outline-variant text-on-surface-variant text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full" data-buy-cart-count>0</span>
+      <section class="px-4 py-20 sm:px-6">
+        <div class="mx-auto max-w-7xl">
+          <div class="max-w-3xl space-y-4">
+            <p class="text-[11px] font-black uppercase tracking-[0.28em] text-[#0f6fe8]">Popular brands</p>
+            <h2 class="text-3xl font-black tracking-tight text-[#18212b] lg:text-5xl">Fast-moving cards users buy most often.</h2>
+            <p class="text-base leading-relaxed text-[#5b6c80] lg:text-lg">
+              Featured options stay visible up front so buyers can move quickly while the full searchable catalog remains available above.
+            </p>
           </div>
-          <div class="flex flex-col items-center justify-center py-8 text-center space-y-4">
-            <div class="w-16 h-16 bg-tertiary/10 rounded-full flex items-center justify-center text-tertiary">
-              <span class="material-symbols-outlined text-3xl">shopping_basket</span>
-            </div>
-            <div>
-              <p class="font-bold text-on-surface" data-buy-cart-title>Your cart is empty</p>
-              <p class="text-sm text-on-surface-variant opacity-70" data-buy-cart-copy>Add some gift cards to get started!</p>
-            </div>
+
+          <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            <article class="group rounded-[1.75rem] border border-[#dce6f4] bg-white p-5 shadow-[0_18px_38px_rgba(15,23,42,0.05)]">
+              <div class="inline-flex rounded-full bg-[#dcebff] px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-[#0f6fe8]">Save 5%</div>
+              <div class="mt-6 flex h-20 items-center justify-center">
+                <img alt="Adidas logo" class="h-12 object-contain transition-transform duration-200 group-hover:scale-105" src="./assets/brand-logos/adidas.svg" />
+              </div>
+              <p class="mt-5 text-center text-lg font-bold text-[#18212b]">Adidas</p>
+            </article>
+            <article class="group rounded-[1.75rem] border border-[#dce6f4] bg-white p-5 shadow-[0_18px_38px_rgba(15,23,42,0.05)]">
+              <div class="inline-flex rounded-full bg-[#dcebff] px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-[#0f6fe8]">Save 3%</div>
+              <div class="mt-6 flex h-20 items-center justify-center">
+                <img alt="Aldi logo" class="h-12 object-contain transition-transform duration-200 group-hover:scale-105" src="./assets/brand-logos/aldi.svg" />
+              </div>
+              <p class="mt-5 text-center text-lg font-bold text-[#18212b]">Aldi</p>
+            </article>
+            <article class="group rounded-[1.75rem] border border-[#dce6f4] bg-white p-5 shadow-[0_18px_38px_rgba(15,23,42,0.05)]">
+              <div class="inline-flex rounded-full bg-[#dcebff] px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-[#0f6fe8]">Save 8%</div>
+              <div class="mt-6 flex h-20 items-center justify-center">
+                <img alt="Alo logo" class="h-10 object-contain transition-transform duration-200 group-hover:scale-105" src="./assets/brand-logos/alo.svg" />
+              </div>
+              <p class="mt-5 text-center text-lg font-bold text-[#18212b]">Alo</p>
+            </article>
+            <article class="group rounded-[1.75rem] border border-[#dce6f4] bg-white p-5 shadow-[0_18px_38px_rgba(15,23,42,0.05)]">
+              <div class="inline-flex rounded-full bg-[#dcebff] px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-[#0f6fe8]">Save 2%</div>
+              <div class="mt-6 flex h-20 items-center justify-center">
+                <img alt="Amazon logo" class="h-8 object-contain transition-transform duration-200 group-hover:scale-105" src="./assets/brand-logos/amazon.svg" />
+              </div>
+              <p class="mt-5 text-center text-lg font-bold text-[#18212b]">Amazon</p>
+            </article>
+            <article class="group rounded-[1.75rem] border border-[#dce6f4] bg-white p-5 shadow-[0_18px_38px_rgba(15,23,42,0.05)]">
+              <div class="inline-flex rounded-full bg-[#dcebff] px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-[#0f6fe8]">Hot</div>
+              <div class="mt-6 flex h-20 items-center justify-center">
+                <img alt="Razer Gold logo" class="h-10 object-contain transition-transform duration-200 group-hover:scale-105" src="./assets/brand-logos/razer-gold.svg" />
+              </div>
+              <p class="mt-5 text-center text-lg font-bold text-[#18212b]">Razer Gold</p>
+            </article>
           </div>
         </div>
       </section>
 
-      <!-- Why Buy From Us Section -->
-      <section class="grid grid-cols-1 gap-6 py-4">
-        <div class="flex items-start gap-4">
-          <div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center shrink-0">
-            <span class="material-symbols-outlined text-primary">sell</span>
-          </div>
-          <div>
-            <h4 class="font-bold">Best Prices</h4>
-            <p class="text-sm text-on-surface-variant">Unbeatable rates and daily discounts on major brands.</p>
-          </div>
-        </div>
-        <div class="flex items-start gap-4">
-          <div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center shrink-0">
-            <span class="material-symbols-outlined text-primary">bolt</span>
-          </div>
-          <div>
-            <h4 class="font-bold">Instant Delivery</h4>
-            <p class="text-sm text-on-surface-variant">Digital codes delivered to your email in seconds.</p>
-          </div>
-        </div>
-        <div class="flex items-start gap-4">
-          <div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center shrink-0">
-            <span class="material-symbols-outlined text-primary">verified_user</span>
-          </div>
-          <div>
-            <h4 class="font-bold">100% Secure</h4>
-            <p class="text-sm text-on-surface-variant">Encrypted transactions and guaranteed valid codes.</p>
-          </div>
+      <section class="px-4 pb-20 sm:px-6">
+        <div class="mx-auto grid max-w-7xl gap-5 lg:grid-cols-3">
+          <article class="rounded-[1.8rem] border border-[#dce6f4] bg-white p-6 shadow-[0_18px_38px_rgba(15,23,42,0.05)]">
+            <div class="grid h-12 w-12 place-items-center rounded-[1rem] bg-[#dcebff] text-[#0f6fe8]">
+              <span class="material-symbols-outlined">sell</span>
+            </div>
+            <h3 class="mt-5 text-xl font-black tracking-tight text-[#18212b]">Best prices</h3>
+            <p class="mt-2 text-sm leading-relaxed text-[#5b6c80]">Unbeatable rates and rotating offers on major retail and gaming brands.</p>
+          </article>
+          <article class="rounded-[1.8rem] border border-[#dce6f4] bg-white p-6 shadow-[0_18px_38px_rgba(15,23,42,0.05)]">
+            <div class="grid h-12 w-12 place-items-center rounded-[1rem] bg-[#dcebff] text-[#0f6fe8]">
+              <span class="material-symbols-outlined">bolt</span>
+            </div>
+            <h3 class="mt-5 text-xl font-black tracking-tight text-[#18212b]">Instant delivery</h3>
+            <p class="mt-2 text-sm leading-relaxed text-[#5b6c80]">Digital codes are prepared for fast handoff once the order is confirmed.</p>
+          </article>
+          <article class="rounded-[1.8rem] border border-[#dce6f4] bg-white p-6 shadow-[0_18px_38px_rgba(15,23,42,0.05)]">
+            <div class="grid h-12 w-12 place-items-center rounded-[1rem] bg-[#dcebff] text-[#0f6fe8]">
+              <span class="material-symbols-outlined">verified_user</span>
+            </div>
+            <h3 class="mt-5 text-xl font-black tracking-tight text-[#18212b]">Secure flow</h3>
+            <p class="mt-2 text-sm leading-relaxed text-[#5b6c80]">The page now feels aligned with verification and avoids the older, cluttered purchase layout.</p>
+          </article>
         </div>
       </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-on-surface text-surface py-16 px-6 mt-12">
-      <div class="max-w-4xl mx-auto space-y-10">
-        <div class="space-y-4">
-          <span class="text-2xl font-black tracking-tight">GiftCardsHub</span>
-          <p class="text-sm opacity-60 max-w-sm leading-relaxed">Your premium concierge for digital value. Trusted by millions for secure and instant gift card delivery worldwide.</p>
-        </div>
-        <div class="grid grid-cols-2 gap-8">
-          <div class="space-y-4">
-            <h5 class="text-xs font-bold uppercase tracking-widest text-primary-fixed">Quick Links</h5>
-            <ul class="space-y-2 text-sm opacity-70">
-              <li><a href="buy.html">Buy Gift Cards</a></li>
-              <li><a href="sell.html">Sell Gift Cards</a></li>
-              <li><a href="checkbalance.html">Balance Check</a></li>
-            </ul>
-          </div>
-          <div class="space-y-4">
-            <h5 class="text-xs font-bold uppercase tracking-widest text-primary-fixed">Support</h5>
-            <ul class="space-y-2 text-sm opacity-70">
-              <li><a href="home.html#support">Help Center</a></li>
-              <li><a href="home.html#reviews">Reviews</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="pt-8 border-t border-surface/10 text-center">
-          <p class="text-[10px] opacity-40">© 2024 GiftCardsHub. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
-
-    <!-- Bottom Nav -->
-    <nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 backdrop-blur-2xl rounded-t-[1.5rem] z-50 shadow-[0px_-4px_20px_rgba(6,9,99,0.04)]">
-      <a class="flex flex-col items-center justify-center text-[#060963]/60 px-3 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="home.html">
+    <nav class="fixed bottom-0 left-0 z-50 flex w-full items-center justify-around rounded-t-[1.5rem] bg-white/88 px-4 pb-6 pt-3 shadow-[0px_-4px_20px_rgba(6,9,99,0.04)] backdrop-blur-2xl md:hidden">
+      <a class="flex flex-col items-center justify-center px-3 py-2 text-[#24364a]/60 transition-opacity hover:opacity-80 active:scale-90 duration-150" href="home.html">
         <span class="material-symbols-outlined">home</span>
-        <span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Home</span>
+        <span class="mt-1 text-[10px] font-semibold uppercase tracking-wider">Home</span>
       </a>
-      <a class="flex flex-col items-center justify-center text-[#060963]/60 px-3 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="checkbalance.html">
+      <a class="flex flex-col items-center justify-center px-3 py-2 text-[#24364a]/60 transition-opacity hover:opacity-80 active:scale-90 duration-150" href="checkbalance.html">
         <span class="material-symbols-outlined">verified_user</span>
-        <span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Verify</span>
+        <span class="mt-1 text-[10px] font-semibold uppercase tracking-wider">Verify</span>
       </a>
-      <a class="flex flex-col items-center justify-center bg-[#e9ddff] text-[#6b38d4] rounded-[1rem] px-3 py-2 active:scale-90 duration-150" href="buy.html">
+      <a class="flex flex-col items-center justify-center rounded-[1rem] bg-[#dcebff] px-3 py-2 text-[#0f6fe8] active:scale-90 duration-150" href="buy.html">
         <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">shopping_bag</span>
-        <span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Buy</span>
+        <span class="mt-1 text-[10px] font-semibold uppercase tracking-wider">Buy</span>
       </a>
-      <a class="flex flex-col items-center justify-center text-[#060963]/60 px-3 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="sell.html">
+      <a class="flex flex-col items-center justify-center px-3 py-2 text-[#24364a]/60 transition-opacity hover:opacity-80 active:scale-90 duration-150" href="sell.html">
         <span class="material-symbols-outlined">sell</span>
-        <span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Sell</span>
+        <span class="mt-1 text-[10px] font-semibold uppercase tracking-wider">Sell</span>
       </a>
-      <a class="flex flex-col items-center justify-center text-[#060963]/60 px-3 py-2 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="home.html#reviews">
+      <a class="flex flex-col items-center justify-center px-3 py-2 text-[#24364a]/60 transition-opacity hover:opacity-80 active:scale-90 duration-150" href="home.html#reviews">
         <span class="material-symbols-outlined">star</span>
-        <span class="text-[10px] font-semibold tracking-wider uppercase mt-1">Reviews</span>
+        <span class="mt-1 text-[10px] font-semibold uppercase tracking-wider">Reviews</span>
       </a>
     </nav>
   </body>

@@ -142,41 +142,26 @@ function ensureSitePopup() {
     popup = document.createElement("div");
     popup.id = "site-flow-popup";
     popup.className =
-      "fixed inset-0 z-[75] hidden items-end justify-center bg-[#101828]/45 p-4 backdrop-blur-[8px] sm:items-center";
+      "fixed inset-0 z-[75] hidden items-center justify-center bg-[#101828]/42 p-4 backdrop-blur-[6px]";
     popup.setAttribute("role", "dialog");
     popup.setAttribute("aria-modal", "true");
     popup.setAttribute("aria-labelledby", "site-flow-popup-title");
     popup.innerHTML = `
       <div class="absolute inset-0" data-site-popup-close></div>
-      <div class="relative w-full max-w-md overflow-hidden rounded-[2rem] bg-white shadow-[0_30px_80px_rgba(15,23,42,0.28)]">
-        <div class="h-1.5 bg-gradient-to-r from-[#0f9af4] via-[#6b38d4] to-[#141922]" data-site-popup-accent></div>
-        <div class="relative px-6 pb-6 pt-7 sm:px-8">
-          <button class="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#f2f5f9] text-[#4b5563] transition-colors hover:bg-[#e6ebf1]" data-site-popup-close type="button" aria-label="Close popup">
-            <span class="material-symbols-outlined text-[20px]">close</span>
-          </button>
-          <div class="flex items-start gap-4">
-            <div class="grid h-14 w-14 shrink-0 place-items-center rounded-[1.25rem] bg-[#e8fff3] text-[#067647]" data-site-popup-icon-wrap>
-              <span class="material-symbols-outlined text-[28px]" data-site-popup-icon>verified</span>
-            </div>
-            <div class="min-w-0 pt-1">
-              <p class="text-[11px] font-bold uppercase tracking-[0.24em] text-[#60758f]" data-site-popup-kicker>Update</p>
-              <h3 class="mt-2 text-[1.9rem] font-black leading-none tracking-tight text-[#18212b]" data-site-popup-title id="site-flow-popup-title">Done</h3>
-              <p class="mt-3 text-sm leading-relaxed text-[#5b6c80]" data-site-popup-copy>Everything is ready.</p>
-            </div>
-          </div>
-          <div class="mt-6 rounded-[1.5rem] border border-[#e2e8f0] bg-[#f8fafc] px-5 py-5" data-site-popup-amount-card>
-            <p class="text-[11px] font-bold uppercase tracking-[0.24em] text-[#60758f]" data-site-popup-amount-label>Summary</p>
-            <p class="mt-2 text-[2.4rem] font-black leading-none tracking-tight text-[#18212b]" data-site-popup-amount>$0.00</p>
-          </div>
-          <div class="mt-6 flex gap-3">
-            <button class="flex-1 rounded-full bg-[#23282f] px-5 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#171b20]" data-site-popup-primary type="button">
-              Continue
-            </button>
-            <button class="rounded-full border border-[#d7dee8] px-5 py-3.5 text-sm font-semibold text-[#344054] transition-colors hover:bg-[#f8fafc]" data-site-popup-close type="button">
-              Close
-            </button>
+      <div class="relative w-full max-w-4xl rounded-[1.15rem] bg-white px-6 py-12 text-center shadow-[0_32px_100px_rgba(15,23,42,0.26)] sm:px-10 lg:px-16 lg:py-16">
+        <p class="text-4xl font-light tracking-tight text-[#198754] sm:text-5xl lg:text-6xl" data-site-popup-kicker>SUCCESS!</p>
+        <h3 class="mx-auto mt-5 max-w-3xl text-2xl font-medium leading-tight tracking-tight text-[#20262e] sm:text-4xl lg:text-[3rem]" data-site-popup-title id="site-flow-popup-title">Done</h3>
+        <p class="mt-8 text-lg text-[#344054] sm:text-[1.8rem]" data-site-popup-copy>Everything is ready.</p>
+        <div class="mx-auto mt-3 h-px w-full max-w-3xl bg-[#d7dee8]"></div>
+        <div class="mx-auto mt-10 w-fit text-left text-xl text-[#101828] sm:text-2xl" data-site-popup-amount-card>
+          <div class="flex flex-wrap items-baseline gap-x-2">
+            <span class="text-[#667085]" data-site-popup-amount-label>Summary:</span>
+            <span class="font-bold" data-site-popup-amount>$0.00</span>
           </div>
         </div>
+        <button class="mx-auto mt-10 inline-flex rounded-[0.9rem] bg-[#e63946] px-6 py-3 text-lg font-semibold text-white transition-colors hover:bg-[#cf3340]" data-site-popup-primary type="button">
+          Close
+        </button>
       </div>
     `;
     document.body.append(popup);
@@ -184,9 +169,6 @@ function ensureSitePopup() {
 
   const refs = {
     root: popup,
-    accent: popup.querySelector("[data-site-popup-accent]"),
-    iconWrap: popup.querySelector("[data-site-popup-icon-wrap]"),
-    icon: popup.querySelector("[data-site-popup-icon]"),
     kicker: popup.querySelector("[data-site-popup-kicker]"),
     title: popup.querySelector("[data-site-popup-title]"),
     copy: popup.querySelector("[data-site-popup-copy]"),
@@ -243,17 +225,11 @@ function openSitePopup({
   popup.amount.textContent = amount;
   popup.primary.textContent = primaryLabel;
   popup.amountCard.classList.toggle("hidden", !amount);
-
-  popup.accent.className = isError
-    ? "h-1.5 bg-gradient-to-r from-[#ff9a62] via-[#ff6b57] to-[#8c2c22]"
-    : "h-1.5 bg-gradient-to-r from-[#0f9af4] via-[#6b38d4] to-[#141922]";
-  popup.iconWrap.className = isError
-    ? "grid h-14 w-14 shrink-0 place-items-center rounded-[1.25rem] bg-[#fff0ea] text-[#c2410c]"
-    : "grid h-14 w-14 shrink-0 place-items-center rounded-[1.25rem] bg-[#e8fff3] text-[#067647]";
-  popup.icon.textContent = isError ? "error" : "verified";
-  popup.primary.className = isError
-    ? "flex-1 rounded-full bg-[#23282f] px-5 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#171b20]"
-    : "flex-1 rounded-full bg-[#0f172a] px-5 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#020617]";
+  popup.kicker.className = isError
+    ? "text-4xl font-light tracking-tight text-[#d92d20] sm:text-5xl lg:text-6xl"
+    : "text-4xl font-light tracking-tight text-[#198754] sm:text-5xl lg:text-6xl";
+  popup.primary.className =
+    "mx-auto mt-10 inline-flex rounded-[0.9rem] bg-[#e63946] px-6 py-3 text-lg font-semibold text-white transition-colors hover:bg-[#cf3340]";
 
   popup.root._onPrimary = onPrimary || null;
   popup.root.classList.remove("hidden");
@@ -756,7 +732,7 @@ function initCheckBalance() {
     const digits = (cardNumberInput?.value || "").replace(/\D/g, "");
     const pin = (pinInput?.value || "").trim();
     const verifyAmount = parseCurrencyInput(cardValueInput?.value);
-    const selectedCurrency = String(currencyInput?.value || "USD").toUpperCase();
+    const selectedCurrency = "USD";
 
     if (isSellFlow) {
       const cardValue = parseCurrencyInput(cardValueInput?.value);
